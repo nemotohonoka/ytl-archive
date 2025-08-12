@@ -1,0 +1,32 @@
+// Color
+$light-gray: #f7f7f7;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #2a2a2a;
+$white: #fefefe;
+$beige: #f1eee3;
+$light-beige: #fbf9f7;
+$anchor-color: #0070a9;
+$global-font-size: 16px;
+$global-width: 1060px;
+$global-line-height: 1.7;
+$global-unit: round($global-line-height * $global-font-size) !default;
+$global-border-radius: 3px !default;
+
+
+$palette: (
+  primary: #EA452F,		//red
+  secondary: #0070a9,	//blue
+  success: #3adb76,		//light green
+  alert: #f9bb00,			//yellow
+  warning: #ffae00,		//red
+);
+@include add-colors;
+
+$body-font-color: $black;
+$body-background-color: $white;
+$body-font-family: '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, 'Lato', 'Noto Sans JP', '游ゴシック Medium', '游ゴシック体', 'Yu Gothic Medium', YuGothic, 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+$body-font-family-serif: 'Libre Baskerville', "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+
+
+

@@ -1,0 +1,139 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after
+{
+  box-sizing: border-box;
+}
+
+
+html,
+body
+{
+  height: 100%;
+}
+
+
+html {
+  overflow-y: scroll;
+  cursor: default;
+}
+
+body {
+	margin: 0;
+	overflow-wrap: break-word;
+  word-wrap: break-word;
+  
+  font-family: $body-font-family;
+  font-size: $global-font-size;
+  line-height: $global-line-height;
+  background-color: $body-background-color;
+
+// footer fixed
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+a
+{
+    text-decoration: none;
+    color: $anchor-color;
+
+    &:hover
+    {
+        color: lighten($anchor-color, 10%);
+    }
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+
+h1
+{
+	font-size: 2em;
+}
+
+h2
+{
+	font-size: 1.7em;
+}
+
+h3
+{
+	font-size: 1.5em;
+}
+
+h4
+{
+	font-size: 1.2em;
+}
+
+h5, h6 {
+	font-size: 1em;
+}
+
+
+ul
+{
+    list-style-type: square;
+}
+
+ul, ol, dl,
+p,
+pre
+{
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+
+li ol,
+li ul
+{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+dl {
+	dt {
+	  font-weight: bold;
+  }
+  dd {
+	  margin-left: 0;
+  }
+}
+
+pre,
+code
+{
+    font-family: $body-font-family-serif;
+}
+
+
+
+img
+{
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}
+
+figure {
+	text-align: center;
+}
+
+figure img {
+	width: 100%;
+}
+
+label
+{
+    cursor: pointer;
+}

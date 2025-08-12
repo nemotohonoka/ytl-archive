@@ -1,0 +1,43 @@
+// media queries
+@mixin breakpoint($size) {
+  @if $size == small-only {
+    @media (max-width: 639px) { @content; }
+  } @else if $size == medium-up {
+    @media (min-width: 640px) { @content; }
+  } @else if $size == large-up {
+    @media (min-width: 1024px) { @content; }
+  } @else if $size == xlarge-up {
+    @media (min-width: 1200px) { @content; }
+  } @else if $size == xxlarge-up {
+    @media (min-width: 1440px) { @content; }
+  }
+}
+
+// Colors
+@mixin add-colors() {
+  @if map-has-key($palette, primary) {
+    $primary-color: map-get($palette, primary) !global;
+  } @else {
+    $primary-color: #1779ba !global;
+  }
+  @if map-has-key($palette, secondary) {
+    $secondary-color: map-get($palette, secondary) !global;
+  } @else {
+    $secondary-color: #767676 !global;
+  }
+  @if map-has-key($palette, success) {
+    $success-color: map-get($palette, success) !global;
+  } @else {
+    $success-color: #3adb76 !global;
+  }
+  @if map-has-key($palette, warning) {
+    $warning-color: map-get($palette, warning) !global;
+  } @else {
+    $warning-color: #ffae00 !global;
+  }
+  @if map-has-key($palette, alert) {
+    $alert-color: map-get($palette, alert) !global;
+  } @else {
+    $alert-color: #cc4b37 !global;
+  }
+}
