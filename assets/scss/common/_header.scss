@@ -40,25 +40,24 @@
         }
       }
     }
-  }
-  
 
-  #nav-toggle {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    background: #011976;
-    cursor: pointer;
-    z-index: 101;
+    .right-box {
+      display: flex;
 
-    span {
-      display: block;
-      position: absolute;
-      height: 1px;
-      width: 45%;
-      background: #fff;
-      left: 17px;
-      transition: 0.35s ease-in-out;
+      .search-button {
+        margin-right: 10px;
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 60px;
+          width: 60px;
+
+          svg {
+            color: #011976;
+          }
+        }
+      }
     }
   }
 
@@ -193,6 +192,7 @@
     width: 60px;
     height: 60px;
     cursor: pointer;
+    z-index: 101;
     transition: background 0.3s;
 
     span {
