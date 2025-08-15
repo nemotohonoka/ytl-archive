@@ -236,6 +236,10 @@
     }
   }
 
+  .header-pc {
+    display: none;
+  }
+
   @include breakpoint(medium-up) {
     .header--inner {
       .right-box {
@@ -311,6 +315,90 @@
             .download {
               a {
                 background: #0092E6;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint(large-up) {
+    .header-pc {
+      display: block;
+      width: 100%;
+      position: relative;
+      top: 60px;
+
+      .header-bottom {
+        display: flex;
+        justify-content: space-around;
+
+        .menu {
+          display: flex;
+          align-items: center;
+          li {
+            cursor: pointer;
+            a {
+              display: block;
+              padding: 1rem 1.5rem;
+              font-size: 17px;
+              font-weight: bold;
+              color: #011976;
+        
+              @media (hover: hover) {
+                &:hover {
+                  color: #0092E6;
+                  transition: all 0.3s;
+                }
+              }
+            }
+          }
+
+          .menu-item {
+            .submenu {
+              display: none;
+              position: absolute;
+              top: 100%;       /* 親メニュー下 */
+              left: 0;         /* 画面左端 */
+              width: 100vw;    /* 画面横幅いっぱい */
+              background: #EDEDED;
+              margin: 0;
+              padding: 30px 60px;
+              z-index: 1000;
+        
+              ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+        
+                li {
+                  width: calc(calc(100% - 80px) / 4);
+                  border-bottom: 1px dotted;
+        
+                  a {
+                    font-size: 15px;
+                  }
+          
+                  // @media (hover: hover) {
+                  //   &:hover {
+                  //     background: #555;
+                  //     transition: all 0.3s;
+                  //   }
+                  // }
+                }
+
+                .last-row {
+                  margin-left: 0;  /* 左寄せ */
+
+                }
+              }
+              
+            }
+
+            &:hover {
+              .submenu {
+                display: block;
               }
             }
           }

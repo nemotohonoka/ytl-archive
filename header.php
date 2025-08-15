@@ -176,4 +176,97 @@
         </nav>
       </div>
     </div>
+
+    <div class="header-pc">
+      <nav class="header-bottom">
+        <ul class="menu">
+          <li><a href="#">ホーム</a></li>
+          <li><a href="#">お知らせ</a></li>
+          <li><a href="#">会社概要</a></li>
+          
+          <li class="menu-item">
+            <a href="#" class="parent-menu">疾患別コンテンツ</a>
+            <div class="submenu">
+              <ul>
+                <li><a href="#">消化器</a></li>
+                <li><a href="#">免疫・膠原病・感染症</a></li>
+                <li><a href="#">脳・神経</a></li>
+                <li><a href="#">腎・泌尿器</a></li>
+                <li><a href="#">婦人科・乳腺</a></li>
+                <li><a href="#">呼吸器</a></li>
+                <li><a href="#">眼・耳鼻</a></li>
+                <li><a href="#">皮膚</a></li>
+                <li><a href="#">悪性腫瘍</a></li>
+                <li><a href="#">希少疾患</a></li>
+                <li><a href="#">血液疾患</a></li>
+                <li class="last-row"><a href="#">統計</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="menu-item">
+            <a href="#" class="parent-menu">医療制度コンテンツ</a>
+            <div class="submenu">
+              <ul>
+                <li><a href="#">消化器</a></li>
+                <li><a href="#">免疫・膠原病・感染症</a></li>
+                <li><a href="#">脳・神経</a></li>
+                <li><a href="#">腎・泌尿器</a></li>
+                <li><a href="#">婦人科・乳腺</a></li>
+                <li><a href="#">呼吸器</a></li>
+                <li><a href="#">眼・耳鼻</a></li>
+                <li><a href="#">皮膚</a></li>
+                <li><a href="#">悪性腫瘍</a></li>
+                <li><a href="#">希少疾患</a></li>
+                <li><a href="#">血液疾患</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="menu-item">
+            <a href="#" class="parent-menu">スキル研修</a>
+            <div class="submenu">
+              <ul>
+                <li><a href="#">消化器</a></li>
+                <li><a href="#">免疫・膠原病・感染症</a></li>
+                <li><a href="#">脳・神経</a></li>
+                <li><a href="#">腎・泌尿器</a></li>
+                <li><a href="#">婦人科・乳腺</a></li>
+                <li><a href="#">呼吸器</a></li>
+                <li><a href="#">眼・耳鼻</a></li>
+                <li><a href="#">皮膚</a></li>
+                <li><a href="#">悪性腫瘍</a></li>
+                <li><a href="#">希少疾患</a></li>
+                <li><a href="#">血液疾患</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li><a href="#">Web講演会</a></li>
+          <li><a href="#">情報提供資料</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+
+    <!-- <div class="header-pc">
+      <nav class="header-bottom">
+        <ul class="content-menu">
+          <li><a href="#">ホーム</a></li>
+          <li><a href="#">お知らせ</a></li>
+          <li><a href="#">会社概要</a></li>
+          <li>
+            <a href="#" class="parent-menu">疾患別コンテンツ</a>
+            <ul class="children-menu">
+              <li><a href="#">消化器</a></li>
+              <li><a href="#">免疫・膠原病・感染症</a></li>
+              <li><a href="#">脳・神経</a></li>
+              <li><a href="#">腎・泌尿器</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Web講演会</a></li>
+          <li><a href="#">情報提供資料</a></li>
+        </ul>
+      </nav>
+    </div> -->
   </div>

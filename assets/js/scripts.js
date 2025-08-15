@@ -5,3 +5,25 @@ document.addEventListener('DOMContentLoaded', function() {
     navToggle.classList.toggle('open');
   });
 });
+
+$(function () {
+  // 親メニューにhover
+  $('.parent-menu').hover(
+    function () {
+      $(this).next('.children-menu').addClass('active');
+    },
+    function () {
+      $(this).next('.children-menu').removeClass('active');
+    }
+  );
+
+  // 子メニューにhover
+  $('.children-menu').hover(
+    function () {
+      $(this).addClass('active');
+    },
+    function () {
+      $(this).removeClass('active');
+    }
+  );
+});
