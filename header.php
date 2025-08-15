@@ -29,6 +29,39 @@
       </h1>
 
       <div class="right-box">
+        <div class="sub-nav large-view">
+          <div class="search-link">
+            <a href="<?php echo home_url(); ?>/plan/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30.253" height="33.159" viewBox="0 0 30.253 33.159" aria-hidden="true" focusable="false">
+                <g transform="translate(-1201 -22)">
+                  <path d="M14,2A12,12,0,0,0,5.515,22.485,12,12,0,1,0,22.485,5.515,11.921,11.921,0,0,0,14,2m0-2A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(1201 22)" fill="currentColor"/>
+                  <path d="M6.247,8.658l-7-8L.753-.659l7,8Z" transform="translate(1223.5 46.5)" fill="currentColor"/>
+                </g>
+              </svg>
+              <span>動画ライブラリ</span>
+            </a>
+          </div>
+
+          <div class="search-link">
+            <a href="<?php echo home_url(); ?>/corporation/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30.253" height="33.159" viewBox="0 0 30.253 33.159" aria-hidden="true" focusable="false">
+                <g transform="translate(-1201 -22)">
+                  <path d="M14,2A12,12,0,0,0,5.515,22.485,12,12,0,1,0,22.485,5.515,11.921,11.921,0,0,0,14,2m0-2A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(1201 22)" fill="currentColor"/>
+                  <path d="M6.247,8.658l-7-8L.753-.659l7,8Z" transform="translate(1223.5 46.5)" fill="currentColor"/>
+                </g>
+              </svg>
+              <span>スライド資料</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-nav medium-view">
+          <ul>
+            <li class="inquiry"><a href="" target="_blank"><span>お問い合わせ</span></a></li>
+            <li class="download"><a href="<?php echo home_url(); ?>/faq/"><span>ログイン・会員登録</span></a></li>
+          </ul>
+        </div>
+
         <div class="search-button">
           <a href="<?php echo home_url(); ?>/corporation/">
             <svg xmlns="http://www.w3.org/2000/svg" width="30.253" height="33.159" viewBox="0 0 30.253 33.159" aria-hidden="true" focusable="false">
@@ -67,12 +100,28 @@
                   </ul>
 
                   <div class="sub-nav sub-nav-pc">
-                    <div class="movie-library">
-                      <a href="<?php echo home_url(); ?>/plan/"><span>動画ライブラリ</span></a>
+                    <div class="search-link">
+                      <a href="<?php echo home_url(); ?>/plan/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30.253" height="33.159" viewBox="0 0 30.253 33.159" aria-hidden="true" focusable="false">
+                          <g transform="translate(-1201 -22)">
+                            <path d="M14,2A12,12,0,0,0,5.515,22.485,12,12,0,1,0,22.485,5.515,11.921,11.921,0,0,0,14,2m0-2A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(1201 22)" fill="currentColor"/>
+                            <path d="M6.247,8.658l-7-8L.753-.659l7,8Z" transform="translate(1223.5 46.5)" fill="currentColor"/>
+                          </g>
+                        </svg>
+                        <span>動画ライブラリ</span>
+                      </a>
                     </div>
 
-                    <div class="material-library">
-                      <a href="<?php echo home_url(); ?>/corporation/"><span>スライド資料</span></a>
+                    <div class="search-link">
+                      <a href="<?php echo home_url(); ?>/corporation/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30.253" height="33.159" viewBox="0 0 30.253 33.159" aria-hidden="true" focusable="false">
+                          <g transform="translate(-1201 -22)">
+                            <path d="M14,2A12,12,0,0,0,5.515,22.485,12,12,0,1,0,22.485,5.515,11.921,11.921,0,0,0,14,2m0-2A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(1201 22)" fill="currentColor"/>
+                            <path d="M6.247,8.658l-7-8L.753-.659l7,8Z" transform="translate(1223.5 46.5)" fill="currentColor"/>
+                          </g>
+                        </svg>
+                        <span>スライド資料</span>
+                      </a>
                     </div>
                   </div>
                 </div>

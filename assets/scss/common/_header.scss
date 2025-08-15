@@ -43,6 +43,15 @@
 
     .right-box {
       display: flex;
+      align-items: center;
+
+      .large-view {
+        display: none;
+      }
+
+      .medium-view {
+        display: none;
+      }
 
       .search-button {
         margin-right: 10px;
@@ -118,6 +127,7 @@
         background: #011976;
         position: absolute;
         top: 0px;
+        // right: 0;
         right: -100%;
         width: 100%;
         z-index: 100;
@@ -222,6 +232,89 @@
       /* メニュー表示時 */
       #nav-toggle.open + nav.sp-nav {
         right: 0;
+      }
+    }
+  }
+
+  @include breakpoint(medium-up) {
+    .header--inner {
+      .right-box {
+        nav.sp-nav {
+          .inner {
+            padding: 0 60px;
+            .main-wrapper {
+              margin-bottom: 50px;
+              .main-nav {
+                display: flex;
+                justify-content: space-between;
+                .menu-lavel {
+                  width: 45%;
+                  margin: 0;
+                  .sub-nav-pc {
+                    display: flex;
+                    margin-top: 30px;
+                    margin-bottom: 30px;
+                    .search-link {
+                      &:first-child {
+                        margin-right: 10px;
+                      }
+                      a {
+                        color: white;
+                        svg {
+                          width: 13px;
+                          height: 13px;
+                        }
+                        span {
+                          font-size: 13px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+              .sub-nav {
+                display: none;
+              }
+            }
+
+            .buttom-nav {
+              ul {
+                display: flex;
+                justify-content: space-evenly;
+              }
+            }
+          }
+        }
+        
+        .medium-view {
+          display: block;
+          align-items: center;
+          margin-right: 10px;
+          ul {
+            display: flex;
+            li {
+              a {
+                display: block;
+                color: white;
+                padding: 10px 17px;
+                font-size: 13px;
+                border-radius: 100px;
+              }
+            }
+            .inquiry {
+              margin-right: 10px;
+              a {
+                background: #011976;
+              }
+            }
+            .download {
+              a {
+                background: #0092E6;
+              }
+            }
+          }
+        }
       }
     }
   }
