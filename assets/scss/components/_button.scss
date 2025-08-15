@@ -1,0 +1,56 @@
+.default-button {
+  .button-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 17px;
+    width: 230px;
+    margin: 0 auto;
+    font-weight: bold;
+    color: #011976;
+    background: white;
+    border: 1px solid #011976;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    span {
+      position: relative;
+      z-index: 2;
+    }
+
+    &::after {
+      content: "\f105";
+      font-family: FontAwesome;
+      font-size: 20px;
+      color: inherit;
+      position: relative;  // 前面に出す
+      z-index: 2;
+      right: -40px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #011976, #0092E6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: #fff;
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
