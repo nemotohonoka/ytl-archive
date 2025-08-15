@@ -18,65 +18,100 @@
   </head>
   
   <body <?php body_class(); ?>>
-		
-	  <header id="global-header">
+  <div id="global-header">
+    <div class="header--inner header-sp">
+      <h1>
+        <a href="<?php echo home_url(); ?>">
+          <div class="logo">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="">
+          </div>
+        </a>
+      </h1>
 
-      <div class="container">
-        <div style="display:flex;align-items:center;gap:16px">
-          <button class="mobile-toggle" aria-controls="main-navigation" aria-expanded="false" id="navToggle">☰</button>
-          <a class="logo" href="/">
-            <!-- 本番では画像ファイルを置き換えてください -->
-            <img src="https://www.joshibi.ac.jp/common/img/logo_joshibi.svg" alt="女子美術大学">
-          </a>
-        </div>
-
-        <nav id="main-navigation" class="main-nav" role="navigation" aria-label="メインナビゲーション">
-          <ul>
-            <li class="has-dropdown">
-              <a href="#">JOSHIBI NEWS</a>
-              <div class="dropdown" aria-hidden="true">
-                <a href="#">お知らせ</a>
-                <a href="#">プレスリリース</a>
-                <a href="#">展覧会・イベント情報</a>
-                <a href="#">広報誌</a>
-                <a href="#">オープンキャンパス・進学相談会</a>
-                <a href="#">受験生サイト</a>
-              </div>
-            </li>
-
-            <li class="has-dropdown">
-              <a href="#">女子美について</a>
-              <div class="dropdown" aria-hidden="true">
-                <a href="#">教育理念と方針</a>
-                <a href="#">女子美の歴史と教育組織</a>
-                <a href="#">情報の公開</a>
-                <a href="#">キャンパス・施設</a>
-              </div>
-            </li>
-
-            <li class="has-dropdown">
-              <a href="#">大学・短大・大学院</a>
-              <div class="dropdown" aria-hidden="true">
-                <a href="#">学べる科目</a>
-                <a href="#">学部・学科一覧</a>
-                <a href="#">短期大学部</a>
-              </div>
-            </li>
-
-            <li><a href="#">入試情報</a></li>
-            <li><a href="#">学生生活</a></li>
-            <li><a href="#">進路と就職</a></li>
-            <li><a href="#">アクセス案内</a></li>
-            <li><a href="#">お問い合わせ</a></li>
-            <li><a href="https://joshibiglobal.jp" target="_blank" rel="noopener">Global Site</a></li>
-          </ul>
-        </nav>
-
-        <div class="quick-links">
-          <a class="btn" href="#">資料請求</a>
-          <a class="btn" href="#">在学生の方へ</a>
-        </div>
+      <div id="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
+      <nav class="sp-nav">
+        <h1>
+          <a href="<?php echo home_url(); ?>">
+            <div class="logo">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_white.svg" alt="">
+            </div>
+          </a>
+        </h1>
 
-	  </header>
+        <div class="inner">
+          <div class="main-wrapper">
+						<div class="main-nav">
+              <div class="menu-lavel">
+                <p>Company Information</p>
+                <ul>
+                  <li><a href="<?php echo home_url(); ?>">ホーム<span>Home</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>/news/">お知らせ<span>News</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>/about/">会社概要<span>About</span></a></li>
+                </ul>
+
+                <div class="sub-nav sub-nav-pc">
+                  <div class="movie-library">
+                    <a href="<?php echo home_url(); ?>/plan/"><span>動画ライブラリ</span></a>
+                  </div>
+
+                  <div class="material-library">
+                    <a href="<?php echo home_url(); ?>/corporation/"><span>スライド資料</span></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="menu-lavel">
+                <p>Medical Resources</p>
+                <ul>
+                  <li><a href="<?php echo home_url(); ?>//">疾患別コンテンツ<span>Disease-Specific</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>//">医療制度コンテンツ<span>Medical System</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>//">スキル研修<span>Skills Training</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>//">Web講演会<span>Webinars</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>//">情報提供資材<span>Webinars</span></a></li>
+                </ul>
+              </div>
+						</div>
+
+						<div class="sub-nav sub-nav-sp">
+							<div class="search-link">
+								<a href="<?php echo home_url(); ?>/plan/">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30.253" height="33.159" viewBox="0 0 30.253 33.159" aria-hidden="true" focusable="false">
+                    <g transform="translate(-1201 -22)">
+                      <path d="M14,2A12,12,0,0,0,5.515,22.485,12,12,0,1,0,22.485,5.515,11.921,11.921,0,0,0,14,2m0-2A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(1201 22)" fill="currentColor"/>
+                      <path d="M6.247,8.658l-7-8L.753-.659l7,8Z" transform="translate(1223.5 46.5)" fill="currentColor"/>
+                    </g>
+                  </svg>
+                  <span>動画ライブラリ</span>
+                </a>
+							</div>
+
+							<div class="search-link">
+								<a href="<?php echo home_url(); ?>/corporation/">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30.253" height="33.159" viewBox="0 0 30.253 33.159" aria-hidden="true" focusable="false">
+                    <g transform="translate(-1201 -22)">
+                      <path d="M14,2A12,12,0,0,0,5.515,22.485,12,12,0,1,0,22.485,5.515,11.921,11.921,0,0,0,14,2m0-2A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(1201 22)" fill="currentColor"/>
+                      <path d="M6.247,8.658l-7-8L.753-.659l7,8Z" transform="translate(1223.5 46.5)" fill="currentColor"/>
+                    </g>
+                  </svg>
+                  <span>スライド資料</span>
+                </a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="buttom-nav">
+						<ul>
+							<li class="inquiry"><a href="" target="_blank"><span>お問い合わせ</span></a></li>
+							<li class="download"><a href="<?php echo home_url(); ?>/faq/"><span>ログイン・会員登録</span></a></li>
+						</ul>
+					</div>
+        </div>
+					
+	      </nav>
+    </div>
+  </div>

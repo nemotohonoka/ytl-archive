@@ -1,41 +1,240 @@
 #global-header {
-  .site-header{
-    background:#fff;border-bottom:1px solid #e6e6e6
+  position: relative;
+  z-index: 100;
+
+  .header--inner {
+    position: fixed;
+    transition: 0.3s;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      height: 60px;
+      margin: 0;
+      display: inline-block;
+
+      a {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        margin-left: 7px;
+        padding-top: 5px;
+        text-decoration: none;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        .logo {
+          height: 60px;
+          img {
+            height: 35px;
+          }
+        }
+      }
+    }
   }
-      .container {
-        max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:72px
+  
+
+  #nav-toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: #011976;
+    cursor: pointer;
+    z-index: 101;
+
+    span {
+      display: block;
+      position: absolute;
+      height: 1px;
+      width: 45%;
+      background: #fff;
+      left: 17px;
+      transition: 0.35s ease-in-out;
+    }
+  }
+
+  #nav-toggle span:nth-child(1) {
+    top: 18px;
+  }
+  #nav-toggle span:nth-child(2) {
+    top: 27px;
+  }
+  #nav-toggle span:nth-child(3) {
+    top: 37px;
+  }
+
+  nav.sp-nav {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto;
+    background: #011976;
+    position: absolute;
+    top: 0px;
+    right: -100%;
+    width: 100%;
+    z-index: 100;
+    transition: 0.5s ease-in-out;
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .inner {
+      padding: 0 30px;
+      padding-bottom: 30px;
+      .main-wrapper {
+        .main-nav {
+          p {
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+          }
+          ul {
+            li {
+              border-bottom: 1px dotted white;
+
+              a {
+                color: white;
+                display: block;
+                padding: 15px 0;
+                span {
+                  font-size: 11px;
+                  position: relative;
+                  padding-left: 28px;
+
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    left: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 7px;
+                    height: 1px; 
+                    background-color: white;
+                  }
+                }
+              }
+            }
+          }
+
+          .menu-lavel {
+            margin-bottom: 30px;
+            .sub-nav-pc {
+              display: none;
+            }
+          }
+        }
+
+        .sub-nav {
+          display: flex;
+          margin-bottom: 30px;
+          .search-link {
+            &:first-child {
+              margin-right: 10px;
+            }
+            a {
+              color: white;
+              svg {
+                width: 13px;
+                height: 13px;
+              }
+              span {
+                font-size: 13px;
+              }
+            }
+          }
+        }
       }
-  
-      /* Logo */
-      .logo img{height:40px;display:block}
-  
-      /* Desktop nav */
-      .main-nav{display:flex;gap:20px;align-items:center}
-      .main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:12px}
-      .main-nav a{display:block;padding:12px 8px;color:#222;text-decoration:none;font-weight:600}
-  
-      /* Dropdown */
-      .has-dropdown{position:relative}
-      .dropdown{position:absolute;left:0;top:100%;background:#fff;border:1px solid #eee;box-shadow:0 6px 18px rgba(0,0,0,0.06);min-width:220px;padding:12px;display:none}
-      .dropdown a{display:block;padding:6px 10px;font-weight:400}
-      .has-dropdown:focus-within .dropdown,.has-dropdown:hover .dropdown{display:block}
-  
-      /* Right-side quick links */
-      .quick-links{display:flex;gap:10px;align-items:center}
-      .btn{border:1px solid #ccc;padding:8px 12px;border-radius:6px;text-decoration:none;color:#222;font-weight:700}
-  
-      /* Mobile */
-      .mobile-toggle{display:none;background:none;border:0;font-size:24px}
-      @media (max-width:900px){
-        .container{height:64px}
-        .main-nav{position:fixed;inset:64px 0 0 0;background:#fff;flex-direction:column;padding:18px;transform:translateY(-100%);transition:transform .28s ease;overflow:auto}
-        .main-nav.open{transform:translateY(0)}
-        .main-nav ul{flex-direction:column;gap:4px}
-        .dropdown{position:static;border:0;box-shadow:none;padding-left:12px;display:none}
-        .has-dropdown.open > .dropdown{display:block}
-        .mobile-toggle{display:block}
-        .quick-links{display:none}
+      .buttom-nav {
+        ul {
+          li {
+            a {
+              background: white;
+              color: #011976;
+              display: block;
+              padding: 20px;
+              text-align: center;
+              width: 250px;
+              margin: 0 auto;
+              border-radius: 100px;
+              span {
+                font-weight: bold;
+                font-size: 15px;
+              }
+            }
+          }
+          .inquiry {
+            margin-bottom: 20px;
+          }
+        }
       }
+    }
+  }
+
+  /* メニュー表示時 */
+  #nav-toggle.open + nav.sp-nav {
+    right: 0;
+  }
+
+  /* ナビボタンの色変更 */
+  #nav-toggle {
+    background: #011976;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    span {
+      display: block;
+      position: absolute;
+      height: 1px;
+      width: 45%;
+      background: #fff;
+      left: 17px;
+      transition: 0.35s ease-in-out;
+
+      &:nth-child(1) {
+        top: 18px;
+      } 
+      &:nth-child(2) {
+        top: 27px;
+      }
+      &:nth-child(3) {
+        top: 37px;
+      }
+    }
+  }
+
+  /* open 状態 */
+  #nav-toggle.open {
+    background: white;
+
+    span {
+      background: #011976;
+      &:nth-child(1) {
+        top: 29px;
+        width: 43%;
+        transform: rotate(45deg);
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+      &:nth-child(3) {
+        top: 29px;
+        width: 43%;
+        transform: rotate(-45deg);
+      }
+    }
+  }
 }
-
-
