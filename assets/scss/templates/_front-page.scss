@@ -1,4 +1,45 @@
 body.home {
-	
+	#welcome {
+		width:100%;
+    height: calc(100vh - 60px);
+		margin: 0;
+		.inner {
+			background-image: url(../images/welcome_img_sp.jpg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			height: 100%;
+			width: 100%;
+
+			// .text-box {
+			// 	color: white;
+    	// 	padding: 20px;
+			// 	position: relative;
+			// 	top: 10%;
+			// 	h2 {
+			// 		line-height: 43px;
+			// 		span {
+			// 			display: inline-block;
+			// 			background: white;
+			// 			color: #3A7F65;
+			// 			padding: 3px 0px 3px 10px;
+			// 			margin-bottom: 10px;
+			// 		}
+			// 	}
+			// }
+		}
+	}
+
+  #message {
+    .inner {
+      background-image: url('../images/background.jpg');
+      padding-top: 50px;
+      padding-bottom: 50px;
+      
+      .message-text {
+        margin-bottom: 30px;
+      }
+    }
+  }
 }
 
