@@ -67,4 +67,53 @@ function get_description() {
 // デフォルトsitemapを無効化
 add_filter( 'wp_sitemaps_enabled', '__return_false' );
 
+// ===== カスタム投稿タイプの登録 =====
+add_action('init', function() {
+
+  // 投稿タイプ共通の設定
+  $post_types = [
+      'video_library' => '動画ライブラリ',
+      'web_seminar'   => 'Web講演会',
+      'info_material' => '情報提供資料',
+  ];
+
+  foreach ($post_types as $slug => $name) {
+      register_post_type($slug, [
+          'labels' => [
+              'name'          => $name,
+              'singular_name' => $name,
+              'add_new'       => '新規追加',
+              'add_new_item'  => "{$name}を追加",
+              'edit_item'     => "{$name}を編集",
+              'view_item'     => "{$name}を表示",
+          ],
+          'public'        => true,
+          'has_archive'   => true,
+          'menu_position' => 5,
+          'supports'      => ['title', 'editor', 'thumbnail'],
+          'show_in_rest'  => true,
+      ]);
+  }
+
+  // ===== 共通カテゴリー（階層あり） =====
+  register_taxonomy('common_category', array_keys($post_types), [
+      'labels' => [
+          'name'              => '共通カテゴリー',
+          'singular_name'     => '共通カテゴリー',
+          'search_items'      => 'カテゴリーを検索',
+          'all_items'         => 'すべてのカテゴリー',
+          'parent_item'       => '親カテゴリー',
+          'parent_item_colon' => '親カテゴリー:',
+          'edit_item'         => 'カテゴリーを編集',
+          'update_item'       => 'カテゴリーを更新',
+          'add_new_item'      => '新しいカテゴリーを追加',
+          'new_item_name'     => '新しいカテゴリー名',
+          'menu_name'         => 'カテゴリー',
+      ],
+      'hierarchical'  => true, // 親子関係あり
+      'public'        => true,
+      'show_in_rest'  => true,
+  ]);
+});
+
 ?>
