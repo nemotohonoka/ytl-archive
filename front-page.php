@@ -345,5 +345,69 @@
       </div>
     </div>
   </section>
+
+  <section id="news">
+
+		<div class="container">
+			<div class="flex-box">
+				<div class="text-box">
+					<h3>
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/news_title.png" alt="YTL">
+            </figure>
+            <span>お知らせ</span>
+          </h3>
+					<!-- <div class="button-area">
+						<a href="<?php echo home_url(); ?>/news/" class="button-more">more</a>
+					</div> -->
+				</div>
+
+				<div class="news-box">
+					<?php
+						$the_query = new WP_Query(
+							array(
+								'posts_per_page' => 3
+							)
+						);
+					?>
+					
+					<?php if($the_query->have_posts()): ?>
+					
+						
+					<ul class="news-list">
+						<?php while($the_query->have_posts()):$the_query->the_post(); ?>
+						
+						<?php
+							$cat = get_the_category();
+							$cat = $cat[0];
+						?>
+						<li>
+							<a href="<?php the_permalink(); ?>">
+								<date><?php the_time("Y.m.d"); ?></date>
+								<!-- <span class="label <?php echo $cat->category_nicename; ?>"><?php echo $cat->cat_name; ?></span> -->
+								<span class="text">
+									<?php
+									if(mb_strlen($post->post_title, 'UTF-8')>20){
+										$title= mb_substr($post->post_title, 0, 26, 'UTF-8');
+										echo $title.'…';
+									}else{
+										echo $post->post_title;
+									}
+									?>				    
+								</span>
+							</a>
+						</li>
+						<?php endwhile; ?>
+					</ul>
+					<?php endif; ?>
+					<?php wp_reset_postdata(); ?>
+				</div>
+
+        <div class="default-button">
+          <a href="<?php echo home_url(); ?>/news/" class="button-more"><span>もっと見る</span></a>
+        </div>
+			</div>
+		</div>
+	</section>
 </main>
 <?php get_footer(); ?>
