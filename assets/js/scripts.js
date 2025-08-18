@@ -41,3 +41,23 @@ $(function(){
       });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  new Swiper('.my-medical-swiper', {
+      slidesPerView: 1.5,       // 一度に表示するスライド数
+      spaceBetween: 30,       // スライド間の余白
+      loop: true,             // 無限ループ
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+      breakpoints: {          // レスポンシブ設定
+          768: { slidesPerView: 2 },
+          480: { slidesPerView: 1 },
+      }
+  });
+});
