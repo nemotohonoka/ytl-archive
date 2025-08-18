@@ -1,3 +1,115 @@
 #global-footer {
-	
+  .contact {
+    background-image: url('../images/footer_background.jpg');
+    .container {
+      padding: 50px 30px 30px;
+      .text-area {
+        margin-bottom: 30px;
+        p {
+          font-size: 22px;
+          color: white;
+          font-weight: bold;
+          line-height: 32px;
+        }
+      }
+      .contact-button {
+        ul {
+          li {
+            margin: 0 auto;
+            &:first-child {
+              margin-bottom: 30px;
+            }
+            a {
+              background: white;
+              border-radius: 5px;
+              padding: 25px 0;
+              border-radius: 100px;
+              width: 300px;
+              display: block;
+              position: relative;
+
+              &::after {
+                font-family: FontAwesome;
+                content: "\f105";
+                font-size: 20px;
+                position: absolute;
+                right: 1.5rem;
+                top: 50%;
+                color: #011976;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+              }
+
+              .flex-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                figure {
+                  margin-bottom: 0;
+                  margin-right: 20px;
+                }
+                span {
+                  font-weight: bold;
+                  color: #011976;
+                  margin-right: 20px;
+                  font-size: 17px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .top {
+    .container {
+      padding: 50px 30px;
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        a {
+          display: inline-block;
+          .logo {
+            img {
+              width: 200px;
+            }
+          }
+        }
+      }
+
+      .company-link {
+        &:first-child {
+          margin-bottom: 30px;
+        }
+        p {
+          border-bottom: 1px dotted;
+          padding-bottom: 5px;
+          margin-bottom: 10px;
+          font-weight: bold;
+          color: #001050;
+        }
+        ul {
+          li {
+            &:not(:last-child) {
+              margin-bottom: 5px;
+            }
+            a {
+              font-size: 15px;
+              color: #001050;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bottom {
+		background: #F7F7F7;
+    text-align: center;
+    font-size: 10px;
+    padding: 10px;
+	}
+
 }
