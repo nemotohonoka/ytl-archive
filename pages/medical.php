@@ -1,0 +1,136 @@
+<?php /*
+Template Name: 疾患別コンテンツ 一覧
+*/ ?>
+
+
+<?php get_header(); ?>
+
+<main>
+  <section id="section-title">
+    <h2>疾患別コンテンツ</h2>
+  </section>
+
+  <div class="container">
+    <section id="section-message">
+      <p>
+        疾患教育に欠かせない『疫学』『病態生理』『診断・検査』『治療』に関する資材から、
+        <span>患者様一人ひとりに寄り添った症例フォローのための多様な資材まで、幅広く制作しています。</span>
+      </p>
+    </section>
+
+    <section id="section-contents-list">
+      <ul>
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="消化器">
+            </figure>
+            <p>消化器</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="免疫・膠原病・感染症">
+            </figure>
+            <p>免疫・膠原病・感染症</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="脳・神経">
+            </figure>
+            <p>脳・神経</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="腎・泌尿器">
+            </figure>
+            <p>腎・泌尿器</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="婦人科・乳腺">
+            </figure>
+            <p>婦人科・乳腺</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="呼吸器">
+            </figure>
+            <p>呼吸器</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="眼・耳鼻">
+            </figure>
+            <p>眼・耳鼻</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="皮膚">
+            </figure>
+            <p>皮膚</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="悪性腫瘍">
+            </figure>
+            <p>悪性腫瘍</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="希少疾患">
+            </figure>
+            <p>希少疾患</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="血液疾患">
+            </figure>
+            <p>血液疾患</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="統計">
+            </figure>
+            <p>統計</p>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+</main>
+
+<?php get_footer(); ?>

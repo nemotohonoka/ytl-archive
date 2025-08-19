@@ -25,7 +25,6 @@ section {
 }
 
 #section-title {
-	background-image: url("../images/medical/title_background.svg");
 	background-size: cover;
 	height: 130px;
 	width: 100%;
@@ -36,7 +35,6 @@ section {
 	h2 {
 		margin: 0;
 		font-size: 25px;
-		color: #011976;
 		position: relative;
   	padding-left: 1.5em;
 
@@ -48,9 +46,12 @@ section {
 			transform: translateY(-50%);
 			width: 25px;
 			height: 2px;
-			background: #011976;
 		}
 	}
+}
+
+#section-message {
+	margin-bottom: 50px;
 }
 
 .fadein {
