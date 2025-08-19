@@ -24,6 +24,35 @@ section {
   margin-bottom: 80px;
 }
 
+#section-title {
+	background-image: url("../images/medical/title_background.svg");
+	background-size: cover;
+	height: 130px;
+	width: 100%;
+	margin-bottom: 50px;
+	display: flex;
+	align-items: center;
+	padding-left: 20px;
+	h2 {
+		margin: 0;
+		font-size: 25px;
+		color: #011976;
+		position: relative;
+  	padding-left: 1.5em;
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 25px;
+			height: 2px;
+			background: #011976;
+		}
+	}
+}
+
 .fadein {
 	opacity: 0;
 	transform: translate(0, 20px);
