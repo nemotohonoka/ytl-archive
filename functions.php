@@ -74,7 +74,7 @@ add_action('init', function() {
   $post_types = [
       'video_library' => '動画ライブラリ',
       'web_seminar'   => 'Web講演会',
-      'info_material' => '情報提供資料',
+      'material' => 'スライド資料',
   ];
 
   foreach ($post_types as $slug => $name) {
