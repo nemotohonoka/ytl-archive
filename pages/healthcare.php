@@ -29,7 +29,7 @@ Template Name: 医療制度コンテンツ 一覧
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/healthcare/healthcare_icon01.svg" alt="倫理">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/healthcare/healthcare_icon02.svg" alt="倫理">
             </figure>
             <p>倫理</p>
           </a>
@@ -38,7 +38,7 @@ Template Name: 医療制度コンテンツ 一覧
         <li>
           <a href="">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/healthcare/healthcare_icon01.svg" alt="医療安全">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/healthcare/healthcare_icon03.svg" alt="医療安全">
             </figure>
             <p>医療安全</p>
           </a>

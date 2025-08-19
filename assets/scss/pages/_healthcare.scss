@@ -2,7 +2,7 @@
 // ----------
 
 body.page-template-healthcare,
-body.parent-pageid-34 {
+body.parent-pageid-52 {
 
   #section-title {
     background-image: url("../images/healthcare/title_background.svg");
@@ -138,6 +138,67 @@ body.parent-pageid-34 {
             }
           }
         }
+      }
+    }
+  }
+
+  .secondarynav {
+    border-top: 0.5px solid #ddd;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      li {
+        width: 48%;
+        margin-bottom: 10px;
+        .nav-box {
+          display: flex;
+          padding: 10px 0;
+          align-items: center;
+          justify-content: center;
+          svg {
+            height: 20px;
+            width: auto;
+            flex: 0 0 45px;
+            padding-left: 15px;
+          }
+
+          p {
+            font-size: 13px;
+            text-align: center;
+            flex: 1
+          }
+        }
+      }
+      .active {
+        .nav-box {
+          background: #011976;
+          border-radius: 3px;
+          .icon-path {
+            fill: white;
+          }
+          p {
+            color: white;
+          }
+        }
+      }
+      .passive {
+        a {
+          display: block;
+          background: white;
+          border: 1px solid #011976;
+          border-radius: 3px;
+          .icon-path {
+            fill: #011976;
+          }
+          p {
+            color: #011976;
+          }
+        }
+        
       }
     }
   }
