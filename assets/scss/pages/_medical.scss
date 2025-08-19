@@ -1,7 +1,8 @@
 // 疾患別コンテンツ 一覧
 // ----------
 
-body.page-template-medical {
+body.page-template-medical,
+body.parent-pageid-34 {
 
   #section-title {
     background-image: url("../images/medical/title_background.svg");
@@ -68,6 +69,76 @@ body.page-template-medical {
       //     }
       //   }
       // }
+    }
+  }
+
+  .category-icon {
+    text-align: center;
+    margin-bottom: 50px;
+
+    figure {
+      width: 150px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #001050;
+      font-weight: bold;
+    } 
+  }
+
+  #section-post {
+    .title-label {
+      background-image: linear-gradient(
+        45deg,                     /* 斜め 45 度 */
+        rgba(1, 25, 118, 0.1),      /* 左上：赤半透明 */
+        rgba(0, 146, 230, 0.1)       /* 右下：青半透明 */
+      );
+      margin-bottom: 50px;
+
+      h3 {
+        text-align: center;
+        padding: 20px 0;
+        color: #011976;
+        font-size: 25px;
+      }
+    }
+
+    .posts {
+      margin-bottom: 30px;
+      .swiper-wrapper {
+        padding-bottom: 20px;
+        .swiper-slide {
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+          border-radius: 10px;
+          background: #fff; /* 白背景推奨 */
+
+          .text-box {
+            padding: 0 15px 20px;
+            .slide-title {
+              color: black;
+              font-weight: bold;
+              line-height: 22px;
+              margin: 20px 0 10px;
+            }
+            .slide-excerpt {
+              font-size: 13px;
+              color: black;
+              margin-bottom: 20px;
+            }
+            .slide-taxonomy {
+              display: inline;
+              padding: 7px 10px;
+              font-size: 11px;
+              border-radius: 100px;
+              color: white;
+            }
+            .child01-color {
+              background: #1958AB;
+            }
+          }
+        }
+      }
     }
   }
 
