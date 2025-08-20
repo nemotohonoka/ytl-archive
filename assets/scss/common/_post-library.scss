@@ -1,15 +1,31 @@
-// 疾患別コンテンツ 一覧
+// カスタム投稿 一覧・詳細
 // ----------
 
-body.page-template-medical,
-body.parent-pageid-34 {
-
+body.page-template-pages {
   #section-title {
-    background-image: url("../images/medical/title_background.svg");
+    background-size: cover;
+    height: 130px;
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  
     h2 {
+      margin: 0;
+      font-size: 25px;
+      position: relative;
+      padding-left: 1.1em;
       color: #011976;
   
       &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 2px;
         background: #011976;
       }
     }
@@ -146,11 +162,42 @@ body.parent-pageid-34 {
         padding: 20px 15px;
       }
     }
+  }
+}
 
-    
+body.page-template-medical,
+body.parent-pageid-34 {
+
+  #section-title {
+    background-image: url("../images/medical/title_background.svg");
+  }
+}
+
+
+body.page-template-healthcare,
+body.parent-pageid-52 {
+  #section-title {
+    background-image: url("../images/healthcare/title_background.svg");
+  }
+}
+
+body.page-template-skill {
+
+  #section-title {
+    background-image: url("../images/skill/title_background.svg");
   }
 
-  
+  .posts {
+    .swiper-wrapper {
+      .swiper-slide {
+        .text-box {
+          .slide-excerpt {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 
