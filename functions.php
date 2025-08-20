@@ -116,4 +116,183 @@ add_action('init', function() {
   ]);
 });
 
+
+
+
+
+// JSとAjax用
+function enqueue_video_library_scripts() {
+  wp_enqueue_script(
+      'video-library-js',
+      get_template_directory_uri() . '/js/scripts.js',
+      ['jquery'],
+      '1.0',
+      true
+  );
+
+  wp_localize_script('video-library-js', 'videoLibrary', [
+      'ajaxurl' => admin_url('admin-ajax.php')
+  ]);
+}
+add_action('wp_enqueue_scripts', 'enqueue_video_library_scripts');
+
+// Ajaxで投稿取得
+function fetch_video_library_posts() {
+  $parent = sanitize_text_field($_POST['parent'] ?? '');
+  $term   = sanitize_text_field($_POST['term'] ?? '');
+
+  $tax_query = [];
+
+  if ($parent) {
+      $parent_term = get_term_by('slug', $parent, 'common_category');
+
+      if ($parent_term) {
+          if ($term === 'all') {
+              // 親＋子カテゴリーすべてを取得
+              $child_terms = get_terms([
+                  'taxonomy'   => 'common_category',
+                  'hide_empty' => true,
+                  'parent'     => $parent_term->term_id,
+                  'fields'     => 'ids'
+              ]);
+
+              $terms = array_merge([$parent_term->term_id], $child_terms);
+
+              $tax_query[] = [
+                  'taxonomy' => 'common_category',
+                  'field'    => 'term_id',
+                  'terms'    => $terms,
+                  'operator' => 'IN'
+              ];
+          } else {
+              // 子カテゴリー単体
+              $tax_query[] = [
+                  'taxonomy' => 'common_category',
+                  'field'    => 'slug',
+                  'terms'    => $term,
+              ];
+          }
+      }
+  }
+
+  $args = [
+      'post_type'      => 'video_library',
+      'posts_per_page' => -1,
+      'tax_query'      => $tax_query
+  ];
+
+  $query = new WP_Query($args);
+
+  if ($query->have_posts()) {
+      echo '<div class="video-items">';
+      while ($query->have_posts()) {
+          $query->the_post();
+          echo '<div class="video-item">';
+          if (has_post_thumbnail()) {
+              the_post_thumbnail('thumbnail');
+          }
+          echo '<p>' . get_the_title() . '</p>';
+          echo '</div>';
+      }
+      echo '</div>';
+  } else {
+      echo '<p>投稿が見つかりませんでした。</p>';
+  }
+
+  wp_reset_postdata();
+  wp_die();
+}
+add_action('wp_ajax_fetch_video_library', 'fetch_video_library_posts');
+add_action('wp_ajax_nopriv_fetch_video_library', 'fetch_video_library_posts');
+
+
+
+
+
+// // Ajax: 子カテゴリー取得
+// add_action('wp_ajax_get_child_terms', 'ajax_get_child_terms');
+// add_action('wp_ajax_nopriv_get_child_terms', 'ajax_get_child_terms');
+// function ajax_get_child_terms() {
+//     $parent_slug = sanitize_text_field($_POST['parent'] ?? '');
+//     $parent = get_term_by('slug', $parent_slug, 'video_library'); // ← 修正！
+
+//     if ($parent) {
+//         $terms = get_terms([
+//             'taxonomy'   => 'video_library', // ← 修正！
+//             'hide_empty' => true,
+//             'parent'     => $parent->term_id
+//         ]);
+
+//         echo '<div class="child-buttons" data-parent="'.$parent_slug.'">';
+//         echo '<button class="child-button" data-term="'.$parent->slug.'">すべて</button>';
+//         foreach ($terms as $term) {
+//             echo '<button class="child-button" data-term="'.$term->slug.'">'.$term->name.'</button>';
+//         }
+//         echo '</div>';
+//     }
+//     wp_die();
+// }
+
+// // Ajax: 投稿取得
+// add_action('wp_ajax_get_videos', 'ajax_get_videos');
+// add_action('wp_ajax_nopriv_get_videos', 'ajax_get_videos');
+// function ajax_get_videos() {
+//     $term_slug = sanitize_text_field($_POST['term'] ?? '');
+
+//     $args = [
+//         'post_type'      => 'video_library', // ← 投稿タイプ
+//         'posts_per_page' => -1,
+//     ];
+
+//     if ($term_slug) {
+//         $args['tax_query'] = [[
+//             'taxonomy' => 'video_library', // ← 修正！
+//             'field'    => 'slug',
+//             'terms'    => $term_slug,
+//         ]];
+//     }
+
+//     $query = new WP_Query($args);
+
+//     if ($query->have_posts()) {
+//         while ($query->have_posts()) {
+//             $query->the_post();
+//             echo '<div class="video-item">';
+//             if (has_post_thumbnail()) {
+//                 the_post_thumbnail('medium');
+//             }
+//             echo '<h4>'.get_the_title().'</h4>';
+//             echo '</div>';
+//         }
+//         wp_reset_postdata();
+//     } else {
+//         echo '<p>該当する動画はありません。</p>';
+//     }
+
+//     wp_die();
+// }
+
+// // JS に Ajax URL を渡す
+// function enqueue_video_library_scripts() {
+//   wp_enqueue_script(
+//       'video-library-scripts',
+//       get_template_directory_uri() . '/scripts.js',
+//       ['jquery'],
+//       null,
+//       true
+//   );
+
+//   wp_localize_script('video-library-scripts', 'videoLibraryAjax', [
+//       'ajaxurl' => admin_url('admin-ajax.php'),
+//   ]);
+// }
+// add_action('wp_enqueue_scripts', 'enqueue_video_library_scripts');
+
+
+
+
+
+
+
+
 ?>

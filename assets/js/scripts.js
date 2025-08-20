@@ -61,3 +61,100 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   });
 });
+
+
+// jQuery(function($) {
+
+//   // 親タブをクリック
+//   $(document).on('click', '.tab-button', function() {
+//     var parentSlug = $(this).data('parent');
+
+//     // 子カテゴリー取得（スキル研修以外）
+//     if (parentSlug !== 'parent03') {
+//       $.post(videoLibraryAjax.ajaxurl, {
+//         action: 'get_child_terms',
+//         parent: parentSlug
+//       }, function(response) {
+//         $('#child-filters').html(response);
+//         $('#video-library-results').html(''); // 初期化
+//       });
+//     } else {
+//       // スキル研修(parent03)は子なし → 直接動画取得
+//       $.post(videoLibraryAjax.ajaxurl, {
+//         action: 'get_videos',
+//         term: parentSlug
+//       }, function(response) {
+//         $('#child-filters').html(''); // 子ボタン非表示
+//         $('#video-library-results').html(response);
+//       });
+//     }
+//   });
+
+//   // 子カテゴリークリック
+//   $(document).on('click', '.child-button', function() {
+//     var termSlug = $(this).data('term');
+
+//     $.post(videoLibraryAjax.ajaxurl, {
+//       action: 'get_videos',
+//       term: termSlug
+//     }, function(response) {
+//       $('#video-library-results').html(response);
+//     });
+//   });
+
+// });
+
+
+jQuery(function($){
+
+  // Ajax URLは wp_localize_script で渡している videoLibrary.ajaxurl を使用
+  var ajaxurl = videoLibrary.ajaxurl;
+
+  // 親タブクリック
+  $('.tab-button').on('click', function(){
+      var parent = $(this).data('parent');
+
+      // 親タブのアクティブ切替
+      $('.tab-button').removeClass('active');
+      $(this).addClass('active');
+
+      // 子ボタン表示
+      $('.child-buttons').hide();
+      $('.child-buttons[data-parent="'+parent+'"]').show();
+
+      // 子ボタンがなければすぐ投稿取得
+      if($('.child-buttons[data-parent="'+parent+'"]').length === 0){
+          fetch_posts(parent, 'all');
+      }
+  });
+
+  // 子ボタンクリック
+  $(document).on('click', '.child-button', function(){
+      var parent = $(this).closest('.child-buttons').data('parent');
+      var term   = $(this).data('term');
+
+      // 子ボタンのアクティブ切替
+      $(this).siblings().removeClass('active');
+      $(this).addClass('active');
+
+      fetch_posts(parent, term);
+  });
+
+  // 投稿取得
+  function fetch_posts(parent, term){
+      $.ajax({
+          url: ajaxurl,
+          type: 'POST',
+          data: {
+              action: 'fetch_video_library',
+              parent: parent,
+              term: term
+          },
+          success: function(res){
+              $('#video-library-results').html(res);
+          }
+      });
+  }
+
+});
+
