@@ -6,7 +6,7 @@ get_header();
 ?>
 
 <main>
-<section id="section-title">
+<section id="library-section-title">
   <h2>動画ライブラリ</h2>
 </section>
 

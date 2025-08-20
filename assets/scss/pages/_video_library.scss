@@ -3,14 +3,16 @@
 
 body.page-template-video-library-archive {
 
-  #section-title {
-    background-image: url("../images/healthcare/title_background.svg");
+  #library-section-title {
+    height: 130px;
+    margin-bottom: 50px;
+    background: linear-gradient(140deg, #011976, #0092E6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     h2 {
-      color: #011976;
-  
-      &::before {
-        background: #011976;
-      }
+      color: white;
+      margin: 0%;
     }
   }
 
