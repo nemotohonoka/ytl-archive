@@ -10,6 +10,42 @@
   <!-- タイトル -->
   <h1><?php the_title(); ?></h1>
 
+  <?php
+// --- 子カテゴリーを取得して表示 ---
+$terms = get_the_terms(get_the_ID(), 'common_category');
+
+if ($terms && !is_wp_error($terms)) {
+    $child_terms = [];
+    foreach ($terms as $term) {
+        if ($term->parent != 0) { // 親が0じゃない＝子カテゴリー
+            $child_terms[] = '<a href="' . get_term_link($term) . '">' . esc_html($term->name) . '</a>';
+        }
+    }
+
+    if (!empty($child_terms)) {
+        echo '<div class="child-categories">';
+        echo implode(', ', $child_terms); // リンク付きでカンマ区切り
+        echo '</div>';
+    }
+}
+
+// --- タグを取得して表示 ---
+$tags = get_the_terms(get_the_ID(), 'common_tag');
+
+if ($tags && !is_wp_error($tags)) {
+    $tag_list = [];
+    foreach ($tags as $tag) {
+        $tag_list[] = '<a href="' . get_term_link($tag) . '">' . esc_html($tag->name) . '</a>';
+    }
+
+    if (!empty($tag_list)) {
+        echo '<div class="post-tags">';
+        echo implode(', ', $tag_list); // リンク付きでカンマ区切り
+        echo '</div>';
+    }
+}
+?>
+
   <!-- サムネイル -->
   <?php if ( has_post_thumbnail() ) : ?>
     <div class="post-thumbnail"><?php the_post_thumbnail('large'); ?></div>
