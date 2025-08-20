@@ -184,20 +184,47 @@ function fetch_video_library_posts() {
   $query = new WP_Query($args);
 
   if ($query->have_posts()) {
-      echo '<div class="video-items">';
-      while ($query->have_posts()) {
-          $query->the_post();
-          echo '<div class="video-item">';
-          if (has_post_thumbnail()) {
-              the_post_thumbnail('thumbnail');
-          }
-          echo '<p>' . get_the_title() . '</p>';
-          echo '</div>';
-      }
-      echo '</div>';
-  } else {
-      echo '<p>投稿が見つかりませんでした。</p>';
-  }
+    echo '<div class="video-items">';
+    while ($query->have_posts()) {
+        $query->the_post();
+        
+        // 投稿URL
+        $permalink = get_permalink();
+        
+        // 投稿カテゴリー
+        $categories = get_the_terms(get_the_ID(), 'common_category');
+        $category_names = [];
+        if ($categories && !is_wp_error($categories)) {
+            foreach ($categories as $cat) {
+                $category_names[] = $cat->name;
+            }
+        }
+        $category_names_str = implode(', ', $category_names);
+        
+        echo '<a href="'.esc_url($permalink).'" class="video-item">';
+        
+        // サムネイル
+        if (has_post_thumbnail()) {
+            the_post_thumbnail('thumbnail');
+        }
+        
+        // タイトル
+        echo '<h3>'.get_the_title().'</h3>';
+        
+        // 本文（抜粋）
+        echo '<p>'.get_the_excerpt().'</p>';
+        
+        // カテゴリー名
+        if ($category_names_str) {
+            echo '<p class="video-categories">'.$category_names_str.'</p>';
+        }
+        
+        echo '</a>'; // aタグ閉じ
+    }
+    echo '</div>';
+} else {
+    echo '<p>投稿が見つかりませんでした。</p>';
+}
 
   wp_reset_postdata();
   wp_die();
