@@ -239,7 +239,7 @@ jQuery(function($){
   // ---------------------------
   // 別ページ「もっと見る」ボタン用
   // ---------------------------
-  $('.more-button').on('click', function(){
+  $('.button-more').on('click', function(){
       var parent = $(this).data('parent'); // 例: parent01
       var child  = $(this).data('child');  // 例: child01
 

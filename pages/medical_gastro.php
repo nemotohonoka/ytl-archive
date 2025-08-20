@@ -109,9 +109,12 @@ Template Name: 消化器
       ?>
     </div>
 
-    <button class="more-button" data-parent="parent01" data-child="child01">
-      もっと見る
-    </button>
+    <div class="default-button">
+      <button class="button-more" data-parent="parent01" data-child="child01">
+        <span>もっと見る</span>
+      </button>
+    </div>
+    
   </section>
 
   <section id="section-post" class="post-slide">
@@ -204,8 +207,10 @@ Template Name: 消化器
       ?>
     </div>
 
-    <div class="default-button" data-parent="parent01" data-child="child01">
-      <a href="<?php echo home_url(); ?>/about/" class="button-more"><span>もっと見る</span></a>
+    <div class="default-button">
+      <button class="button-more" data-parent="parent01" data-child="child01">
+        <span>もっと見る</span>
+      </button>
     </div>
   </section>
 
