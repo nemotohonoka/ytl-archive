@@ -1,0 +1,136 @@
+// 動画ライブラリ
+// ----------
+
+body.page-template-video-library-archive {
+
+  #section-title {
+    background-image: url("../images/healthcare/title_background.svg");
+    h2 {
+      color: #011976;
+  
+      &::before {
+        background: #011976;
+      }
+    }
+  }
+
+  .video-library-container {
+    .video-library-tabs {
+      h3 {
+        text-align: center;
+        color: #011976;
+      }
+      
+      .flex-box {
+        padding: 0 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .tab-button {
+          width: calc((100% - 15px) / 2);
+          background: white;
+          border: 1px solid #011976;
+          color: #011976;
+          padding: 15px 0;
+          border-radius: 3px;
+          margin-bottom: 15px;
+        }
+        .active {
+          color: white;
+          background: #011976;
+        }
+      }
+    }
+
+    #child-filters {
+      margin-bottom: 50px;
+      .inner {
+        background: rgba(0, 146, 230, 0.1);
+
+        .child-buttons {
+          padding: 30px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+
+          .child-button {
+            width: calc((100% - 20px) / 3);
+            background: white;
+            border: 1px solid #011976;
+            color: #011976;
+            border-radius: 3px;
+            padding: 7px 0;
+          }
+          .active {
+            color: white;
+            background: #011976;
+          }
+
+        }
+      }
+    }
+
+    #video-library-results {
+      h3 {
+        text-align: center;
+        color: #011976;
+        margin-bottom: 30px;
+      }
+
+      .video-items {
+        margin-bottom: 80px;
+        .post-contents {
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+          border-radius: 10px;
+          background: #fff;
+          a {
+            display: block;
+            img {
+              width: 100%;
+            }
+            .text-box {
+              padding: 0 15px 20px;
+              h4 {
+                color: black;
+                font-weight: bold;
+                line-height: 22px;
+                margin: 20px 0 10px;
+                font-size: 17px;
+              }
+              p {
+                font-size: 13px;
+                color: black;
+                margin-bottom: 20px;
+              }
+              .video-categories {
+                display: inline;
+                padding: 7px 10px;
+                font-size: 11px;
+                border-radius: 100px;
+                color: white;
+              }
+              .parent-cat-parent01 {
+                background: #1958AB;
+              }
+              .parent-cat-parent02 {
+                background: #FA8A85;
+              }
+              .parent-cat-parent03 {
+                background: #74B691;
+              }
+            }
+          }
+
+          &:not(:last-child) {
+            margin-bottom: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  
+}
+
+
