@@ -158,3 +158,97 @@ jQuery(function($){
 
 });
 
+jQuery(function($){
+
+  // Ajax URL
+  var ajaxurl = videoLibrary.ajaxurl;
+
+  // ---------------------------
+  // ページロード時に LocalStorage を確認
+  // ---------------------------
+  var filter = JSON.parse(localStorage.getItem('videoLibraryFilter'));
+  if(filter) {
+      var parent = filter.parent;
+      var term   = filter.term;
+
+      // 親タブアクティブ
+      $('.tab-button').removeClass('active');
+      $('.tab-button[data-parent="'+parent+'"]').addClass('active');
+
+      // 子ボタン表示＆アクティブ
+      $('.child-buttons').hide();
+      $('.child-buttons[data-parent="'+parent+'"]').show();
+      $('.child-button').removeClass('active');
+      $('.child-button[data-term="'+term+'"]').addClass('active');
+
+      // Ajax で投稿取得
+      fetch_posts(parent, term);
+
+      // 一度使ったら削除
+      localStorage.removeItem('videoLibraryFilter');
+  }
+
+  // ---------------------------
+  // 親タブクリック
+  // ---------------------------
+  $('.tab-button').on('click', function(){
+      var parent = $(this).data('parent');
+
+      $('.tab-button').removeClass('active');
+      $(this).addClass('active');
+
+      $('.child-buttons').hide();
+      $('.child-buttons[data-parent="'+parent+'"]').show();
+
+      if($('.child-buttons[data-parent="'+parent+'"]').length === 0){
+          fetch_posts(parent, 'all');
+      }
+  });
+
+  // ---------------------------
+  // 子ボタンクリック
+  // ---------------------------
+  $(document).on('click', '.child-button', function(){
+      var parent = $(this).closest('.child-buttons').data('parent');
+      var term   = $(this).data('term');
+
+      $(this).siblings().removeClass('active');
+      $(this).addClass('active');
+
+      fetch_posts(parent, term);
+  });
+
+  // ---------------------------
+  // 投稿取得 Ajax
+  // ---------------------------
+  function fetch_posts(parent, term){
+      $.ajax({
+          url: ajaxurl,
+          type: 'POST',
+          data: {
+              action: 'fetch_video_library',
+              parent: parent,
+              term: term
+          },
+          success: function(res){
+              $('#video-library-results').html(res);
+          }
+      });
+  }
+
+  // ---------------------------
+  // 別ページ「もっと見る」ボタン用
+  // ---------------------------
+  $('.more-button').on('click', function(){
+      var parent = $(this).data('parent'); // 例: parent01
+      var child  = $(this).data('child');  // 例: child01
+
+      // LocalStorage に保存
+      localStorage.setItem('videoLibraryFilter', JSON.stringify({ parent: parent, term: child }));
+
+      // 動画ライブラリページへ遷移
+      window.location.href = '/video-library/'; // 遷移先URLに置き換えてください
+  });
+
+});
+
