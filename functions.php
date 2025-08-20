@@ -67,54 +67,79 @@ function get_description() {
 // デフォルトsitemapを無効化
 add_filter( 'wp_sitemaps_enabled', '__return_false' );
 
-// ===== カスタム投稿タイプの登録 =====
-add_action('init', function() {
+$post_types = [
+  'video_library' => '動画ライブラリ',
+  'material'      => 'スライド資料',
+];
 
-  // 投稿タイプ共通の設定
-  $post_types = [
-      'video_library' => '動画ライブラリ',
-      'web_seminar'   => 'Web講演会',
-      'material' => 'スライド資料',
-  ];
-
-  foreach ($post_types as $slug => $name) {
-      register_post_type($slug, [
-          'labels' => [
-              'name'          => $name,
-              'singular_name' => $name,
-              'add_new'       => '新規追加',
-              'add_new_item'  => "{$name}を追加",
-              'edit_item'     => "{$name}を編集",
-              'view_item'     => "{$name}を表示",
-          ],
-          'public'        => true,
-          'has_archive'   => true,
-          'menu_position' => 5,
-          'supports'      => ['title', 'editor', 'thumbnail'],
-          'show_in_rest'  => true,
-      ]);
-  }
-
-  // ===== 共通カテゴリー（階層あり） =====
-  register_taxonomy('common_category', array_keys($post_types), [
+// カスタム投稿登録（既存コードそのまま）
+foreach ($post_types as $slug => $name) {
+  register_post_type($slug, [
       'labels' => [
-          'name'              => '共通カテゴリー',
-          'singular_name'     => '共通カテゴリー',
-          'search_items'      => 'カテゴリーを検索',
-          'all_items'         => 'すべてのカテゴリー',
-          'parent_item'       => '親カテゴリー',
-          'parent_item_colon' => '親カテゴリー:',
-          'edit_item'         => 'カテゴリーを編集',
-          'update_item'       => 'カテゴリーを更新',
-          'add_new_item'      => '新しいカテゴリーを追加',
-          'new_item_name'     => '新しいカテゴリー名',
-          'menu_name'         => 'カテゴリー',
+          'name'          => $name,
+          'singular_name' => $name,
+          'add_new'       => '新規追加',
+          'add_new_item'  => "{$name}を追加",
+          'edit_item'     => "{$name}を編集",
+          'view_item'     => "{$name}を表示",
       ],
-      'hierarchical'  => true, // 親子関係あり
       'public'        => true,
+      'has_archive'   => true,
+      'menu_position' => 5,
+      'supports'      => ['title', 'editor', 'thumbnail'],
       'show_in_rest'  => true,
   ]);
-});
+}
+
+// 共通カテゴリー（階層あり）
+register_taxonomy('common_category', array_keys($post_types), [
+  'labels' => [
+      'name'              => '共通カテゴリー',
+      'singular_name'     => '共通カテゴリー',
+      'search_items'      => 'カテゴリーを検索',
+      'all_items'         => 'すべてのカテゴリー',
+      'parent_item'       => '親カテゴリー',
+      'parent_item_colon' => '親カテゴリー:',
+      'edit_item'         => 'カテゴリーを編集',
+      'update_item'       => 'カテゴリーを更新',
+      'add_new_item'      => '新しいカテゴリーを追加',
+      'new_item_name'     => '新しいカテゴリー名',
+      'menu_name'         => 'カテゴリー',
+  ],
+  'hierarchical'  => true,
+  'public'        => true,
+  'show_in_rest'  => true,
+]);
+
+// タグ（階層なし・投稿タイプ共通）
+add_action('init', 'register_common_tag_taxonomy');
+function register_common_tag_taxonomy() {
+
+  register_taxonomy('common_tag', ['video_library', 'material'], [
+    'labels' => [
+        'name'                       => 'タグ',
+        'singular_name'              => 'タグ',
+        'menu_name'                  => 'タグ',
+        'all_items'                  => 'すべてのタグ',
+        'edit_item'                  => 'タグを編集',
+        'view_item'                  => 'タグを表示',
+        'update_item'                => 'タグを更新',
+        'add_new_item'               => '新しいタグを追加',
+        'new_item_name'              => '新しいタグ名',
+        'search_items'               => 'タグを検索',
+        'popular_items'              => '人気のタグ',
+        'separate_items_with_commas' => 'カンマで区切ってタグを入力',
+        'add_or_remove_items'        => 'タグを追加または削除',
+        'choose_from_most_used'      => 'よく使われているタグから選択',
+        'not_found'                  => 'タグが見つかりません',
+    ],
+    'hierarchical' => true, // タグは階層なし
+    'public'       => true,
+    'show_ui'      => true,
+    'show_in_rest' => true,
+  ]);
+}
+
 
 
 
