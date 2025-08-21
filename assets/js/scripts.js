@@ -42,23 +42,23 @@ $(function(){
   });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
   new Swiper('.my-medical-swiper', {
-      slidesPerView: 1.3,
-      spaceBetween: 30,
-      loop: true,
-      centeredSlides: true,
+    slidesPerView: 1.3,
+    spaceBetween: 30,
+    loop: true,
+    centeredSlides: true,
 
-      // ナビゲーションはスライド内に配置
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+    // ナビゲーションはスライド内に配置
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
 
-      breakpoints: {
-          768: { slidesPerView: 2 },
-          480: { slidesPerView: 1 },
-      }
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      480: { slidesPerView: 1 },
+    }
   });
 });
 

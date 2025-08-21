@@ -3,23 +3,24 @@
   <section id="welcome">
 		<div class="inner">
 			<div class="text-box">
-      <div class="txt top">
-  <p>人</p>
-  <p>材</p>
-  <p>育</p>
-  <p>成</p>
-  <p>に</p>
-  <p>も</p>
-</div>
-<div class="txt bottom">
-  <p>最</p>
-  <p>先</p>
-  <p>端</p>
-  <p>技</p>
-  <p>術</p>
-  <p>を</p>
-  <p>。</p>
-</div>
+        <div class="txt top">
+          <p>人</p>
+          <p>材</p>
+          <p>育</p>
+          <p>成</p>
+          <p>に</p>
+          <p>も</p>
+        </div>
+
+        <div class="txt bottom">
+          <p>最</p>
+          <p>先</p>
+          <p>端</p>
+          <p>技</p>
+          <p>術</p>
+          <p>を</p>
+          <p>。</p>
+        </div>
       </div>
 		</div>
 	</section>
@@ -81,54 +82,56 @@
                   <div class="swiper-wrapper">
                     <?php while ($query->have_posts()): $query->the_post(); ?>
                       <div class="swiper-slide">
-                        <a href="<?php the_permalink(); ?>">
-                          <?php if (has_post_thumbnail()): ?>
-                              <?php the_post_thumbnail('medium'); ?>
-                          <?php endif; ?>
-
-                          <div class="text-box">
-                            <p class="slide-title">
-                              <?php 
-                              $title = get_the_title();
-                              echo mb_strimwidth($title, 0, 40, '…', 'UTF-8'); // 40バイトに調整
-                              ?>
-                            </p>
-
-                            <p class="slide-excerpt">
-                              <?php 
-                              $excerpt = get_the_excerpt(); 
-                              echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); // 40バイトに調整
-                              ?>
-                            </p>
-
-                            <p class="slide-taxonomy parent01-color">
-                              <?php
-                              // 投稿に紐づく common_category タクソノミーのタームを取得
-                              $terms = get_the_terms(get_the_ID(), 'common_category');
-
-                              if ($terms && !is_wp_error($terms)) {
-
-                                  $child_terms = [];
-
-                                  foreach ($terms as $term) {
-                                      // 親が parent01 のタームだけ取得
-                                      if ($term->parent == $parent_term->term_id) {
-                                          $child_terms[] = $term->name; // 子カテゴリー名を配列に追加
-                                      }
-                                  }
-
-                                  if (!empty($child_terms)) {
-                                      // タグ風に出力
-                                      foreach ($child_terms as $child_name) {
-                                          echo '<span class="tag">' . esc_html($child_name) . '</span> ';
-                                      }
-                                  }
-                              }
-                              ?>
-                            </p>
-
-                          </div>
-                        </a>
+                        <div class="background">
+                          <a href="<?php the_permalink(); ?>">
+                            <?php if (has_post_thumbnail()): ?>
+                                <?php the_post_thumbnail('medium'); ?>
+                            <?php endif; ?>
+  
+                            <div class="text-box">
+                              <p class="slide-title">
+                                <?php 
+                                $title = get_the_title();
+                                echo mb_strimwidth($title, 0, 40, '…', 'UTF-8'); // 40バイトに調整
+                                ?>
+                              </p>
+  
+                              <p class="slide-excerpt">
+                                <?php 
+                                $excerpt = get_the_excerpt(); 
+                                echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); // 40バイトに調整
+                                ?>
+                              </p>
+  
+                              <p class="slide-taxonomy parent01-color">
+                                <?php
+                                // 投稿に紐づく common_category タクソノミーのタームを取得
+                                $terms = get_the_terms(get_the_ID(), 'common_category');
+  
+                                if ($terms && !is_wp_error($terms)) {
+  
+                                    $child_terms = [];
+  
+                                    foreach ($terms as $term) {
+                                        // 親が parent01 のタームだけ取得
+                                        if ($term->parent == $parent_term->term_id) {
+                                            $child_terms[] = $term->name; // 子カテゴリー名を配列に追加
+                                        }
+                                    }
+  
+                                    if (!empty($child_terms)) {
+                                        // タグ風に出力
+                                        foreach ($child_terms as $child_name) {
+                                            echo '<span class="tag">' . esc_html($child_name) . '</span> ';
+                                        }
+                                    }
+                                }
+                                ?>
+                              </p>
+  
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     <?php endwhile; ?>
                   </div>
@@ -147,6 +150,10 @@
               echo '<p>「parent01」カテゴリーが存在しません。</p>';
             }
           ?>
+        </div>
+
+        <div class="default-button">
+          <a href="<?php echo home_url(); ?>/medical/" class="button-more"><span>もっと見る</span></a>
         </div>
       </div>
 
@@ -183,54 +190,56 @@
                   <div class="swiper-wrapper">
                     <?php while ($query->have_posts()): $query->the_post(); ?>
                       <div class="swiper-slide">
-                        <a href="<?php the_permalink(); ?>">
-                          <?php if (has_post_thumbnail()): ?>
-                              <?php the_post_thumbnail('medium'); ?>
-                          <?php endif; ?>
-
-                          <div class="text-box">
-                            <p class="slide-title">
-                              <?php 
-                              $title = get_the_title();
-                              echo mb_strimwidth($title, 0, 40, '…', 'UTF-8'); // 40バイトに調整
-                              ?>
-                            </p>
-
-                            <p class="slide-excerpt">
-                              <?php 
-                              $excerpt = get_the_excerpt(); 
-                              echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); // 40バイトに調整
-                              ?>
-                            </p>
-
-                            <p class="slide-taxonomy parent02-color">
-                              <?php
-                              // 投稿に紐づく common_category タクソノミーのタームを取得
-                              $terms = get_the_terms(get_the_ID(), 'common_category');
-
-                              if ($terms && !is_wp_error($terms)) {
-
-                                  $child_terms = [];
-
-                                  foreach ($terms as $term) {
-                                      // 親が parent02 のタームだけ取得
-                                      if ($term->parent == $parent_term->term_id) {
-                                          $child_terms[] = $term->name; // 子カテゴリー名を配列に追加
-                                      }
-                                  }
-
-                                  if (!empty($child_terms)) {
-                                      // タグ風に出力
-                                      foreach ($child_terms as $child_name) {
-                                          echo '<span class="tag">' . esc_html($child_name) . '</span> ';
-                                      }
-                                  }
-                              }
-                              ?>
-                            </p>
-
-                          </div>
-                        </a>
+                        <div class="background">
+                          <a href="<?php the_permalink(); ?>">
+                            <?php if (has_post_thumbnail()): ?>
+                                <?php the_post_thumbnail('medium'); ?>
+                            <?php endif; ?>
+  
+                            <div class="text-box">
+                              <p class="slide-title">
+                                <?php 
+                                $title = get_the_title();
+                                echo mb_strimwidth($title, 0, 40, '…', 'UTF-8'); // 40バイトに調整
+                                ?>
+                              </p>
+  
+                              <p class="slide-excerpt">
+                                <?php 
+                                $excerpt = get_the_excerpt(); 
+                                echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); // 40バイトに調整
+                                ?>
+                              </p>
+  
+                              <p class="slide-taxonomy parent02-color">
+                                <?php
+                                // 投稿に紐づく common_category タクソノミーのタームを取得
+                                $terms = get_the_terms(get_the_ID(), 'common_category');
+  
+                                if ($terms && !is_wp_error($terms)) {
+  
+                                    $child_terms = [];
+  
+                                    foreach ($terms as $term) {
+                                        // 親が parent02 のタームだけ取得
+                                        if ($term->parent == $parent_term->term_id) {
+                                            $child_terms[] = $term->name; // 子カテゴリー名を配列に追加
+                                        }
+                                    }
+  
+                                    if (!empty($child_terms)) {
+                                        // タグ風に出力
+                                        foreach ($child_terms as $child_name) {
+                                            echo '<span class="tag">' . esc_html($child_name) . '</span> ';
+                                        }
+                                    }
+                                }
+                                ?>
+                              </p>
+  
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     <?php endwhile; ?>
                   </div>
@@ -251,6 +260,9 @@
           ?>
         </div>
         
+        <div class="default-button">
+          <a href="<?php echo home_url(); ?>/healthcare/" class="button-more"><span>もっと見る</span></a>
+        </div>
       </div>
 
       <div class="contents-box contents-skill">
@@ -286,54 +298,30 @@
                   <div class="swiper-wrapper">
                     <?php while ($query->have_posts()): $query->the_post(); ?>
                       <div class="swiper-slide">
-                        <a href="<?php the_permalink(); ?>">
-                          <?php if (has_post_thumbnail()): ?>
-                              <?php the_post_thumbnail('medium'); ?>
-                          <?php endif; ?>
-
-                          <div class="text-box">
-                            <p class="slide-title">
-                              <?php 
-                              $title = get_the_title();
-                              echo mb_strimwidth($title, 0, 40, '…', 'UTF-8'); // 40バイトに調整
-                              ?>
-                            </p>
-
-                            <p class="slide-excerpt">
-                              <?php 
-                              $excerpt = get_the_excerpt(); 
-                              echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); // 40バイトに調整
-                              ?>
-                            </p>
-
-                            <p class="slide-taxonomy parent03-color">
-                              <?php
-                              // 投稿に紐づく common_category タクソノミーのタームを取得
-                              $terms = get_the_terms(get_the_ID(), 'common_category');
-
-                              if ($terms && !is_wp_error($terms)) {
-
-                                  $child_terms = [];
-
-                                  foreach ($terms as $term) {
-                                      // 親が parent03 のタームだけ取得
-                                      if ($term->parent == $parent_term->term_id) {
-                                          $child_terms[] = $term->name; // 子カテゴリー名を配列に追加
-                                      }
-                                  }
-
-                                  if (!empty($child_terms)) {
-                                      // タグ風に出力
-                                      foreach ($child_terms as $child_name) {
-                                          echo '<span class="tag">' . esc_html($child_name) . '</span> ';
-                                      }
-                                  }
-                              }
-                              ?>
-                            </p>
-
-                          </div>
-                        </a>
+                        <div class="background">
+                          <a href="<?php the_permalink(); ?>">
+                            <?php if (has_post_thumbnail()): ?>
+                                <?php the_post_thumbnail('medium'); ?>
+                            <?php endif; ?>
+  
+                            <div class="text-box">
+                              <p class="slide-title">
+                                <?php 
+                                $title = get_the_title();
+                                echo mb_strimwidth($title, 0, 40, '…', 'UTF-8'); // 40バイトに調整
+                                ?>
+                              </p>
+  
+                              <p class="slide-excerpt">
+                                <?php 
+                                $excerpt = get_the_excerpt(); 
+                                echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); // 40バイトに調整
+                                ?>
+                              </p>
+  
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     <?php endwhile; ?>
                   </div>
@@ -354,6 +342,9 @@
           ?>
         </div>
         
+        <div class="default-button">
+          <a href="<?php echo home_url(); ?>/skill/" class="button-more"><span>もっと見る</span></a>
+        </div>
       </div>
     </div>
   </section>

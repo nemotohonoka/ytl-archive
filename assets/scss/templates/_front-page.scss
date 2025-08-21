@@ -90,11 +90,9 @@ body.home {
         0% {
           transform: translateY(2em);
         }
-    
         100% {
           transform: translateY(0);
         }
-      
       }
 		}
 	}
@@ -114,7 +112,7 @@ body.home {
   #contents {
     .contents-box {
       &:not(:last-child) {
-        margin-bottom: 50px;
+        margin-bottom: 80px;
       }
 
       .section-title {
@@ -137,41 +135,53 @@ body.home {
       }
 
       .posts {
+        margin-bottom: 30px;
+
+        .my-medical-swiper {
+          visibility: hidden;
+        }
+        .my-medical-swiper.swiper-initialized {
+          visibility: visible;
+        }
         .swiper-wrapper {
           padding-bottom: 20px;
           .swiper-slide {
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            background: #fff; /* 白背景推奨 */
-  
-            .text-box {
-              padding: 0 15px 20px;
-              .slide-title {
-                color: black;
-                font-weight: bold;
-                line-height: 22px;
-                margin: 20px 0 10px;
-              }
-              .slide-excerpt {
-                font-size: 13px;
-                color: black;
-                margin-bottom: 20px;
-              }
-              .slide-taxonomy {
-                display: inline;
-                padding: 7px 10px;
-                font-size: 11px;
-                border-radius: 100px;
-                color: white;
-              }
-              .parent01-color {
-                background: #1958AB;
-              }
-              .parent02-color {
-                background: #FA8A85;
-              }
-              .parent03-color {
-                background: #74B691;
+            .background {
+              box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+              border-radius: 10px;
+              background: #fff; /* 白背景推奨 */
+    
+              .text-box {
+                padding: 0 20px 20px;
+                .slide-title {
+                  color: black;
+                  font-weight: bold;
+                  font-size: 17px;
+                  line-height: 1.5em;
+                  margin: 20px 0 10px;
+                }
+                .slide-excerpt {
+                  font-size: 15px;
+                  color: black;
+                  line-height: 1.5em;
+                  margin-bottom: 10px;
+                }
+                .slide-taxonomy {
+                  display: inline;
+                  padding: 7px 10px;
+                  font-size: 11px;
+                  border-radius: 100px;
+                  color: white;
+                }
+                .parent01-color {
+                  background: #1958AB;
+                }
+                .parent02-color {
+                  background: #FA8A85;
+                }
+                .parent03-color {
+                  background: #74B691;
+                }
               }
             }
           }
