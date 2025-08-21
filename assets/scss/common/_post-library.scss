@@ -200,4 +200,30 @@ body.page-template-skill {
   }
 }
 
+body.page-template-webinar {
+
+  #section-title {
+    background-image: url("../images/webinar/title_background.svg");
+  }
+
+  .posts {
+    .swiper-wrapper {
+      .swiper-slide {
+        .text-box {
+          .slide-excerpt {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+body.page-template-info-material,
+body.parent-pageid-82 {
+  #section-title {
+    background-image: url("../images/material/title_background.svg");
+  }
+}
+
 
