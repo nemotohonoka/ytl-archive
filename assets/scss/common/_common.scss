@@ -17,11 +17,17 @@ main {
 
   @include breakpoint(medium-up) {
     padding: 0 60px;
+		max-width: 1200px;
+		margin: 0 auto;
   }
 }
 
 section {
   margin-bottom: 80px;
+
+	@include breakpoint(medium-up) {
+		margin-bottom: 130px;
+	}
 }
 
 #section-message {
