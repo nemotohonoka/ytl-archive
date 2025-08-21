@@ -1,0 +1,57 @@
+// 会社概要
+// ----------
+
+body.page-template-about {
+
+  #library-section-title {
+    height: 130px;
+    margin-bottom: 50px;
+    background: linear-gradient(140deg, #011976, #0092E6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h2 {
+      color: white;
+      margin: 0%;
+    }
+  }
+
+  .container {
+    margin-bottom: 50px;
+  }
+  
+  table {
+    tr {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+
+      th {
+        padding: 10px 0;
+        margin-bottom: 20px;
+        background: rgba(0, 146, 230, 0.1);
+        color: #001050;
+      }
+      td {
+        ul {
+          margin-left: 20px;
+          padding: 0 10px;
+          li {
+            text-align: left;
+            list-style: decimal;
+            &:not(:last-child) {
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  
+}
+
+
