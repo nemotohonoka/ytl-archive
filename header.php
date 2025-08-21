@@ -44,7 +44,7 @@
           </div>
 
           <div class="search-link">
-            <a href="<?php echo home_url(); ?>/corporation/">
+            <a href="<?php echo home_url(); ?>/material/">
               <svg xmlns="http://www.w3.org/2000/svg" width="30.253" height="33.159" viewBox="0 0 30.253 33.159" aria-hidden="true" focusable="false">
                 <g transform="translate(-1201 -22)">
                   <path d="M14,2A12,12,0,0,0,5.515,22.485,12,12,0,1,0,22.485,5.515,11.921,11.921,0,0,0,14,2m0-2A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(1201 22)" fill="currentColor"/>
@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="search-link">
-                      <a href="<?php echo home_url(); ?>/corporation/">
+                      <a href="<?php echo home_url(); ?>/material/">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30.253" height="33.159" viewBox="0 0 30.253 33.159" aria-hidden="true" focusable="false">
                           <g transform="translate(-1201 -22)">
                             <path d="M14,2A12,12,0,0,0,5.515,22.485,12,12,0,1,0,22.485,5.515,11.921,11.921,0,0,0,14,2m0-2A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(1201 22)" fill="currentColor"/>
@@ -130,11 +130,11 @@
                 <div class="menu-lavel">
                   <p>Medical Resources</p>
                   <ul>
-                    <li><a href="<?php echo home_url(); ?>/medical-category/">疾患別コンテンツ<span>Disease-Specific</span></a></li>
-                    <li><a href="<?php echo home_url(); ?>/healthcare/">医療制度コンテンツ<span>Medical System</span></a></li>
-                    <li><a href="<?php echo home_url(); ?>//">スキル研修<span>Skills Training</span></a></li>
-                    <li><a href="<?php echo home_url(); ?>//">Web講演会<span>Webinars</span></a></li>
-                    <li><a href="<?php echo home_url(); ?>//">情報提供資材<span>Webinars</span></a></li>
+                    <li><a href="<?php echo home_url(); ?>/medical-category/">疾患別コンテンツ<span>Medical</span></a></li>
+                    <li><a href="<?php echo home_url(); ?>/healthcare/">医療制度コンテンツ<span>Healthcare</span></a></li>
+                    <li><a href="<?php echo home_url(); ?>/skill/">スキル研修<span>Skills Training</span></a></li>
+                    <li><a href="<?php echo home_url(); ?>/webinar/">Web講演会<span>Webinar</span></a></li>
+                    <li><a href="<?php echo home_url(); ?>/info-material/">情報提供資材<span>Material</span></a></li>
                   </ul>
                 </div>
               </div>
@@ -186,7 +186,7 @@
           <li><a href="#">会社概要</a></li>
           
           <li class="menu-item">
-            <a href="<?php echo home_url(); ?>/medical-category/"　class="parent-menu">疾患別コンテンツ</a>
+            <a href="<?php echo home_url(); ?>/medical-category/" class="parent-menu">疾患別コンテンツ</a>
             <div class="submenu">
               <ul>
                 <li><a href="#">消化器</a></li>
@@ -206,7 +206,7 @@
           </li>
 
           <li class="menu-item">
-            <a href="<?php echo home_url(); ?>/healthcare/"　class="parent-menu">医療制度コンテンツ</a>
+            <a href="<?php echo home_url(); ?>/healthcare/" class="parent-menu">医療制度コンテンツ</a>
             <div class="submenu">
               <ul>
                 <li><a href="#">消化器</a></li>
@@ -225,26 +225,22 @@
           </li>
 
           <li class="menu-item">
-            <a href="#" class="parent-menu">スキル研修</a>
+            <a href="<?php echo home_url(); ?>/skill/"　class="parent-menu">スキル研修</a>
+          </li>
+
+          <li>
+            <a href="<?php echo home_url(); ?>/webinar/"　class="parent-menu">Web講演会</a></li>
+          </li>
+
+          <li>
+            <a href="<?php echo home_url(); ?>/info-material/"　class="parent-menu">情報提供資料</a></li>
             <div class="submenu">
               <ul>
-                <li><a href="#">消化器</a></li>
-                <li><a href="#">免疫・膠原病・感染症</a></li>
-                <li><a href="#">脳・神経</a></li>
-                <li><a href="#">腎・泌尿器</a></li>
-                <li><a href="#">婦人科・乳腺</a></li>
-                <li><a href="#">呼吸器</a></li>
-                <li><a href="#">眼・耳鼻</a></li>
-                <li><a href="#">皮膚</a></li>
-                <li><a href="#">悪性腫瘍</a></li>
-                <li><a href="#">希少疾患</a></li>
-                <li><a href="#">血液疾患</a></li>
+                <li><a href="#">医療従事者向け</a></li>
+                <li><a href="#">患者向け</a></li>
               </ul>
             </div>
           </li>
-
-          <li><a href="#">Web講演会</a></li>
-          <li><a href="#">情報提供資料</a></li>
           
         </ul>
       </nav>
