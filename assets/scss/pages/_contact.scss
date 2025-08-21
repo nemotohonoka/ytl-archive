@@ -1,0 +1,176 @@
+// お問い合わせ
+// ----------
+
+body.page-template-contact {
+  #library-section-title {
+    height: 130px;
+    margin-bottom: 50px;
+    background: linear-gradient(140deg, #011976, #0092E6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h2 {
+      color: white;
+      margin: 0%;
+    }
+  }
+
+  #contact-message {
+    margin-bottom: 50px;
+    h3 {
+      color: #001050;
+      text-align: center;
+    }
+  }
+
+  #contact-form {
+    p {
+      margin-bottom: 30px;
+    }
+
+    .wpcf7-form {
+      .flex {
+        .wpcf7-radio {
+          display: block;
+          margin-top: 10px;
+          padding: 10px;
+          width: 100%;
+          background: #F7F7F7;
+        }
+      }
+    }
+
+    .background {
+      .title {
+        color: #001050;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      .wpcf7-form-control-wrap {
+        .wpcf7-form-control {
+          width: 100%;
+          padding: 15px;
+          background: #F7F7F7;
+          border: none;
+          border-radius: 3px;
+          margin-top: 10px;
+        }
+        .wpcf7-not-valid-tip {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .wpcf7-checkbox {
+      .wpcf7-list-item {
+        margin: 0;
+      }
+    }
+
+    .required {
+      background: #FF2626;
+      display: inline-block;
+      color: white;
+      padding: 2px 10px;
+      font-size: 13px;
+      margin-left: 15px;
+    }
+
+    .value {
+      text-align: center;
+      .wpcf7-submit {
+        color: white;
+        background-color: #EA452F;
+        border: none;
+        padding: 18px 60px;
+      }
+    }
+
+    .wpcf7-response-output {
+      background-color: #F7F7F7;
+      border: none;
+      padding: 30px;
+    }
+  }
+
+  @include breakpoint(medium-up) {
+    #contact-tel {
+      h3 {
+        margin-bottom: 50px;
+      }
+      .number {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 40px;
+        .tel {
+          margin: 0;
+        }
+      }
+    }
+
+    .wpcf7-form {
+      .flex {
+        p {
+          display: flex;
+          justify-content: space-between;
+          .title {
+            width: 20%;
+          }
+          .required {
+            height: 30px;
+            margin: 0;
+            margin-left: 0 !important;
+          }
+          .wpcf7-form-control-wrap {
+            width: 70%;
+            .wpcf7-radio {
+              margin-top: 0 !important;
+            }
+          }
+        }
+      }
+    }
+
+
+
+    #contact-form {
+      h3 {
+        margin-bottom: 50px;
+      }
+      .background {
+        display: flex;
+        justify-content: space-between;
+        .title {
+          width: 20%;
+        }
+        .required {
+          height: 30px;
+          margin: 0;
+        }
+        .wpcf7-form-control-wrap {
+          width: 70%;
+          .wpcf7-form-control {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint(medium-up) {
+    #contact-tel {
+      .number {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 40px;
+        .tel {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+
