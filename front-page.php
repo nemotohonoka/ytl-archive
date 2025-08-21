@@ -360,9 +360,10 @@
             </figure>
             <span>お知らせ</span>
           </h3>
-					<!-- <div class="button-area">
-						<a href="<?php echo home_url(); ?>/news/" class="button-more">more</a>
-					</div> -->
+
+					<div class="default-button pc-view">
+            <a href="<?php echo home_url(); ?>/news/" class="button-more"><span>もっと見る</span></a>
+          </div>
 				</div>
 
 				<div class="news-box">
@@ -406,7 +407,7 @@
 					<?php wp_reset_postdata(); ?>
 				</div>
 
-        <div class="default-button">
+        <div class="default-button sp-view">
           <a href="<?php echo home_url(); ?>/news/" class="button-more"><span>もっと見る</span></a>
         </div>
 			</div>

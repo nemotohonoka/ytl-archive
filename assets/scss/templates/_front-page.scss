@@ -150,6 +150,10 @@ body.home {
               box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
               border-radius: 10px;
               background: #fff; /* 白背景推奨 */
+
+              img {
+                width: 100%;
+              }
     
               .text-box {
                 padding: 0 20px 20px;
@@ -212,6 +216,9 @@ body.home {
             color: #011976;
           }
         }
+        .pc-view {
+          display: none;
+        }
       }
 
       .news-box {
@@ -266,5 +273,130 @@ body.home {
       }
     }
 	}
+
+  @include breakpoint(medium-up) {
+    #welcome {
+      height: calc(50vh - 60px);
+      .inner {
+        background-image: url(../images/welcome_img_pc.jpg);
+        .text-box {
+          bottom: 30px;
+          left: 40px;
+          .txt {
+            p {
+              font-size: 50px;
+              line-height: 60px;
+            }
+            
+          }
+        }
+      }
+    }
+
+    #message {
+      .inner {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        .message-text {
+          width: 500px;
+          margin: 0 auto;
+          margin-bottom: 50px;
+          h3 {
+            width: 370px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+          }
+          .text-area {
+            p {
+              text-align: center;
+              span {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+      
+    }
+
+    #contents {
+      .contents-box {
+        &:not(:last-child) {
+          margin-bottom: 130px;
+        }
+        .section-title {
+          margin-bottom: 40px;
+        }
+        .posts {
+          .swiper-wrapper {
+            padding-bottom: 20px;
+            .swiper-slide {
+              .background {
+                .text-box {
+                  padding: 0 30px 25px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    #news {
+      .container {
+        padding: 70px 60px;
+        margin: 0 auto;
+        max-width: 900px;
+      }
+      .flex-box {
+        display: flex;
+        justify-content: space-between;
+
+        .text-box {
+          width: 35%;
+          h3 {
+            text-align: left;
+            margin-bottom: 30px;
+            figure {
+              text-align: left;
+              margin-bottom: 15px;
+            }
+          }
+          .pc-view {
+            display: block;
+            a {
+              margin: 0;
+            }
+          }
+        }
+
+        .news-box {
+          width: 62%;
+          .news-list {
+            margin: 0;
+          }
+        }
+        
+        .sp-view {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(large-up) {
+    #welcome {
+      height: calc(70vh - 60px);
+    }
+
+    #message {
+      .text-area {
+        p {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+  
 }
 
