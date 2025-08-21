@@ -1,0 +1,30 @@
+// ログイン・会員登録
+// ----------
+
+body.page-template-member_auth {
+
+  #library-section-title {
+    height: 130px;
+    margin-bottom: 50px;
+    background: linear-gradient(140deg, #011976, #0092E6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h2 {
+      color: white;
+      margin: 0%;
+    }
+  }
+
+  #contact-message {
+    margin-bottom: 50px;
+    h3 {
+      color: #001050;
+      text-align: center;
+    }
+  }
+
+  
+}
+
+
