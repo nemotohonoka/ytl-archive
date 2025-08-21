@@ -224,7 +224,7 @@
             </div>
           </li>
 
-          <li class="menu-item">
+          <li>
             <a href="<?php echo home_url(); ?>/skill/"　class="parent-menu">スキル研修</a>
           </li>
 
@@ -232,8 +232,8 @@
             <a href="<?php echo home_url(); ?>/webinar/"　class="parent-menu">Web講演会</a></li>
           </li>
 
-          <li>
-            <a href="<?php echo home_url(); ?>/info-material/"　class="parent-menu">情報提供資料</a></li>
+          <li class="menu-item">
+            <a href="<?php echo home_url(); ?>/info-material/" class="parent-menu">情報提供資料</a>
             <div class="submenu">
               <ul>
                 <li><a href="#">医療従事者向け</a></li>
@@ -241,7 +241,16 @@
               </ul>
             </div>
           </li>
-          
+
+          <!-- <li class="menu-item">
+            <a href="<?php echo home_url(); ?>/info-material/"　class="parent-menu">情報提供資料</a></li>
+            <div class="submenu">
+              <ul>
+                <li><a href="#">医療従事者向け</a></li>
+                <li><a href="#">患者向け</a></li>
+              </ul>
+            </div>
+          </li> -->
         </ul>
       </nav>
     </div>
