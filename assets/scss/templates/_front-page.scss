@@ -1,7 +1,7 @@
 body.home {
 	#welcome {
 		width:100%;
-    height: calc(100vh - 60px);
+    height: calc(80vh - 60px);
 		margin: 0;
 		.inner {
 			background-image: url(../images/welcome_img_sp.jpg);
@@ -10,23 +10,92 @@ body.home {
 			background-size: cover;
 			height: 100%;
 			width: 100%;
+      position: relative;
 
-			// .text-box {
-			// 	color: white;
-    	// 	padding: 20px;
-			// 	position: relative;
-			// 	top: 10%;
-			// 	h2 {
-			// 		line-height: 43px;
-			// 		span {
-			// 			display: inline-block;
-			// 			background: white;
-			// 			color: #3A7F65;
-			// 			padding: 3px 0px 3px 10px;
-			// 			margin-bottom: 10px;
-			// 		}
-			// 	}
-			// }
+      .text-box {
+        position: absolute;
+        bottom: 10px;
+        left: 20px;
+        .txt {
+          display: flex;
+          overflow: hidden;
+          p {
+            color: #2741A5;
+            font-size: 40px;
+            font-weight: bold;
+            letter-spacing: .06em;
+            margin: 0;
+            line-height: 50px;
+        
+            /* ここからアニメーション関係 */
+            transform: translateY(2em);
+            animation: textanimation 1s forwards;
+          }
+        }
+        /* 1文字目 */
+        .top p:nth-child(1) {
+          animation-delay: 0.2s
+        }
+        /* 2文字目 */
+        .top p:nth-child(2) {
+          animation-delay: 0.4s
+        }
+        /* 3文字目 */
+        .top p:nth-child(3) {
+          animation-delay: 0.6s
+        }
+        /* 4文字目 */
+        .top p:nth-child(4) {
+          animation-delay: 0.8s
+        }
+        /* 5文字目 */
+        .top p:nth-child(5) {
+          animation-delay: 1s
+        }
+        /* 6文字目 */
+        .top p:nth-child(6) {
+          animation-delay: 1.2s
+        }
+        /* 7文字目 */
+        .bottom p:nth-child(1) {
+          animation-delay: 1.6s
+        }
+        /* 8文字目 */
+        .bottom p:nth-child(2) {
+          animation-delay: 1.8s
+        }
+        /* 9文字目 */
+        .bottom p:nth-child(3) {
+          animation-delay: 2.0s
+        }
+        /* 10文字目 */
+        .bottom p:nth-child(4) {
+          animation-delay: 2.2s
+        }
+        /* 11文字目 */
+        .bottom p:nth-child(5) {
+          animation-delay: 2.4s
+        }
+        /* 12文字目 */
+        .bottom p:nth-child(6) {
+          animation-delay: 2.6s
+        }
+        /* 12文字目 */
+        .bottom p:nth-child(7) {
+          animation-delay: 2.8s
+        }
+      }
+
+      @keyframes textanimation {
+        0% {
+          transform: translateY(2em);
+        }
+    
+        100% {
+          transform: translateY(0);
+        }
+      
+      }
 		}
 	}
 

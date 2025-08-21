@@ -2,13 +2,25 @@
 <main>
   <section id="welcome">
 		<div class="inner">
-			<!-- <div class="text-box">
-				<h2>
-					<figure>
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/catchcopy.png" alt="YTL">
-					</figure>
-				</h2>
-			</div> -->
+			<div class="text-box">
+      <div class="txt top">
+  <p>人</p>
+  <p>材</p>
+  <p>育</p>
+  <p>成</p>
+  <p>に</p>
+  <p>も</p>
+</div>
+<div class="txt bottom">
+  <p>最</p>
+  <p>先</p>
+  <p>端</p>
+  <p>技</p>
+  <p>術</p>
+  <p>を</p>
+  <p>。</p>
+</div>
+      </div>
 		</div>
 	</section>
 
