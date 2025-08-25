@@ -130,7 +130,7 @@
                 <div class="menu-lavel">
                   <p>Medical Resources</p>
                   <ul>
-                    <li><a href="<?php echo home_url(); ?>/medical-category/">疾患別コンテンツ<span>Medical</span></a></li>
+                    <li><a href="<?php echo home_url(); ?>/medical/">疾患別コンテンツ<span>Medical</span></a></li>
                     <li><a href="<?php echo home_url(); ?>/healthcare/">医療制度コンテンツ<span>Healthcare</span></a></li>
                     <li><a href="<?php echo home_url(); ?>/skill/">スキル研修<span>Skills Training</span></a></li>
                     <li><a href="<?php echo home_url(); ?>/webinar/">Web講演会<span>Webinar</span></a></li>
@@ -186,21 +186,21 @@
           <li><a href="<?php echo home_url(); ?>/about/">会社概要</a></li>
           
           <li class="menu-item">
-            <a href="<?php echo home_url(); ?>/medical-category/" class="parent-menu">疾患別コンテンツ</a>
+            <a href="<?php echo home_url(); ?>/medical/" class="parent-menu">疾患別コンテンツ</a>
             <div class="submenu">
               <ul>
-                <li><a href="#">消化器</a></li>
-                <li><a href="#">免疫・膠原病・感染症</a></li>
-                <li><a href="#">脳・神経</a></li>
-                <li><a href="#">腎・泌尿器</a></li>
-                <li><a href="#">婦人科・乳腺</a></li>
-                <li><a href="#">呼吸器</a></li>
-                <li><a href="#">眼・耳鼻</a></li>
-                <li><a href="#">皮膚</a></li>
-                <li><a href="#">悪性腫瘍</a></li>
-                <li><a href="#">希少疾患</a></li>
-                <li><a href="#">血液疾患</a></li>
-                <li class="last-row"><a href="#">統計</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/gastro/">消化器</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/immune/">免疫・膠原病・感染症</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/neuro/">脳・神経</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/uro/">腎・泌尿器</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/gyn-breast/">婦人科・乳腺</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/resp/">呼吸器</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/eye-ent/">眼・耳鼻</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/derm/">皮膚</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/onco/">悪性腫瘍</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/rare/">希少疾患</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/hema/">血液疾患</a></li>
+                <li class="last-row"><a href="<?php echo home_url(); ?>/medical/stats/">統計</a></li>
               </ul>
             </div>
           </li>
