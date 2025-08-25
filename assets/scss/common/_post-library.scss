@@ -48,6 +48,9 @@ body.page-template-pages {
           align-items: center;
           figure {
             margin-bottom: 10px;
+            img {
+              width: 90%;
+            }
           }
           p {
             display: flex;
@@ -61,30 +64,6 @@ body.page-template-pages {
           }
         }
       }
-      // li {
-      //   width: calc((100% / 3) - 10px);
-      //   border: 0.5px solid #919191;
-      //   border-radius: 5px;
-      //   a {
-      //     padding: 15px 20px 10px;
-      //     display: flex;
-      //     flex-direction: column;
-      //     align-items: center;
-      //     figure {
-      //       margin-bottom: 10px;
-      //     }
-      //     p {
-      //       display: flex;
-      //       align-items: center;   /* 縦の中央揃え */
-      //       text-align: center;
-      //       color: #001050;
-      //       font-weight: bold;
-      //       font-size: 13px;
-      //       line-height: 17px;
-      //       min-height: 40px; /* 2行分確保 = 20px × 2 */
-      //     }
-      //   }
-      // }
     }
   }
 
@@ -163,6 +142,37 @@ body.page-template-pages {
       }
     }
   }
+
+  #section-message {
+    @include breakpoint(medium-up) {
+      text-align: center;
+      margin: 80px 0;
+      p {
+        line-height: 30px;
+        span {
+          display: block;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(medium-up) {
+    #section-contents-list {
+      ul {
+        li {
+          width: calc((100% / 4) - 20px);
+          a {
+            padding: 20px 20px 10px;
+            figure {
+              img {
+                width: 80%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 body.page-template-medical,
@@ -170,6 +180,22 @@ body.parent-pageid-34 {
 
   #section-title {
     background-image: url("../images/medical/title_background.svg");
+  }
+
+  @include breakpoint(medium-up) {
+    #section-contents-list {
+      ul {
+        li {
+          @media (hover: hover) {
+            &:hover {
+              border: 1px solid #011976;
+              background: rgba(0, 146, 230, 0.07);
+              transition: all 0.3s;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -179,10 +205,26 @@ body.parent-pageid-52 {
   #section-title {
     background-image: url("../images/healthcare/title_background.svg");
   }
+
+  @include breakpoint(medium-up) {
+    #section-contents-list {
+      ul {
+        justify-content: space-evenly;
+        li {
+          @media (hover: hover) {
+            &:hover {
+              border: 1px solid #011976;
+              background: rgba(250, 112, 44, 0.07);
+              transition: all 0.3s;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 body.page-template-skill {
-
   #section-title {
     background-image: url("../images/skill/title_background.svg");
   }
@@ -223,6 +265,23 @@ body.page-template-info-material,
 body.parent-pageid-82 {
   #section-title {
     background-image: url("../images/material/title_background.svg");
+  }
+
+  @include breakpoint(medium-up) {
+    #section-contents-list {
+      ul {
+        justify-content: space-evenly;
+        li {
+          @media (hover: hover) {
+            &:hover {
+              border: 1px solid #011976;
+              background: rgba(111, 67, 171, 0.07);
+              transition: all 0.3s;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
