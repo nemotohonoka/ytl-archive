@@ -48,47 +48,49 @@ Template Name: 消化器
             <div class="swiper-wrapper">
               <?php while ($query->have_posts()): $query->the_post(); ?>
                 <div class="swiper-slide">
-                  <a href="<?php the_permalink(); ?>">
-                    <?php if (has_post_thumbnail()): ?>
-                      <?php the_post_thumbnail('medium'); ?>
-                    <?php endif; ?>
-
-                    <div class="text-box">
-                      <p class="slide-title">
-                          <?php 
-                          $title = get_the_title();
-                          echo mb_strimwidth($title, 0, 40, '…', 'UTF-8'); 
-                          ?>
-                      </p>
-
-                      <p class="slide-excerpt">
-                          <?php 
-                          $excerpt = get_the_excerpt(); 
-                          echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); 
-                          ?>
-                      </p>
-
-                      <p class="slide-taxonomy child01-color">
-                        <?php
-                        $terms = get_the_terms(get_the_ID(), 'common_category');
-
-                        if ($terms && !is_wp_error($terms)) {
-                          $child_terms = [];
-                          foreach ($terms as $term) {
-                            if ($term->term_id == $child_term->term_id) {
-                              $child_terms[] = $term->name;
+                  <div class="background">
+                    <a href="<?php the_permalink(); ?>">
+                      <?php if (has_post_thumbnail()): ?>
+                        <?php the_post_thumbnail('medium'); ?>
+                      <?php endif; ?>
+  
+                      <div class="text-box">
+                        <p class="slide-title">
+                            <?php 
+                            $title = get_the_title();
+                            echo mb_strimwidth($title, 0, 40, '…', 'UTF-8'); 
+                            ?>
+                        </p>
+  
+                        <p class="slide-excerpt">
+                            <?php 
+                            $excerpt = get_the_excerpt(); 
+                            echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); 
+                            ?>
+                        </p>
+  
+                        <p class="slide-taxonomy child01-color">
+                          <?php
+                          $terms = get_the_terms(get_the_ID(), 'common_category');
+  
+                          if ($terms && !is_wp_error($terms)) {
+                            $child_terms = [];
+                            foreach ($terms as $term) {
+                              if ($term->term_id == $child_term->term_id) {
+                                $child_terms[] = $term->name;
+                              }
+                            }
+                            if (!empty($child_terms)) {
+                              foreach ($child_terms as $child_name) {
+                                echo '<span class="tag">' . esc_html($child_name) . '</span> ';
+                              }
                             }
                           }
-                          if (!empty($child_terms)) {
-                            foreach ($child_terms as $child_name) {
-                              echo '<span class="tag">' . esc_html($child_name) . '</span> ';
-                            }
-                          }
-                        }
-                        ?>
-                      </p>
-                    </div>
-                  </a>
+                          ?>
+                        </p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               <?php endwhile; ?>
             </div>
@@ -146,47 +148,49 @@ Template Name: 消化器
             <div class="swiper-wrapper">
               <?php while ($query->have_posts()): $query->the_post(); ?>
                 <div class="swiper-slide">
-                  <a href="<?php the_permalink(); ?>">
-                    <?php if (has_post_thumbnail()): ?>
-                      <?php the_post_thumbnail('medium'); ?>
-                    <?php endif; ?>
-
-                    <div class="text-box">
-                      <p class="slide-title">
-                          <?php 
-                          $title = get_the_title();
-                          echo mb_strimwidth($title, 0, 40, '…', 'UTF-8'); 
-                          ?>
-                      </p>
-
-                      <p class="slide-excerpt">
-                          <?php 
-                          $excerpt = get_the_excerpt(); 
-                          echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); 
-                          ?>
-                      </p>
-
-                      <p class="slide-taxonomy child01-color">
-                        <?php
-                        $terms = get_the_terms(get_the_ID(), 'common_category');
-
-                        if ($terms && !is_wp_error($terms)) {
-                          $child_terms = [];
-                          foreach ($terms as $term) {
-                            if ($term->term_id == $child_term->term_id) {
-                              $child_terms[] = $term->name;
+                  <div class="background">
+                    <a href="<?php the_permalink(); ?>">
+                      <?php if (has_post_thumbnail()): ?>
+                        <?php the_post_thumbnail('medium'); ?>
+                      <?php endif; ?>
+  
+                      <div class="text-box">
+                        <p class="slide-title">
+                            <?php 
+                            $title = get_the_title();
+                            echo mb_strimwidth($title, 0, 40, '…', 'UTF-8'); 
+                            ?>
+                        </p>
+  
+                        <p class="slide-excerpt">
+                            <?php 
+                            $excerpt = get_the_excerpt(); 
+                            echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); 
+                            ?>
+                        </p>
+  
+                        <p class="slide-taxonomy child01-color">
+                          <?php
+                          $terms = get_the_terms(get_the_ID(), 'common_category');
+  
+                          if ($terms && !is_wp_error($terms)) {
+                            $child_terms = [];
+                            foreach ($terms as $term) {
+                              if ($term->term_id == $child_term->term_id) {
+                                $child_terms[] = $term->name;
+                              }
+                            }
+                            if (!empty($child_terms)) {
+                              foreach ($child_terms as $child_name) {
+                                echo '<span class="tag">' . esc_html($child_name) . '</span> ';
+                              }
                             }
                           }
-                          if (!empty($child_terms)) {
-                            foreach ($child_terms as $child_name) {
-                              echo '<span class="tag">' . esc_html($child_name) . '</span> ';
-                            }
-                          }
-                        }
-                        ?>
-                      </p>
-                    </div>
-                  </a>
+                          ?>
+                        </p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               <?php endwhile; ?>
             </div>

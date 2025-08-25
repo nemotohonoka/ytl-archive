@@ -21,7 +21,7 @@ Template Name: 情報提供資材 一覧
     <section id="section-contents-list">
       <ul>
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/info-material/professional">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/material/material_icon01.svg" alt="医療従事者向け">
             </figure>

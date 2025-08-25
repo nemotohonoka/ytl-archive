@@ -101,35 +101,47 @@ body.page-template-pages {
 
     .posts {
       margin-bottom: 30px;
+
+      .my-medical-swiper {
+        visibility: hidden;
+      }
+      .my-medical-swiper.swiper-initialized {
+        visibility: visible;
+      }
       .swiper-wrapper {
         padding-bottom: 20px;
         .swiper-slide {
-          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-          border-radius: 10px;
-          background: #fff; /* 白背景推奨 */
+          .background {
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            background: #fff; /* 白背景推奨 */
 
-          .text-box {
-            padding: 0 15px 20px;
-            .slide-title {
-              color: black;
-              font-weight: bold;
-              line-height: 22px;
-              margin: 20px 0 10px;
+            img {
+              width: 100%;
             }
-            .slide-excerpt {
-              font-size: 13px;
-              color: black;
-              margin-bottom: 20px;
-            }
-            .slide-taxonomy {
-              display: inline;
-              padding: 7px 10px;
-              font-size: 11px;
-              border-radius: 100px;
-              color: white;
-            }
-            .child01-color {
-              background: #1958AB;
+  
+            .text-box {
+              padding: 0 20px 20px;
+              .slide-title {
+                color: black;
+                font-weight: bold;
+                font-size: 17px;
+                line-height: 1.5em;
+                margin: 20px 0 10px;
+              }
+              .slide-excerpt {
+                font-size: 15px;
+                color: black;
+                line-height: 1.5em;
+                margin-bottom: 10px;
+              }
+              .slide-taxonomy {
+                display: inline;
+                padding: 7px 10px;
+                font-size: 11px;
+                border-radius: 100px;
+                color: white;
+              }
             }
           }
         }
@@ -157,6 +169,10 @@ body.page-template-pages {
   }
 
   @include breakpoint(medium-up) {
+    #section-title {
+      height: 200px;
+    }
+
     #section-contents-list {
       ul {
         li {
@@ -182,6 +198,20 @@ body.parent-pageid-34 {
     background-image: url("../images/medical/title_background.svg");
   }
 
+  .posts {
+    .swiper-wrapper {
+      .swiper-slide {
+        .background {
+          .text-box {
+            .child01-color {
+              background: #1958AB;
+            }
+          }
+        }
+      }
+    }
+  }
+
   @include breakpoint(medium-up) {
     #section-contents-list {
       ul {
@@ -204,6 +234,20 @@ body.page-template-healthcare,
 body.parent-pageid-52 {
   #section-title {
     background-image: url("../images/healthcare/title_background.svg");
+  }
+
+  .posts {
+    .swiper-wrapper {
+      .swiper-slide {
+        .background {
+          .text-box {
+            .child01-color {
+              background: #FA702C;
+            }
+          }
+        }
+      }
+    }
   }
 
   @include breakpoint(medium-up) {
@@ -243,7 +287,6 @@ body.page-template-skill {
 }
 
 body.page-template-webinar {
-
   #section-title {
     background-image: url("../images/webinar/title_background.svg");
   }
@@ -265,6 +308,20 @@ body.page-template-info-material,
 body.parent-pageid-82 {
   #section-title {
     background-image: url("../images/material/title_background.svg");
+  }
+
+  .posts {
+    .swiper-wrapper {
+      .swiper-slide {
+        .background {
+          .text-box {
+            .child01-color {
+              background: #6F43AB;
+            }
+          }
+        }
+      }
+    }
   }
 
   @include breakpoint(medium-up) {
