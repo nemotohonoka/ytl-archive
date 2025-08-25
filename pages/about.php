@@ -56,6 +56,10 @@ Template Name:会社概要
         </tr>
       </tbody>
     </table>
+
+    <div class="default-button">
+      <a href="https://www.ytl.jp/" target="_blank" class="button-more"><span>公式サイトへ</span></a>
+    </div>
   </div>
 
 </main>
