@@ -21,7 +21,7 @@ Template Name: 疾患別コンテンツ 一覧
     <section id="section-contents-list">
       <ul>
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/gastro/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="消化器">
             </figure>
@@ -30,7 +30,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/immune/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon02.svg" alt="免疫・膠原病・感染症">
             </figure>
@@ -39,7 +39,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/neuro/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon03.svg" alt="脳・神経">
             </figure>
@@ -48,7 +48,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/uro/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon04.svg" alt="腎・泌尿器">
             </figure>
@@ -57,7 +57,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/gyn-breast/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon05.svg" alt="婦人科・乳腺">
             </figure>
@@ -66,7 +66,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/resp/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon06.svg" alt="呼吸器">
             </figure>
@@ -75,7 +75,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/eye-ent/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon07.svg" alt="眼・耳鼻">
             </figure>
@@ -84,7 +84,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/derm/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon08.svg" alt="皮膚">
             </figure>
@@ -93,7 +93,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/onco/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon09.svg" alt="悪性腫瘍">
             </figure>
@@ -102,7 +102,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/rare/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon10.svg" alt="希少疾患">
             </figure>
@@ -111,7 +111,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/hema/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon11.svg" alt="血液疾患">
             </figure>
@@ -120,7 +120,7 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/medical/stats/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon12.svg" alt="統計">
             </figure>
