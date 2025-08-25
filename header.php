@@ -181,9 +181,9 @@
     <div class="header-pc">
       <nav class="header-bottom">
         <ul class="menu">
-          <li><a href="#">ホーム</a></li>
-          <li><a href="#">お知らせ</a></li>
-          <li><a href="#">会社概要</a></li>
+          <li><a href="<?php echo home_url(); ?>">ホーム</a></li>
+          <li><a href="<?php echo home_url(); ?>/news/">お知らせ</a></li>
+          <li><a href="<?php echo home_url(); ?>/about/">会社概要</a></li>
           
           <li class="menu-item">
             <a href="<?php echo home_url(); ?>/medical-category/" class="parent-menu">疾患別コンテンツ</a>
@@ -241,38 +241,8 @@
               </ul>
             </div>
           </li>
-
-          <!-- <li class="menu-item">
-            <a href="<?php echo home_url(); ?>/info-material/"　class="parent-menu">情報提供資料</a></li>
-            <div class="submenu">
-              <ul>
-                <li><a href="#">医療従事者向け</a></li>
-                <li><a href="#">患者向け</a></li>
-              </ul>
-            </div>
-          </li> -->
         </ul>
       </nav>
     </div>
-
-    <!-- <div class="header-pc">
-      <nav class="header-bottom">
-        <ul class="content-menu">
-          <li><a href="#">ホーム</a></li>
-          <li><a href="#">お知らせ</a></li>
-          <li><a href="#">会社概要</a></li>
-          <li>
-            <a href="#" class="parent-menu">疾患別コンテンツ</a>
-            <ul class="children-menu">
-              <li><a href="#">消化器</a></li>
-              <li><a href="#">免疫・膠原病・感染症</a></li>
-              <li><a href="#">脳・神経</a></li>
-              <li><a href="#">腎・泌尿器</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Web講演会</a></li>
-          <li><a href="#">情報提供資料</a></li>
-        </ul>
-      </nav>
-    </div> -->
+    
   </div>
