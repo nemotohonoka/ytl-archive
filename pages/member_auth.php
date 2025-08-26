@@ -32,11 +32,37 @@ Template Name:ログイン・会員登録
       </div>
 
       <div class="register-box">
-        <h4>ログイン<span>会員登録されていない方</span></h4>
-        <p>
+        <h4>新規会員登録<span>会員登録されていない方</span></h4>
+        <p class="text">
           本サイトでは、製薬企業等のご担当者様に向けて、限定コンテンツをご提供しています。
           <span>詳細な資材の閲覧には、会員登録（審査制）が必要です。</span>
         </p>
+
+        <div class="flex-box">
+          <div class="contents">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL">
+            <div class="title-box">
+              <p class="title">疾患別コンテンツ</p>
+              <p class="lead">疾患教育や症例フォローに役立つ資材を幅広く制作しています。</p>
+            </div>
+          </div>
+
+          <div class="contents">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL">
+            <div class="title-box">
+              <p class="title">医療制度コンテンツ</p>
+              <p class="lead">医療業界を取り巻く環境変化をふまえ、修得した知識を役立てるようサポートいたします。</p>
+            </div>
+          </div>
+
+          <div class="contents">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL">
+            <div class="title-box">
+              <p class="title">スキル研修</p>
+              <p class="lead">ご要望に合わせた資材作成から研修プランの立案・運営までサポートし、質の高い人材育成をサポートいたします。</p>
+            </div>
+          </div>
+        </div>
 
         <?php if (is_user_logged_in()) : ?>
           <!-- ログイン済みならクリックでメッセージ -->

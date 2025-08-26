@@ -20,7 +20,202 @@ body.page-template-member_auth {
     margin-bottom: 50px;
     h3 {
       color: #001050;
-      text-align: center;
+    }
+  }
+
+  .auth-page {
+    .login-box {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 50px;
+
+      h4 {
+        text-align: center;
+        font-size: 25px;
+        color: #011976;
+        margin-bottom: 30px;
+        span {
+          display: block;
+          font-size: 15px;
+          font-weight: normal;
+        }
+      }
+
+      .login-username {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-bottom: 5px;
+        }
+        input {
+          border: 1px solid #ddd;
+        }
+      }
+
+      .login-password {
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-bottom: 5px;
+        }
+        input {
+          border: 1px solid #ddd;
+        }
+      }
+
+      .login-remember {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .login-submit {
+        display: block;
+        text-align: center;
+        input {
+          padding: 15px 0;
+          width: 200px;
+          border-radius: 100px;
+          border: 1px solid #011976;
+          background: white;
+          color: #011976;
+          font-weight: bold;
+
+          @media (hover: hover) {
+            &:hover {
+              background: #011976;
+              color: white;
+              transition: all 0.3s;
+            }
+          }
+        }
+      }
+    }
+
+    .register-box {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 50px;
+
+      h4 {
+        text-align: center;
+        font-size: 25px;
+        color: #011976;
+        margin-bottom: 30px;
+        span {
+          display: block;
+          font-size: 15px;
+          font-weight: normal;
+        }
+      }
+
+      .text {
+        margin-bottom: 30px;
+      }
+
+      .flex-box {
+        .contents {
+          img {
+            width: 100%;
+          }
+          .title-box {
+            background: #E0F3FD;
+            padding: 20px;
+            margin-bottom: 30px;
+
+            .title {
+              text-align: center;
+              font-weight: bold;
+              color: #011976;
+              margin-bottom: 10px;
+            }
+            .lead {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+
+      button {
+        margin: 0 auto;
+        display: block;
+        padding: 15px 0;
+        width: 200px;
+        border-radius: 100px;
+        border: 1px solid #011976;
+        background: white;
+        color: #011976;
+        font-weight: bold;
+
+        @media (hover: hover) {
+          &:hover {
+            background: #011976;
+            color: white;
+            transition: all 0.3s;
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint(medium-up) {
+    #contact-message {
+      h3 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+    }
+
+    .auth-page {
+      .login-box {
+        padding: 50px 0;
+        form {
+          max-width: 300px;
+          margin: 0 auto;
+        }
+      }
+
+      .register-box {
+        padding: 50px 60px;
+        .text {
+          text-align: center;
+          margin-bottom: 50px;
+          span {
+            display: block;
+          }
+        }
+
+        .flex-box {
+          margin-bottom: 30px;
+          display: flex;
+          justify-content: space-between;
+        
+          .contents {
+            display: flex;           // ← block → flex に変更
+            flex-direction: column;  // 縦並び
+            width: calc((100% - 40px) / 3);
+        
+            img {
+              width: 100%;
+              display: block;
+            }
+        
+            .title-box {
+              width: 100%;
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              padding: 20px;
+            }
+          }
+        }
+      }
     }
   }
 
