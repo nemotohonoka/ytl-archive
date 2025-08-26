@@ -68,47 +68,28 @@ window.addEventListener('load', function () {
   });
 });
 
+window.addEventListener('load', function () {
+  const slider = document.querySelector('.video-slider');
+  slider.style.visibility = 'visible';
 
-// jQuery(function($) {
-
-//   // 親タブをクリック
-//   $(document).on('click', '.tab-button', function() {
-//     var parentSlug = $(this).data('parent');
-
-//     // 子カテゴリー取得（スキル研修以外）
-//     if (parentSlug !== 'parent03') {
-//       $.post(videoLibraryAjax.ajaxurl, {
-//         action: 'get_child_terms',
-//         parent: parentSlug
-//       }, function(response) {
-//         $('#child-filters').html(response);
-//         $('#video-library-results').html(''); // 初期化
-//       });
-//     } else {
-//       // スキル研修(parent03)は子なし → 直接動画取得
-//       $.post(videoLibraryAjax.ajaxurl, {
-//         action: 'get_videos',
-//         term: parentSlug
-//       }, function(response) {
-//         $('#child-filters').html(''); // 子ボタン非表示
-//         $('#video-library-results').html(response);
-//       });
-//     }
-//   });
-
-//   // 子カテゴリークリック
-//   $(document).on('click', '.child-button', function() {
-//     var termSlug = $(this).data('term');
-
-//     $.post(videoLibraryAjax.ajaxurl, {
-//       action: 'get_videos',
-//       term: termSlug
-//     }, function(response) {
-//       $('#video-library-results').html(response);
-//     });
-//   });
-
-// });
+  new Swiper('.video-slider', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.video-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      640: { slidesPerView: 2.2, spaceBetween: 40, centeredSlides: true },
+      1024: { slidesPerView: 3.2, spaceBetween: 50 },
+    }
+  });
+});
 
 
 jQuery(function($){

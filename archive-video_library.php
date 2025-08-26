@@ -10,6 +10,99 @@ get_header();
   <h2>動画ライブラリ</h2>
 </section>
 
+<section id="new-arrival">
+  <h3>新着動画</h3>
+
+<?php
+$args = array(
+  'post_type'      => 'video_library', // カスタム投稿タイプ
+  'posts_per_page' => 5,               // 最新5件
+  'orderby'        => 'date',
+  'order'          => 'DESC',
+);
+$video_query = new WP_Query($args);
+?>
+
+<?php if ($video_query->have_posts()) : ?>
+  <div class="swiper video-slider">
+    <div class="swiper-wrapper">
+      <?php while ($video_query->have_posts()) : $video_query->the_post(); ?>
+      <div class="swiper-slide" data-link="<?php the_permalink(); ?>">
+        <div class="background">
+            <div class="flex-box">
+              
+              <div class="thumbnail">
+                <?php if (has_post_thumbnail()) : ?>
+                  <?php the_post_thumbnail('medium'); ?>
+                <?php endif; ?>
+              </div>
+  
+              <div class="text-box">
+                <p class="slide-title">
+                  <?php echo esc_html( mb_strimwidth(get_the_title(), 0, 40, '…', 'UTF-8') ); ?>
+                </p>
+  
+                <p class="slide-excerpt">
+                  <?php echo esc_html( mb_strimwidth(get_the_excerpt(), 0, 100, '…', 'UTF-8') ); ?>
+                </p>
+  
+                <?php
+                  // --- 子カテゴリー（リンクなしテキスト） ---
+                  $terms = get_the_terms(get_the_ID(), 'common_category');
+                  if ($terms && !is_wp_error($terms)) {
+                      $child_terms = [];
+                      $parent_terms = [];
+
+                      foreach ($terms as $term) {
+                          if ($term->parent != 0) {
+                              // 子カテゴリー
+                              $parent_term = get_term($term->parent, 'common_category');
+                              $parent_class = $parent_term ? 'cat-' . esc_attr($parent_term->slug) : 'cat-default';
+                              $child_terms[] = '<span class="cat ' . $parent_class . '">' . esc_html($term->name) . '</span>';
+                          } else {
+                              // 親カテゴリー
+                              $parent_class = 'cat-' . esc_attr($term->slug);
+                              $parent_terms[] = '<span class="cat ' . $parent_class . '">' . esc_html($term->name) . '</span>';
+                          }
+                      }
+
+                      if (!empty($child_terms)) {
+                          // 子カテゴリーがあれば子カテゴリーを表示
+                          echo '<div class="categories">' . implode(' ', $child_terms) . '</div>';
+                      } elseif (!empty($parent_terms)) {
+                          // 子カテゴリーがなければ親カテゴリーを表示
+                          echo '<div class="categories">' . implode(' ', $parent_terms) . '</div>';
+                      }
+                  }
+  
+                  // --- タグ（リンクなしテキスト） ---
+                  $tags = get_the_terms(get_the_ID(), 'common_tag');
+                  if ($tags && !is_wp_error($tags)) {
+                    $tag_names = wp_list_pluck($tags, 'name'); // タグ名だけの配列を取得
+                    $tag_spans = array_map(function($name) {
+                      return '<span class="tag">' . esc_html($name) . '</span>';
+                    }, $tag_names);
+  
+                    echo '<div class="post-tags">' . implode($tag_spans) . '</div>';
+                  }
+                ?>
+              </div>
+  
+            </div>
+        </div>
+      </div>
+      <?php endwhile; ?>
+    </div>
+  </div>
+
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- ページネーションはスライダーの外に配置 -->
+  <div class="video-pagination"></div>
+<?php endif; wp_reset_postdata(); ?>
+</section>
+
 <?php
 $parents = [
     'parent01' => '疾患別',
