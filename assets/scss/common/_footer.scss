@@ -27,6 +27,7 @@
               width: 300px;
               display: block;
               position: relative;
+              margin: 0 auto;
 
               &::after {
                 font-family: FontAwesome;
@@ -44,7 +45,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                figure {
+                svg {
                   margin-bottom: 0;
                   margin-right: 20px;
                 }
@@ -111,5 +112,91 @@
     font-size: 10px;
     padding: 10px;
 	}
+
+  @include breakpoint(medium-up) {
+    .contact {
+      .container {
+        padding: 50px 60px 30px;
+        max-width: 900px;
+        .text-area {
+          margin-bottom: 50px;
+          p {
+            text-align: center;
+            span {
+              display: block;
+            }
+          }
+        }
+
+        .contact-button {
+          ul {
+            display: flex;
+            li {
+              a {
+                @media (hover: hover) {
+                  &:hover {
+                    background: #011976;
+                    transition: all 0.3s;
+
+                    &::after {
+                      color: white;
+                      transition: all 0.3s;
+                    }
+                    svg {
+                      g {
+                        path {
+                          fill: white;
+                          transition: all 0.3s;
+                        }
+                      }
+                    }
+                    span {
+                      color: white;
+                      transition: all 0.3s;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .top {
+      .container {
+        .flex-box {
+          display: flex;
+          justify-content: space-between;
+          .left {
+            width: 40%;
+          }
+
+          .right {
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            .company-link {
+              width: 48%;
+              margin: 0;
+
+              ul {
+                li {
+                  a {
+                    @media (hover: hover) {
+                      &:hover {
+                        color: #0092E6;
+                        transition: all 0.3s;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
 }
