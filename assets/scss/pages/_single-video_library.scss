@@ -2,8 +2,15 @@
 // ----------
 
 body.single-video_library {
+  #library-section-title {
+    margin-bottom: 50px;
+  }
 
   #post-contents {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    
     article {
       .title-box {
         border-bottom: 1px solid #011976;
@@ -27,10 +34,16 @@ body.single-video_library {
             background: #1958AB;
           }
           .p-parent02 {
-            background: #FA8A85;
+            background: #FC8067;
           }
           .p-parent03 {
-            background: #74B691;
+            background: #64AD88;
+          }
+          .p-parent04 {
+            background: #F5AA18;
+          }
+          .p-parent05 {
+            background: #6F69C4;
           }
         }
 
@@ -141,6 +154,26 @@ body.single-video_library {
       }
     }
     
+  }
+
+  @include breakpoint(medium-up) {
+    .post-thumbnail {
+      margin-bottom: 30px;
+      text-align: center;
+      img {
+        max-width: 900px;
+        width: 80%;
+      }
+    }
+    .post-content {
+      margin-bottom: 80px;
+    }
+    .video-wrapper {
+      width: 80%;
+      margin: 0 auto;
+      max-width: 900px;
+      margin-bottom: 0 !important;
+    }
   }
 
   

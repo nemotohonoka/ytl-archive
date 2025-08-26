@@ -91,6 +91,15 @@ window.addEventListener('load', function () {
   });
 });
 
+document.querySelectorAll('.swiper-slide').forEach(slide => {
+  slide.addEventListener('click', () => {
+    const link = slide.getAttribute('data-link');
+    if (link) {
+      window.location.href = link;
+    }
+  });
+});
+
 
 jQuery(function($){
 
