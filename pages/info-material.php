@@ -30,7 +30,7 @@ Template Name: 情報提供資材 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/info-material/patient">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/material/material_icon02.svg" alt="患者向け">
             </figure>
