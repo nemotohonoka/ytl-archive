@@ -18,7 +18,7 @@ Template Name: 医療制度コンテンツ 一覧
     <section id="section-contents-list">
       <ul>
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/healthcare/system/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/healthcare/healthcare_icon01.svg" alt="医療制度">
             </figure>
@@ -27,7 +27,7 @@ Template Name: 医療制度コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/healthcare/ethics/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/healthcare/healthcare_icon02.svg" alt="倫理">
             </figure>
@@ -36,7 +36,7 @@ Template Name: 医療制度コンテンツ 一覧
         </li>
 
         <li>
-          <a href="">
+          <a href="<?php echo home_url(); ?>/healthcare/safety/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/healthcare/healthcare_icon03.svg" alt="医療安全">
             </figure>

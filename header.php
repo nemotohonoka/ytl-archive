@@ -209,9 +209,9 @@
             <a href="<?php echo home_url(); ?>/healthcare/" class="parent-menu">医療制度コンテンツ</a>
             <div class="submenu">
               <ul>
-                <li><a href="#">医療制度</a></li>
-                <li><a href="#">倫理</a></li>
-                <li><a href="#">医療安全</a></li>
+                <li><a href="<?php echo home_url(); ?>/healthcare/system/">医療制度</a></li>
+                <li><a href="<?php echo home_url(); ?>/healthcare/ethics/">倫理</a></li>
+                <li><a href="<?php echo home_url(); ?>/healthcare/safety/">医療安全</a></li>
               </ul>
             </div>
           </li>
