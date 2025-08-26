@@ -85,8 +85,16 @@ window.addEventListener('load', function () {
       clickable: true,
     },
     breakpoints: {
-      640: { slidesPerView: 2.2, spaceBetween: 40, centeredSlides: true },
-      1024: { slidesPerView: 3.2, spaceBetween: 50 },
+      640: { 
+        slidesPerView: 2.2, 
+        spaceBetween: 40, 
+        centeredSlides: true 
+      },
+      1024: { 
+        slidesPerView: 3.2,
+        spaceBetween: 50,
+        centeredSlides: true 
+      },
     }
   });
 });
