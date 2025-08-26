@@ -58,8 +58,8 @@
 
         <div class="contact-nav medium-view">
           <ul>
-            <li class="inquiry"><a href="" target="_blank"><span>お問い合わせ</span></a></li>
-            <li class="download"><a href="<?php echo home_url(); ?>/faq/"><span>ログイン・会員登録</span></a></li>
+            <li class="inquiry"><a href="<?php echo home_url(); ?>/contact/"><span>お問い合わせ</span></a></li>
+            <li class="download"><a href="<?php echo home_url(); ?>/member/"><span>ログイン・会員登録</span></a></li>
           </ul>
         </div>
 
@@ -168,8 +168,8 @@
             
             <div class="buttom-nav">
               <ul>
-                <li class="inquiry"><a href="" target="_blank"><span>お問い合わせ</span></a></li>
-                <li class="download"><a href="<?php echo home_url(); ?>/faq/"><span>ログイン・会員登録</span></a></li>
+                <li class="inquiry"><a href="<?php echo home_url(); ?>/contact/"><span>お問い合わせ</span></a></li>
+                <li class="download"><a href="<?php echo home_url(); ?>/member/"><span>ログイン・会員登録</span></a></li>
               </ul>
             </div>
           </div>

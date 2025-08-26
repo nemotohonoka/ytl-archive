@@ -8,7 +8,7 @@
           <div class="contact-button">
             <ul>
               <li>
-                <a href="">
+                <a href="<?php echo home_url(); ?>/member/">
                   <div class="flex-box">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="34" viewBox="0 0 34 34">
                       <g id="グループ_2522" data-name="グループ 2522" transform="translate(-0.257 -0.257)" clip-path="url(#clip-path)">
@@ -21,7 +21,7 @@
               </li>
 
               <li>
-                <a href="">
+                <a href="<?php echo home_url(); ?>/member/">
                   <div class="flex-box">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="34" viewBox="0 0 34 34">
                       <g id="グループ_2522" data-name="グループ 2522" transform="translate(-0.257 -0.257)" clip-path="url(#clip-path)">
@@ -57,21 +57,21 @@
                   <li><a href="<?php echo home_url(); ?>"><span>ホーム</span></a></li>
                   <li><a href="<?php echo home_url(); ?>/news/"><span>お知らせ</span></a></li>
                   <li><a href="<?php echo home_url(); ?>/about/"><span>会社概要</span></a></li>
-                  <li><a href="<?php echo home_url(); ?>"><span>お問い合わせ</span></a></li>
-                  <li><a href="<?php echo home_url(); ?>/news/"><span>ログイン・会員登録</span></a></li>
-                  <li><a href="<?php echo home_url(); ?>/about/"><span>利用規約</span></a></li>
-                  <li><a href="<?php echo home_url(); ?>/about/"><span>プライバシーポリシー</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>/contact/"><span>お問い合わせ</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>/member/"><span>ログイン・会員登録</span></a></li>
+                  <li><a href="https://www.ytl.jp/tametoko_tokusyoho/" target="_blank"><span>利用規約</span></a></li>
+                  <li><a href="https://igakuacademy.ac.jp/privacy/" target="_blank"><span>プライバシーポリシー</span></a></li>
                 </ul>
               </div>
 
               <div class="company-link">
                 <p>Medical Content</p>
                 <ul>
-                  <li><a href="<?php echo home_url(); ?>"><span>疾患別コンテンツ</span></a></li>
-                  <li><a href="<?php echo home_url(); ?>/news/"><span>医療制度コンテンツ</span></a></li>
-                  <li><a href="<?php echo home_url(); ?>/about/"><span>スキル研修</span></a></li>
-                  <li><a href="<?php echo home_url(); ?>/about/"><span>Web講演会</span></a></li>
-                  <li><a href="<?php echo home_url(); ?>/about/"><span>情報提供資料</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>/medical/"><span>疾患別コンテンツ</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>/healthcare/"><span>医療制度コンテンツ</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>/skill/"><span>スキル研修</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>/webinar/"><span>Web講演会</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>/info-material/"><span>情報提供資料</span></a></li>
                 </ul>
               </div>
 
