@@ -228,8 +228,8 @@
             <a href="<?php echo home_url(); ?>/info-material/" class="parent-menu">情報提供資料</a>
             <div class="submenu">
               <ul>
-                <li><a href="#">医療従事者向け</a></li>
-                <li><a href="#">患者向け</a></li>
+                <li><a href="<?php echo home_url(); ?>/healthcare/professional/">医療従事者向け</a></li>
+                <li><a href="<?php echo home_url(); ?>/healthcare/patient/">患者向け</a></li>
               </ul>
             </div>
           </li>
