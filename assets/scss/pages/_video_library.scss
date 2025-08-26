@@ -150,7 +150,8 @@ body.page-template-archive-video_library,
           padding: 30px;
           display: flex;
           flex-wrap: wrap;
-          justify-content: space-between;
+          // justify-content: space-between;
+          gap: 10px;
 
           .child-button {
             width: calc((100% - 20px) / 3);
@@ -158,7 +159,7 @@ body.page-template-archive-video_library,
             border: 1px solid #011976;
             color: #011976;
             border-radius: 3px;
-            padding: 7px 0;
+            padding: 10px 0;
           }
           .active {
             color: white;
@@ -228,7 +229,6 @@ body.page-template-archive-video_library,
     }
   }
 
-
   .video-wrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
@@ -268,6 +268,39 @@ body.page-template-archive-video_library,
       }
       .swiper-pagination-bullets {
         padding: 30px 0 40px;
+      }
+    }
+
+    .video-library-container {
+      .video-library-tabs {
+        h3 {
+          margin-bottom: 50px;
+        }
+        
+        .flex-box {
+          max-width: 900px;
+          margin: 0 auto;
+
+          .tab-button {
+            width: calc((100% - 30px) / 5);
+            margin: 0;
+            border-radius: 3px 3px 0 0;
+          }
+        }
+      }
+
+      #child-filters {
+        .inner {
+          .child-buttons {
+            gap: 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px;
+            .child-button {
+              width: calc((100% - 60px) / 5);
+            }
+          }
+        }
       }
     }
   }

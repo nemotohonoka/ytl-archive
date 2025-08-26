@@ -239,3 +239,29 @@ jQuery(function($){
 
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  // 初期表示する親カテゴリー
+  const initialParent = 'parent01';
+
+  // 親タブの見た目を active に
+  const parentTab = document.querySelector(`.tab-button[data-parent="${initialParent}"]`);
+  if (parentTab) parentTab.classList.add('active');
+
+  // 初回は parent01 の子ボタンを表示
+  const childWrapper = document.querySelector(`.child-buttons[data-parent="${initialParent}"]`);
+  if (childWrapper) childWrapper.style.display = 'flex';
+
+  // 親タブクリック時の切り替え
+  document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', function() {
+          const parent = this.getAttribute('data-parent');
+          document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+
+          document.querySelectorAll('.child-buttons').forEach(cb => cb.style.display = 'none');
+          const childDiv = document.querySelector(`.child-buttons[data-parent="${parent}"]`);
+          if (childDiv) childDiv.style.display = 'flex';
+      });
+  });
+});
+
