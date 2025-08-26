@@ -101,12 +101,12 @@ Template Name: 統計
           </div>
         <?php
         else:
-          echo '<p>投稿はまだありません。</p>';
+          echo '<p class="not-post">投稿はまだありません。</p>';
         endif;
 
         wp_reset_postdata();
         } else {
-          echo '<p>「child01」カテゴリーが存在しません。</p>';
+          echo '<p class="not-post">「child01」カテゴリーが存在しません。</p>';
         }
       ?>
     </div>
@@ -201,12 +201,12 @@ Template Name: 統計
           </div>
         <?php
         else:
-          echo '<p>投稿はまだありません。</p>';
+          echo '<p class="not-post">投稿はまだありません。</p>';
         endif;
 
         wp_reset_postdata();
         } else {
-          echo '<p>「child01」カテゴリーが存在しません。</p>';
+          echo '<p class="not-post">「child01」カテゴリーが存在しません。</p>';
         }
       ?>
     </div>
