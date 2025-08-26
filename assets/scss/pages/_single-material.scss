@@ -1,0 +1,177 @@
+// スライド資料 詳細ページ
+// ----------
+
+body.single-material {
+  #library-section-title {
+    margin-bottom: 50px;
+  }
+
+  #post-contents {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    
+    article {
+      .title-box {
+        border-bottom: 1px solid #011976;
+        padding-bottom: 20px;
+        margin-bottom: 50px;
+        
+        h3 {
+          color: #011976;
+          line-height: 35px;
+        }
+
+        .child-categories {
+          margin-bottom: 10px;
+          a {
+            padding: 7px 11px;
+            border-radius: 100px;
+            font-size: 13px;
+            color: white;
+          }
+          .p-parent01 {
+            background: #1958AB;
+          }
+          .p-parent02 {
+            background: #FC8067;
+          }
+          .p-parent03 {
+            background: #64AD88;
+          }
+          .p-parent04 {
+            background: #F5AA18;
+          }
+          .p-parent05 {
+            background: #6F69C4;
+          }
+        }
+
+        .post-tags {
+          a {
+            padding: 7px 11px;
+            border-radius: 100px;
+            font-size: 13px;
+            color: #011976;
+            background: white;
+            border: 1px solid;
+
+            &:not(:last-child) {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+
+      .post-thumbnail {
+        margin-bottom: 30px;
+      }
+
+      .post-content {
+        margin-bottom: 50px;
+        p {
+          &:not(:last-child) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+
+      .login-message {
+        p {
+          color: #011976;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        .login-button {
+          text-align: center;
+          .btn {
+            display: inline-block;
+            text-align: center;
+            background: #011976;
+            width: 270px;
+            padding: 25px 0;
+            border-radius: 100px;
+            font-size: 15px;
+            color: white;
+            position: relative;
+  
+            &::after {
+              content: "\f105";
+              font-family: FontAwesome;
+              font-size: 20px;
+              color: inherit;
+              right: 17px;
+              top: 50%;
+              transform: translateY(-50%);
+              position: absolute;
+            }
+          }
+        }
+      }
+
+      .material-content {
+        margin-bottom: 30px;
+        iframe {
+          width: 100%;
+        }
+      }
+
+      .extra-text {
+        margin-bottom: 50px;
+      }
+
+      .contact-btn {
+        text-align: center;
+        .btn {
+          display: inline-block;
+          text-align: center;
+          background: #011976;
+          width: 270px;
+          padding: 25px 0;
+          border-radius: 100px;
+          font-size: 15px;
+          color: white;
+          position: relative;
+
+          &::after {
+            content: "\f105";
+            font-family: FontAwesome;
+            font-size: 20px;
+            color: inherit;
+            right: 17px;
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+          }
+        }
+      }
+    }
+    
+  }
+
+  @include breakpoint(medium-up) {
+    .post-thumbnail {
+      margin-bottom: 30px;
+      text-align: center;
+      img {
+        max-width: 900px;
+        width: 80%;
+      }
+    }
+    .post-content {
+      margin-bottom: 80px;
+    }
+    .material-content {
+      // margin-bottom: 30px;
+        width: 80%;
+        margin: 0 auto;
+        max-width: 900px;
+        // margin-bottom: 0 !important;
+    }
+  }
+
+  
+}
+
+
