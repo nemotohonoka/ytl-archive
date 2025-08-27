@@ -64,6 +64,12 @@
 
           svg {
             color: #011976;
+            @media (hover: hover) {
+              &:hover {
+                width: 40%;
+                transition: all 0.3s;
+              }
+            }
           }
         }
       }
