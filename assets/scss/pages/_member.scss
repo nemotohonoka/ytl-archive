@@ -139,6 +139,27 @@ body.page-template-member_auth {
         }
       }
 
+      .register-link {
+        margin: 0 auto;
+        display: block;
+        padding: 15px 0;
+        width: 200px;
+        border-radius: 100px;
+        border: 1px solid #011976;
+        background: white;
+        color: #011976;
+        font-weight: bold;
+        text-align: center;
+
+        @media (hover: hover) {
+          &:hover {
+            background: #011976;
+            color: white;
+            transition: all 0.3s;
+          }
+        }
+      }
+
       button {
         margin: 0 auto;
         display: block;
