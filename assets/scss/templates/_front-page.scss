@@ -1,10 +1,10 @@
 body.home {
 	#welcome {
 		width:100%;
-    height: calc(80vh - 60px);
+    height: calc(60vh - 60px);
 		margin: 0;
 		.inner {
-			background-image: url(../images/welcome_img_sp.jpg);
+			background-image: url(../images/welcome_img_pc.jpg);
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: cover;
@@ -14,7 +14,7 @@ body.home {
 
       .text-box {
         position: absolute;
-        bottom: 10px;
+        top: 110px;
         left: 20px;
         .txt {
           display: flex;
@@ -386,7 +386,13 @@ body.home {
 
   @include breakpoint(large-up) {
     #welcome {
-      height: calc(70vh - 60px);
+      height: calc(60vh - 60px);
+      .inner {
+        .text-box {
+          top: 180px;
+          left: 110px;
+        }
+      }
     }
 
     #message {
