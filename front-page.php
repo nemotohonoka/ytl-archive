@@ -66,7 +66,7 @@
             if ($parent_term) {
               $query = new WP_Query([
                 'post_type' => ['video_library','web_seminar','material'],
-                'posts_per_page' => 5,
+                'posts_per_page' => 6,
                 'tax_query' => [
                   [
                     'taxonomy' => 'common_category',
@@ -174,7 +174,7 @@
             if ($parent_term) {
               $query = new WP_Query([
                 'post_type' => ['video_library','web_seminar','material'],
-                'posts_per_page' => 5,
+                'posts_per_page' => 6,
                 'tax_query' => [
                   [
                     'taxonomy' => 'common_category',
@@ -282,7 +282,7 @@
             if ($parent_term) {
               $query = new WP_Query([
                 'post_type' => ['video_library','web_seminar','material'],
-                'posts_per_page' => 5,
+                'posts_per_page' => 6,
                 'tax_query' => [
                   [
                     'taxonomy' => 'common_category',
