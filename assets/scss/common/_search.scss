@@ -56,31 +56,48 @@ body.tax-common_tag,
               line-height: 1.5em;
               margin-bottom: 10px;
             }
-            .categories {
-              margin-bottom: 7px;
-              .cat {
-                display: inline;
-                padding: 7px 10px;
-                font-size: 11px;
-                border-radius: 100px;
-                color: white;
-              }
-              .cat-parent01 {
-                background: #1958AB;
-              }
-              .cat-parent02 {
-                background: #FC8067;
-              }
-              .cat-parent03 {
-                background: #64AD88;
-              }
-              .cat-parent04 {
-                background: #F5AA18;
-              }
-              .cat-parent05 {
-                background: #6F69C4;
+
+            .post-type-label {
+              display: inline;
+              color: #011976;
+              font-weight: bold;
+              margin-right: 10px;
+              padding: 7px 6px 7px 10px;
+              font-size: 11px;
+              border-radius: 100px;
+              background: #EBEBEB;
+            }
+
+            .parent-label {
+              display: inline-block;
+              .categories {
+                margin-bottom: 7px;
+                .cat {
+                  display: inline;
+                  padding: 7px 10px;
+                  font-size: 11px;
+                  border-radius: 100px;
+                  color: white;
+                }
+                .cat-parent01 {
+                  background: #1958AB;
+                }
+                .cat-parent02 {
+                  background: #FC8067;
+                }
+                .cat-parent03 {
+                  background: #64AD88;
+                }
+                .cat-parent04 {
+                  background: #F5AA18;
+                }
+                .cat-parent05 {
+                  background: #6F69C4;
+                }
               }
             }
+
+            
             .post-tags {
               .tag {
                 padding: 6px 8px;
