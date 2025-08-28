@@ -288,7 +288,7 @@ Template Name: 免疫・膠原病・感染症
     <div class="container">
       <ul>
 
-      <li class="passive">
+        <li class="passive">
           <a href="<?php echo home_url(); ?>/medical/gastro">
             <div class="nav-box">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="54.775" height="64.147" viewBox="0 0 54.775 64.147">
