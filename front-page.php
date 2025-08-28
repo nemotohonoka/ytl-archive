@@ -102,33 +102,42 @@
                                 echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); // 40バイトに調整
                                 ?>
                               </p>
-  
-                              <p class="slide-taxonomy parent01-color">
-                                <?php
-                                // 投稿に紐づく common_category タクソノミーのタームを取得
-                                $terms = get_the_terms(get_the_ID(), 'common_category');
-  
-                                if ($terms && !is_wp_error($terms)) {
-  
-                                    $child_terms = [];
-  
-                                    foreach ($terms as $term) {
-                                        // 親が parent01 のタームだけ取得
-                                        if ($term->parent == $parent_term->term_id) {
-                                            $child_terms[] = $term->name; // 子カテゴリー名を配列に追加
-                                        }
-                                    }
-  
-                                    if (!empty($child_terms)) {
-                                        // タグ風に出力
-                                        foreach ($child_terms as $child_name) {
-                                            echo '<span class="tag">' . esc_html($child_name) . '</span> ';
-                                        }
-                                    }
-                                }
-                                ?>
-                              </p>
-  
+
+                              <div class="flex-label">
+                                <div class="post-type-label">
+                                  <?php 
+                                  $post_type = get_post_type();
+                                  $post_type_obj = get_post_type_object($post_type);
+                                  echo esc_html($post_type_obj->labels->singular_name); // 投稿タイプのラベルを表示
+                                  ?>
+                                </div>
+
+                                <p class="slide-taxonomy parent01-color">
+                                  <?php
+                                  // 投稿に紐づく common_category タクソノミーのタームを取得
+                                  $terms = get_the_terms(get_the_ID(), 'common_category');
+    
+                                  if ($terms && !is_wp_error($terms)) {
+    
+                                      $child_terms = [];
+    
+                                      foreach ($terms as $term) {
+                                          // 親が parent01 のタームだけ取得
+                                          if ($term->parent == $parent_term->term_id) {
+                                              $child_terms[] = $term->name; // 子カテゴリー名を配列に追加
+                                          }
+                                      }
+    
+                                      if (!empty($child_terms)) {
+                                          // タグ風に出力
+                                          foreach ($child_terms as $child_name) {
+                                              echo '<span class="tag">' . esc_html($child_name) . '</span> ';
+                                          }
+                                      }
+                                  }
+                                  ?>
+                                </p>
+                              </div>
                             </div>
                           </a>
                         </div>
@@ -210,32 +219,42 @@
                                 echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); // 40バイトに調整
                                 ?>
                               </p>
-  
-                              <p class="slide-taxonomy parent02-color">
-                                <?php
-                                // 投稿に紐づく common_category タクソノミーのタームを取得
-                                $terms = get_the_terms(get_the_ID(), 'common_category');
-  
-                                if ($terms && !is_wp_error($terms)) {
-  
-                                    $child_terms = [];
-  
-                                    foreach ($terms as $term) {
-                                        // 親が parent02 のタームだけ取得
-                                        if ($term->parent == $parent_term->term_id) {
-                                            $child_terms[] = $term->name; // 子カテゴリー名を配列に追加
-                                        }
-                                    }
-  
-                                    if (!empty($child_terms)) {
-                                        // タグ風に出力
-                                        foreach ($child_terms as $child_name) {
-                                            echo '<span class="tag">' . esc_html($child_name) . '</span> ';
-                                        }
-                                    }
-                                }
-                                ?>
-                              </p>
+
+                              <div class="flex-label">
+                                <div class="post-type-label">
+                                  <?php 
+                                  $post_type = get_post_type();
+                                  $post_type_obj = get_post_type_object($post_type);
+                                  echo esc_html($post_type_obj->labels->singular_name); // 投稿タイプのラベルを表示
+                                  ?>
+                                </div>
+
+                                <p class="slide-taxonomy parent02-color">
+                                  <?php
+                                  // 投稿に紐づく common_category タクソノミーのタームを取得
+                                  $terms = get_the_terms(get_the_ID(), 'common_category');
+    
+                                  if ($terms && !is_wp_error($terms)) {
+    
+                                      $child_terms = [];
+    
+                                      foreach ($terms as $term) {
+                                          // 親が parent01 のタームだけ取得
+                                          if ($term->parent == $parent_term->term_id) {
+                                              $child_terms[] = $term->name; // 子カテゴリー名を配列に追加
+                                          }
+                                      }
+    
+                                      if (!empty($child_terms)) {
+                                          // タグ風に出力
+                                          foreach ($child_terms as $child_name) {
+                                              echo '<span class="tag">' . esc_html($child_name) . '</span> ';
+                                          }
+                                      }
+                                  }
+                                  ?>
+                                </p>
+                              </div>
   
                             </div>
                           </a>
@@ -318,6 +337,51 @@
                                 echo mb_strimwidth($excerpt, 0, 100, '…', 'UTF-8'); // 40バイトに調整
                                 ?>
                               </p>
+
+                              <div class="flex-label">
+                                <div class="post-type-label">
+                                  <?php 
+                                  $post_type = get_post_type();
+                                  $post_type_obj = get_post_type_object($post_type);
+                                  echo esc_html($post_type_obj->labels->singular_name); // 投稿タイプのラベルを表示
+                                  ?>
+                                </div>
+
+                                <p class="slide-taxonomy parent03-color">
+                                  <?php
+                                  // 投稿に紐づく common_category タクソノミーのタームを取得
+                                  $terms = get_the_terms(get_the_ID(), 'common_category');
+
+                                  if ($terms && !is_wp_error($terms)) {
+
+                                      $child_terms = [];
+                                      $parent_terms = [];
+
+                                      foreach ($terms as $term) {
+                                          if ($term->parent == $parent_term->term_id) {
+                                              // 親が指定された parent_term の子カテゴリー
+                                              $child_terms[] = $term->name;
+                                          } elseif ($term->term_id == $parent_term->term_id) {
+                                              // 親カテゴリー自体
+                                              $parent_terms[] = $term->name;
+                                          }
+                                      }
+
+                                      if (!empty($child_terms)) {
+                                          // 子カテゴリーを表示
+                                          foreach ($child_terms as $child_name) {
+                                              echo '<span class="tag">' . esc_html($child_name) . '</span> ';
+                                          }
+                                      } elseif (!empty($parent_terms)) {
+                                          // 子カテゴリーがなければ親カテゴリーを表示
+                                          foreach ($parent_terms as $parent_name) {
+                                              echo '<span class="tag">' . esc_html($parent_name) . '</span> ';
+                                          }
+                                      }
+                                  }
+                                  ?>
+                                </p>
+                              </div>
   
                             </div>
                           </a>

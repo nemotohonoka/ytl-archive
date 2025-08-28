@@ -157,6 +157,7 @@ body.home {
     
               .text-box {
                 padding: 0 20px 20px;
+                
                 .slide-title {
                   color: black;
                   font-weight: bold;
@@ -170,6 +171,18 @@ body.home {
                   line-height: 1.5em;
                   margin-bottom: 10px;
                 }
+
+                .post-type-label {
+                  display: inline;
+                  color: #011976;
+                  font-weight: bold;
+                  margin-right: 10px;
+                  padding: 7px 6px 7px 10px;
+                  font-size: 11px;
+                  border-radius: 100px;
+                  background: #EBEBEB;
+                }
+
                 .slide-taxonomy {
                   display: inline;
                   padding: 7px 10px;
