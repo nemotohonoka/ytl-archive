@@ -32,7 +32,7 @@ Template Name: スキル研修
         if ($parent_term) {
           $query = new WP_Query([
             'post_type'      => ['video_library'],
-            'posts_per_page' => 5,
+            'posts_per_page' => 6,
             'tax_query'      => [
               [
                 'taxonomy'         => 'common_category',
@@ -92,7 +92,7 @@ Template Name: スキル研修
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent01" data-child="child01">
+      <button class="button-more" data-parent="parent03">
         <span>もっと見る</span>
       </button>
     </div>
@@ -112,7 +112,7 @@ Template Name: スキル研修
         if ($parent_term) {
           $query = new WP_Query([
             'post_type'      => ['material'],
-            'posts_per_page' => 5,
+            'posts_per_page' => 6,
             'tax_query'      => [
               [
                 'taxonomy'         => 'common_category',
@@ -172,7 +172,7 @@ Template Name: スキル研修
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent01" data-child="child01">
+      <button class="button-more" data-parent="parent03">
         <span>もっと見る</span>
       </button>
     </div>

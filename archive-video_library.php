@@ -116,7 +116,7 @@ $parents = [
 <div class="video-library-container">
 
     <!-- 親タブ -->
-    <div class="video-library-tabs">
+    <div class="video-library-tabs" id="search-form">
       <h3>動画を探す</h3>
       <div class="flex-box">
         <?php foreach($parents as $slug => $label): ?>

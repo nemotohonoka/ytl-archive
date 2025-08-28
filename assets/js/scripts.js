@@ -245,13 +245,13 @@ jQuery(function($){
   // ---------------------------
   $('.button-more').on('click', function(){
       var parent = $(this).data('parent'); // 例: parent01
-      var child  = $(this).data('child');  // 例: child01
+      var child  = $(this).data('child') || 'all'; // 子がなければ all
 
       // LocalStorage に保存
       localStorage.setItem('videoLibraryFilter', JSON.stringify({ parent: parent, term: child }));
 
       // 動画ライブラリページへ遷移
-      window.location.href = '/video-library/'; // 遷移先URLに置き換えてください
+      window.location.href = '/ytl-archive/video-library#search-form'; // 遷移先URLに置き換えてください
   });
 
 });
