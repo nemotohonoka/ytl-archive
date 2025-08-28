@@ -145,7 +145,7 @@ Template Name: スキル研修
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent03">
+      <button class="button-more library-more" data-parent="parent03">
         <span>もっと見る</span>
       </button>
     </div>
@@ -278,7 +278,7 @@ Template Name: スキル研修
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent03">
+      <button class="button-more library-more" data-parent="parent03">
         <span>もっと見る</span>
       </button>
     </div>

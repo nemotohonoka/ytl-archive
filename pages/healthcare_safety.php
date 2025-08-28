@@ -144,7 +144,7 @@ Template Name: 医療安全
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent02" data-child="child03-parent02">
+      <button class="button-more library-more" data-parent="parent02" data-child="child03-parent02">
         <span>もっと見る</span>
       </button>
     </div>
@@ -275,7 +275,7 @@ Template Name: 医療安全
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent02" data-child="child03-parent02">
+      <button class="button-more library-more" data-parent="parent02" data-child="child03-parent02">
         <span>もっと見る</span>
       </button>
     </div>

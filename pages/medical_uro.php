@@ -145,7 +145,7 @@ Template Name: 腎・泌尿器
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent01" data-child="child04-parent01">
+      <button class="button-more library-more" data-parent="parent01" data-child="child04-parent01">
         <span>もっと見る</span>
       </button>
     </div>
@@ -278,7 +278,7 @@ Template Name: 腎・泌尿器
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent01" data-child="child04-parent01">
+      <button class="button-more library-more" data-parent="parent01" data-child="child04-parent01">
         <span>もっと見る</span>
       </button>
     </div>

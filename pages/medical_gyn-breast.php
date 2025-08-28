@@ -145,7 +145,7 @@ Template Name: 婦人科・乳腺
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent01" data-child="child05-parent01">
+      <button class="button-more library-more" data-parent="parent01" data-child="child05-parent01">
         <span>もっと見る</span>
       </button>
     </div>
@@ -278,7 +278,7 @@ Template Name: 婦人科・乳腺
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent01" data-child="child05-parent01">
+      <button class="button-more library-more" data-parent="parent01" data-child="child05-parent01">
         <span>もっと見る</span>
       </button>
     </div>

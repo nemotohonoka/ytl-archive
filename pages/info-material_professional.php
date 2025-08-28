@@ -145,7 +145,7 @@ Template Name: 医療従事者向け
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent05" data-child="child01-parent05">
+      <button class="button-more library-more" data-parent="parent05" data-child="child01-parent05">
         <span>もっと見る</span>
       </button>
     </div>
@@ -276,7 +276,7 @@ Template Name: 医療従事者向け
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent05" data-child="child01-parent05">
+      <button class="button-more library-more" data-parent="parent05" data-child="child01-parent05">
         <span>もっと見る</span>
       </button>
     </div>
