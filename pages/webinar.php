@@ -141,7 +141,7 @@ Template Name: WEB講演会
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent01" data-child="child01">
+      <button class="button-more" data-parent="parent04">
         <span>もっと見る</span>
       </button>
     </div>
@@ -273,7 +273,7 @@ Template Name: WEB講演会
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent01" data-child="child01">
+      <button class="button-more" data-parent="parent04">
         <span>もっと見る</span>
       </button>
     </div>

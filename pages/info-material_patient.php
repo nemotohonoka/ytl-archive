@@ -144,7 +144,9 @@ Template Name: 患者向け
     </div>
 
     <div class="default-button">
-      <a href="<?php echo home_url(); ?>/about/" class="button-more"><span>もっと見る</span></a>
+      <button class="button-more" data-parent="parent05" data-child="child02-parent05">
+        <span>もっと見る</span>
+      </button>
     </div>
   </section>
 
@@ -273,7 +275,9 @@ Template Name: 患者向け
     </div>
 
     <div class="default-button">
-      <a href="<?php echo home_url(); ?>/about/" class="button-more"><span>もっと見る</span></a>
+      <button class="button-more" data-parent="parent05" data-child="child02-parent05">
+        <span>もっと見る</span>
+      </button>
     </div>
   </section>
 
