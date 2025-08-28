@@ -225,7 +225,7 @@
           </li>
 
           <li class="menu-item">
-            <a href="<?php echo home_url(); ?>/info-material/" class="parent-menu">情報提供資料</a>
+            <a href="<?php echo home_url(); ?>/info-material/" class="parent-menu">情報提供資材</a>
             <div class="submenu">
               <ul>
                 <li><a href="<?php echo home_url(); ?>/healthcare/professional/">医療従事者向け</a></li>
