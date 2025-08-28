@@ -69,25 +69,58 @@ Template Name: 皮膚
                             ?>
                         </p>
   
-                        <p class="slide-taxonomy child01-color">
+                        <div class="flex-label">
+                          <div class="post-type-label">
+                            <?php 
+                            $post_type = get_post_type();
+                            $post_type_obj = get_post_type_object($post_type);
+                            echo esc_html($post_type_obj->labels->singular_name); // 投稿タイプのラベルを表示
+                            ?>
+                          </div>
+
+                          <div class="parent-label">
+                            <?php
+                            // 子カテゴリー
+                            $terms = get_the_terms(get_the_ID(), 'common_category');
+                            if ($terms && !is_wp_error($terms)) {
+                                $child_terms = [];
+                                $parent_terms = [];
+        
+                                foreach ($terms as $term) {
+                                    if ($term->parent != 0) {
+                                        $parent_term = get_term($term->parent, 'common_category');
+                                        $parent_class = $parent_term ? 'cat-' . esc_attr($parent_term->slug) : 'cat-default';
+                                        $child_terms[] = '<span class="cat ' . $parent_class . '">' . esc_html($term->name) . '</span>';
+                                    } else {
+                                        $parent_class = 'cat-' . esc_attr($term->slug);
+                                        $parent_terms[] = '<span class="cat ' . $parent_class . '">' . esc_html($term->name) . '</span>';
+                                    }
+                                }
+        
+                                if (!empty($child_terms)) {
+                                    echo '<div class="categories">' . implode(' ', $child_terms) . '</div>';
+                                } elseif (!empty($parent_terms)) {
+                                    echo '<div class="categories">' . implode(' ', $parent_terms) . '</div>';
+                                }
+                            }
+                            ?>
+                          </div>
+                        </div>
+
+                        <div class="tag-label">
                           <?php
-                          $terms = get_the_terms(get_the_ID(), 'common_category');
-  
-                          if ($terms && !is_wp_error($terms)) {
-                            $child_terms = [];
-                            foreach ($terms as $term) {
-                              if ($term->term_id == $child_term->term_id) {
-                                $child_terms[] = $term->name;
-                              }
+                            // タグ
+                            $tags = get_the_terms(get_the_ID(), 'common_tag');
+                            if ($tags && !is_wp_error($tags)) {
+                              $tag_names = wp_list_pluck($tags, 'name');
+                              $tag_spans = array_map(function($name) {
+                                return '<span class="tag">' . esc_html($name) . '</span>';
+                              }, $tag_names);
+        
+                              echo '<div class="post-tags">' . implode($tag_spans) . '</div>';
                             }
-                            if (!empty($child_terms)) {
-                              foreach ($child_terms as $child_name) {
-                                echo '<span class="tag">' . esc_html($child_name) . '</span> ';
-                              }
-                            }
-                          }
                           ?>
-                        </p>
+                        </div>
                       </div>
                     </a>
                   </div>
@@ -169,25 +202,58 @@ Template Name: 皮膚
                             ?>
                         </p>
   
-                        <p class="slide-taxonomy child01-color">
+                        <div class="flex-label">
+                          <div class="post-type-label">
+                            <?php 
+                            $post_type = get_post_type();
+                            $post_type_obj = get_post_type_object($post_type);
+                            echo esc_html($post_type_obj->labels->singular_name); // 投稿タイプのラベルを表示
+                            ?>
+                          </div>
+
+                          <div class="parent-label">
+                            <?php
+                            // 子カテゴリー
+                            $terms = get_the_terms(get_the_ID(), 'common_category');
+                            if ($terms && !is_wp_error($terms)) {
+                                $child_terms = [];
+                                $parent_terms = [];
+        
+                                foreach ($terms as $term) {
+                                    if ($term->parent != 0) {
+                                        $parent_term = get_term($term->parent, 'common_category');
+                                        $parent_class = $parent_term ? 'cat-' . esc_attr($parent_term->slug) : 'cat-default';
+                                        $child_terms[] = '<span class="cat ' . $parent_class . '">' . esc_html($term->name) . '</span>';
+                                    } else {
+                                        $parent_class = 'cat-' . esc_attr($term->slug);
+                                        $parent_terms[] = '<span class="cat ' . $parent_class . '">' . esc_html($term->name) . '</span>';
+                                    }
+                                }
+        
+                                if (!empty($child_terms)) {
+                                    echo '<div class="categories">' . implode(' ', $child_terms) . '</div>';
+                                } elseif (!empty($parent_terms)) {
+                                    echo '<div class="categories">' . implode(' ', $parent_terms) . '</div>';
+                                }
+                            }
+                            ?>
+                          </div>
+                        </div>
+
+                        <div class="tag-label">
                           <?php
-                          $terms = get_the_terms(get_the_ID(), 'common_category');
-  
-                          if ($terms && !is_wp_error($terms)) {
-                            $child_terms = [];
-                            foreach ($terms as $term) {
-                              if ($term->term_id == $child_term->term_id) {
-                                $child_terms[] = $term->name;
-                              }
+                            // タグ
+                            $tags = get_the_terms(get_the_ID(), 'common_tag');
+                            if ($tags && !is_wp_error($tags)) {
+                              $tag_names = wp_list_pluck($tags, 'name');
+                              $tag_spans = array_map(function($name) {
+                                return '<span class="tag">' . esc_html($name) . '</span>';
+                              }, $tag_names);
+        
+                              echo '<div class="post-tags">' . implode($tag_spans) . '</div>';
                             }
-                            if (!empty($child_terms)) {
-                              foreach ($child_terms as $child_name) {
-                                echo '<span class="tag">' . esc_html($child_name) . '</span> ';
-                              }
-                            }
-                          }
                           ?>
-                        </p>
+                        </div>
                       </div>
                     </a>
                   </div>
@@ -224,24 +290,15 @@ Template Name: 皮膚
         <li class="passive">
           <a href="<?php echo home_url(); ?>/medical/gastro">
             <div class="nav-box">
-              <svg id="グループ_2582" data-name="グループ 2582" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33.116" height="35.064" viewBox="0 0 33.116 35.064">
-                <g id="グループ_2566" data-name="グループ 2566" clip-path="url(#clip-path)">
-                  <path class="icon-path" d="M27.7,35.064h-.012a.586.586,0,0,1-.574-.6,20.266,20.266,0,0,1,2.572-9.657,17.686,17.686,0,0,0,2.053-11.78C30.37,2,19.608,1.275,19.15,1.249l-.042,0a18.939,18.939,0,0,0-6.911.637,11.194,11.194,0,0,0-8.341,9.343c-.01.047-.4,1.78.507,2.547a1.16,1.16,0,0,1,.406.837c.1,1.462-2.2,4.241-3.576,5.768a.072.072,0,0,0-.02.038c.049.13.257.5,1.086.879,1.7.783,1.548,3.094,1.424,3.972a3.667,3.667,0,0,1,1.133,3.318c-.223.993-.411,2.109.177,2.778.529.6,1.717.837,3.432.681a28.9,28.9,0,0,0,7.912-1.912.586.586,0,1,1,.446,1.083,29.529,29.529,0,0,1-8.264,2c-2.154.2-3.6-.154-4.407-1.075-1.03-1.174-.646-2.887-.44-3.808a2.679,2.679,0,0,0-.986-2.388.586.586,0,0,1-.207-.582c.005-.023.484-2.447-.712-3a3,3,0,0,1-1.7-1.55,1.2,1.2,0,0,1,.253-1.216c2.507-2.776,3.421-4.561,3.27-4.942-1.45-1.214-.907-3.565-.883-3.665C4.963-1.38,18.614.009,19.236.08c.595.042,12.206,1.038,13.66,12.806a18.882,18.882,0,0,1-2.164,12.44,19.277,19.277,0,0,0-2.452,9.162.586.586,0,0,1-.586.575" transform="translate(0 0)" fill="#011976"/>
-                  <path class="icon-path" d="M29.993,85.433a.586.586,0,0,1-.581-.518L29.155,82.7a.586.586,0,1,1,1.164-.135l.257,2.218a.586.586,0,0,1-.515.649.579.579,0,0,1-.068,0" transform="translate(-17.896 -50.369)" fill="#011976"/>
-                  <path class="icon-path" d="M34.211,34.8a.588.588,0,0,1-.311-.089,5.954,5.954,0,1,1,6.321,0,.586.586,0,1,1-.622-.993,4.782,4.782,0,1,0-5.076,0,.586.586,0,0,1-.312,1.082" transform="translate(-19.097 -14.554)" fill="#011976"/>
-                  <path class="icon-path" d="M41.067,59.389a3.3,3.3,0,0,1-.912-.129,3.5,3.5,0,0,1-2.523-3.35v-.4a.586.586,0,0,1,.586-.586h5.7a.586.586,0,0,1,.586.586v.4a3.5,3.5,0,0,1-2.523,3.35,3.3,3.3,0,0,1-.912.129m-2.255-3.294a2.325,2.325,0,0,0,1.667,2.039,2.127,2.127,0,0,0,1.176,0,2.326,2.326,0,0,0,1.667-2.039Z" transform="translate(-23.103 -33.719)" fill="#011976"/>
-                  <path class="icon-path" d="M45.6,16.49a.586.586,0,0,1-.586-.586V14.251a.586.586,0,0,1,1.173,0V15.9a.586.586,0,0,1-.586.586" transform="translate(-27.633 -8.389)" fill="#011976"/>
-                  <path class="icon-path" d="M34.514,19.46a.585.585,0,0,1-.508-.293l-.827-1.432a.586.586,0,0,1,1.015-.586l.827,1.432a.586.586,0,0,1-.507.879" transform="translate(-20.321 -10.349)" fill="#011976"/>
-                  <path class="icon-path" d="M26.4,27.574a.583.583,0,0,1-.292-.079l-1.432-.827a.586.586,0,0,1,.586-1.015l1.432.827a.586.586,0,0,1-.293,1.094" transform="translate(-14.968 -15.702)" fill="#011976"/>
-                  <path class="icon-path" d="M23.429,38.659H21.776a.586.586,0,1,1,0-1.172h1.653a.586.586,0,1,1,0,1.172" transform="translate(-13.009 -23.014)" fill="#011976"/>
-                  <path class="icon-path" d="M24.968,49.254a.586.586,0,0,1-.293-1.094l1.432-.827a.586.586,0,0,1,.586,1.015l-1.432.827a.582.582,0,0,1-.292.079" transform="translate(-14.968 -29.011)" fill="#011976"/>
-                  <path class="icon-path" d="M63.949,49.254a.582.582,0,0,1-.292-.079l-1.432-.827a.586.586,0,0,1,.586-1.015l1.432.827a.586.586,0,0,1-.293,1.094" transform="translate(-38.022 -29.011)" fill="#011976"/>
-                  <path class="icon-path" d="M66.789,38.659H65.136a.586.586,0,1,1,0-1.172h1.653a.586.586,0,1,1,0,1.172" transform="translate(-39.629 -23.014)" fill="#011976"/>
-                  <path class="icon-path" d="M62.519,27.574a.586.586,0,0,1-.294-1.094l1.432-.827a.586.586,0,0,1,.586,1.015l-1.432.827a.583.583,0,0,1-.292.079" transform="translate(-38.022 -15.702)" fill="#011976"/>
-                  <path class="icon-path" d="M55.366,19.46a.586.586,0,0,1-.507-.879l.827-1.432a.586.586,0,0,1,1.015.586l-.827,1.432a.585.585,0,0,1-.508.293" transform="translate(-33.631 -10.349)" fill="#011976"/>
-                  <path class="icon-path" d="M42.766,44.2a.587.587,0,0,1-.586-.585L42.168,39.5,40.6,37.537a.934.934,0,0,1,.73-1.514h2.842a.933.933,0,0,1,.733,1.511l-.673.853a.586.586,0,0,1-.92-.726l.368-.466H41.829l1.383,1.74a.582.582,0,0,1,.127.363l.013,4.317a.586.586,0,0,1-.585.588Z" transform="translate(-24.803 -22.115)" fill="#011976"/>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="54.775" height="64.147" viewBox="0 0 54.775 64.147">
+              <g id="グループ_2546" data-name="グループ 2546" transform="translate(0 0)">
+                <g id="グループ_2545" data-name="グループ 2545" transform="translate(0 0)" clip-path="url(#clip-path)">
+                  <path id="パス_10832" data-name="パス 10832" d="M8.718,63.374a.978.978,0,0,1-.91-.618C5.1,55.923,7.749,52.407,9.569,50.919a3.662,3.662,0,0,1,4.538-.013c3.85,3.1,14.3,9.576,28.141,2.649,9.959-4.984,14.59-13.925,12.387-23.915C52.769,21.177,46.52,14.651,40.1,14.459c-5.622-.158-7.525,1.977-9.365,4.051-1.638,1.847-3.332,3.757-7.179,3.757a4.339,4.339,0,0,1-3.22-1.452C16,16.27,16.641,1.557,16.67.932a.978.978,0,1,1,1.954.093c-.189,4.02,0,15.169,3.126,18.44a2.425,2.425,0,0,0,1.8.846c2.967,0,4.18-1.367,5.715-3.1,1.938-2.186,4.358-4.914,10.887-4.709,7.29.218,14.335,7.4,16.388,16.714C58.955,40.141,53.937,49.893,43.124,55.3c-14.858,7.435-26.1.466-30.245-2.876a1.693,1.693,0,0,0-2.072,0c-1.718,1.4-3.317,4.211-1.181,9.6a.979.979,0,0,1-.909,1.339" transform="translate(-2.363 0)" fill="#011976"/>
+                  <path id="パス_10833" data-name="パス 10833" d="M36.543,35.066a6.824,6.824,0,0,1-5.8-3.193A4.282,4.282,0,0,0,27.9,30.084a17.422,17.422,0,0,1-6.875-3.83C12.794,19.228,14.1,1.646,14.16.9a.978.978,0,0,1,1.951.156c-.014.173-1.286,17.332,6.184,23.71a15.514,15.514,0,0,0,6.191,3.452,6.126,6.126,0,0,1,3.878,2.565,4.877,4.877,0,0,0,5.6,2.109.978.978,0,0,1,.657,1.843,6.284,6.284,0,0,1-2.074.331" transform="translate(-4.993 0)" fill="#011976"/>
+                  <path id="パス_10834" data-name="パス 10834" d="M2.356,83.036a.978.978,0,0,1-.879-.549c-.049-.1-4.842-10.2,3.112-17.7,3.521-3.322,7.4-2.05,9.97-1.21.966.317,2.168.711,2.526.5a1.167,1.167,0,0,0,.3-.724c.755-4.334,5.218-5.8,7.2-6.235A4.8,4.8,0,0,1,26.1,53.366a.978.978,0,0,1,1.237,1.515,3.121,3.121,0,0,0-.74,2.881.979.979,0,0,1-.849,1.127c-.056.007-5.732.753-6.437,4.8a2.788,2.788,0,0,1-1.222,2.065c-1.122.674-2.522.215-4.142-.315-2.5-.82-5.343-1.75-8.018.774-6.893,6.5-2.87,15.06-2.7,15.421a.979.979,0,0,1-.881,1.405" transform="translate(0 -18.889)" fill="#011976"/>
                 </g>
-              </svg>
+              </g>
+            </svg>
 
               <p>消化器</p>
             </div>
