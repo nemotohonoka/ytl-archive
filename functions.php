@@ -267,7 +267,7 @@ while ($query->have_posts()) {
 }
 echo '</div>';
 } else {
-    echo '<p>投稿が見つかりませんでした</p>';
+    echo '<p class="nopost">関連する投稿はまだありません。</p>';
 }
 
   wp_reset_postdata();

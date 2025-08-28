@@ -151,12 +151,12 @@
                 </div>
               <?php
               else:
-                  echo '<p>投稿はまだありません。</p>';
+                  echo '<p>関連する投稿はまだありません。</p>';
               endif;
 
               wp_reset_postdata();
             } else {
-              echo '<p>「parent01」カテゴリーが存在しません。</p>';
+              echo '<p>関連する投稿はまだありません。</p>';
             }
           ?>
         </div>
@@ -269,12 +269,12 @@
                 </div>
               <?php
               else:
-                  echo '<p>投稿はまだありません。</p>';
+                  echo '<p>関連する投稿はまだありません。</p>';
               endif;
 
               wp_reset_postdata();
             } else {
-              echo '<p>「parent02」カテゴリーが存在しません。</p>';
+              echo '<p>関連する投稿はまだありません。</p>';
             }
           ?>
         </div>
@@ -396,12 +396,12 @@
                 </div>
               <?php
               else:
-                  echo '<p>投稿はまだありません。</p>';
+                  echo '<p>関連する投稿はまだありません。</p>';
               endif;
 
               wp_reset_postdata();
             } else {
-              echo '<p>「parent03」カテゴリーが存在しません。</p>';
+              echo '<p>関連する投稿はまだありません。</p>';
             }
           ?>
         </div>
