@@ -6,7 +6,7 @@ body.home {
 		.inner {
 			background-image: url(../images/welcome_img_pc.jpg);
 			background-repeat: no-repeat;
-			background-position: center;
+			background-position: right 35% bottom 0px;
 			background-size: cover;
 			height: 100%;
 			width: 100%;
@@ -14,7 +14,7 @@ body.home {
 
       .text-box {
         position: absolute;
-        top: 110px;
+        top: 30%;
         left: 20px;
         .txt {
           display: flex;
@@ -399,7 +399,7 @@ body.home {
 
   @include breakpoint(large-up) {
     #welcome {
-      height: calc(60vh - 60px);
+      height: calc(80vh - 60px);
       .inner {
         .text-box {
           top: 180px;
