@@ -27,7 +27,7 @@ Template Name: 悪性腫瘍
     <div class="posts">
       <?php
       // child01 のタームを取得
-      $child_term = get_term_by('slug', 'child09', 'common_category');
+      $child_term = get_term_by('slug', 'child09-parent01', 'common_category');
 
       if ($child_term) {
         $query = new WP_Query([
@@ -145,7 +145,7 @@ Template Name: 悪性腫瘍
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent01" data-child="child01">
+      <button class="button-more" data-parent="parent01" data-child="child09-parent01">
         <span>もっと見る</span>
       </button>
     </div>
@@ -160,7 +160,7 @@ Template Name: 悪性腫瘍
     <div class="posts">
       <?php
       // child01 のタームを取得
-      $child_term = get_term_by('slug', 'child09', 'common_category');
+      $child_term = get_term_by('slug', 'child09-parent01', 'common_category');
 
       if ($child_term) {
         $query = new WP_Query([
@@ -278,7 +278,7 @@ Template Name: 悪性腫瘍
     </div>
 
     <div class="default-button">
-      <button class="button-more" data-parent="parent01" data-child="child01">
+      <button class="button-more" data-parent="parent01" data-child="child09-parent01">
         <span>もっと見る</span>
       </button>
     </div>
