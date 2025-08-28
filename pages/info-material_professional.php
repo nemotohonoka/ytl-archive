@@ -7,7 +7,7 @@ Template Name: 医療従事者向け
 
 <main>
   <section id="section-title">
-    <h2>情報提供資料</h2>
+    <h2>情報提供資材</h2>
   </section>
 
   <div class="container">
