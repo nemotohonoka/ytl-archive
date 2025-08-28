@@ -93,11 +93,11 @@ $video_query = new WP_Query($args);
       </div>
       <?php endwhile; ?>
     </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
   </div>
-
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-
+  
   <!-- ページネーションはスライダーの外に配置 -->
   <div class="video-pagination"></div>
 <?php endif; wp_reset_postdata(); ?>
