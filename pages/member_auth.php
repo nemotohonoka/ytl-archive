@@ -40,7 +40,7 @@ Template Name:ログイン・会員登録
 
         <div class="flex-box">
           <div class="contents">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL">
+            <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL"> -->
             <div class="title-box">
               <p class="title">疾患別コンテンツ</p>
               <p class="lead">疾患教育や症例フォローに役立つ資材を幅広く制作しています。</p>
@@ -48,7 +48,7 @@ Template Name:ログイン・会員登録
           </div>
 
           <div class="contents">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL">
+            <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL"> -->
             <div class="title-box">
               <p class="title">医療制度コンテンツ</p>
               <p class="lead">医療業界を取り巻く環境変化をふまえ、修得した知識を役立てるようサポートいたします。</p>
@@ -56,7 +56,7 @@ Template Name:ログイン・会員登録
           </div>
 
           <div class="contents">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL">
+            <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL"> -->
             <div class="title-box">
               <p class="title">スキル研修</p>
               <p class="lead">ご要望に合わせた資材作成から研修プランの立案・運営までサポートし、質の高い人材育成をサポートいたします。</p>
