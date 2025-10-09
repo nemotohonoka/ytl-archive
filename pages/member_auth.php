@@ -71,7 +71,7 @@ Template Name:ログイン・会員登録
           </button>
         <?php else : ?>
           <!-- 未ログインなら会員登録ページへ -->
-          <a class="register-link" href="<?php echo esc_url(wp_registration_url()); ?>">
+          <a class="register-link" href="<?php echo home_url(); ?>/signup/">
             会員登録はこちら
           </a>
         <?php endif; ?>
