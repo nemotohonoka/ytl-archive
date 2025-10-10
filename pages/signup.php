@@ -11,11 +11,8 @@ Template Name:新規会員登録フォーム
   </section>
 
 	<div class="container">
-		<?php
-		while ( have_posts() ) : the_post();
-				the_content(); // ← これがないとWPFormsのショートコードも表示されない
-		endwhile;
-		?>
+
+		<?php echo do_shortcode('[wpmem_form register]'); ?>
 
 	</div>
 		

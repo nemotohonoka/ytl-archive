@@ -360,7 +360,58 @@ add_action('wp_ajax_nopriv_fetch_video_library', 'fetch_video_library_posts');
 // add_action('wp_enqueue_scripts', 'enqueue_video_library_scripts');
 
 
+// 管理画面メニュー追加
+add_action('admin_menu', 'wpmem_custom_user_menu');
+function wpmem_custom_user_menu() {
+    add_menu_page(
+        '会員ユーザー一覧',
+        '会員ユーザー一覧',
+        'manage_options',
+        'wpmem-user-list',
+        'wpmem_display_user_list',
+        'dashicons-admin-users',
+        6
+    );
+}
 
+// ユーザー一覧表示
+function wpmem_display_user_list() {
+    if (isset($_POST['wpmem_action'], $_POST['user_id'])) {
+        $user_id = intval($_POST['user_id']);
+        if ($_POST['wpmem_action'] === 'approve') {
+            update_user_meta($user_id, 'wpmem_status', 'active'); // 承認
+        } elseif ($_POST['wpmem_action'] === 'reject') {
+            wp_delete_user($user_id); // 拒否（削除）
+        }
+    }
+
+    $users = get_users(array('role' => 'subscriber'));
+
+    echo '<div class="wrap"><h1>会員ユーザー一覧</h1>';
+    echo '<table class="widefat"><thead><tr><th>ID</th><th>ユーザー名</th><th>メール</th><th>状態</th><th>操作</th></tr></thead><tbody>';
+
+    foreach ($users as $user) {
+        $status = get_user_meta($user->ID, 'wpmem_status', true) ?: 'pending';
+        echo '<tr>';
+        echo '<td>' . $user->ID . '</td>';
+        echo '<td>' . $user->display_name . '</td>';
+        echo '<td>' . $user->user_email . '</td>';
+        echo '<td>' . $status . '</td>';
+        echo '<td>
+            <form method="post" style="display:inline;">
+                <input type="hidden" name="user_id" value="' . $user->ID . '">
+                <button type="submit" name="wpmem_action" value="approve">承認</button>
+            </form>
+            <form method="post" style="display:inline;">
+                <input type="hidden" name="user_id" value="' . $user->ID . '">
+                <button type="submit" name="wpmem_action" value="reject">拒否</button>
+            </form>
+        </td>';
+        echo '</tr>';
+    }
+
+    echo '</tbody></table></div>';
+}
 
 
 
