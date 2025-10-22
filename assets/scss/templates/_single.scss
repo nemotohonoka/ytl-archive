@@ -132,7 +132,7 @@ body.single {
         color: $dark-gray;
       }
       @include breakpoint(medium-up) {
-        width: 68%;
+        // width: 68%;
         margin-bottom: 0;
         h3 {
           font-size: 26px;
