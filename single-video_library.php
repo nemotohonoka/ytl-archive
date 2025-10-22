@@ -139,7 +139,7 @@
     
         <!-- お問い合わせボタン（共通固定） -->
         <div class="contact-btn">
-          <a href="/contact/" class="btn">資材について問い合わせる</a>
+          <a href="<?php echo home_url(); ?>/contact/" class="btn">資材について問い合わせる</a>
         </div>
     
         <?php else : ?>
