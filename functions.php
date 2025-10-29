@@ -361,11 +361,11 @@ add_action('wp_ajax_nopriv_fetch_video_library', 'fetch_video_library_posts');
 
 
 // ====================================================
-// 1. 会員管理者権限作成
+// 会員管理者権限作成
 // ====================================================
 add_action('init', function() {
-  if (!get_role('member_admin')) {
-      add_role('member_admin', '会員管理者', [
+  if (!get_role('user_admin')) {
+      add_role('user_admin', '会員管理者', [
           'read'         => true,
           'list_users'   => true,
           'edit_users'   => true,
@@ -376,12 +376,20 @@ add_action('init', function() {
 });
 
 // ====================================================
-// 2. 新規登録ユーザーは subscriber のみ
+// 管理者に新規申請者（購読者）を非表示
 // ====================================================
-add_action('user_register', function($user_id){
-  $user = new WP_User($user_id);
-  $user->set_role('subscriber');
+add_action('pre_get_users', function($query) {
+  if(!is_admin()) return;
+
+  $current_user = wp_get_current_user();
+  
+  if(current_user_can('administrator')) {
+      // 管理者は購読者を除外
+      $query->set('role__not_in', ['subscriber']);
+  }
 });
+
+
 
 
 // ----------------------------
@@ -421,6 +429,8 @@ add_action('um_registration_complete', function($user_id) {
   wp_mail($admin_email, $subject, $message);
 
 }, 10, 1);
+
+
 
 
 
