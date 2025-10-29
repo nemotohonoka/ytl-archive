@@ -12,8 +12,14 @@ Template Name:新規会員登録フォーム
 
 	<div class="container">
 
-		<?php echo do_shortcode('[wpmem_form register]'); ?>
-
+		<?php
+      // 固定ページ本文を表示
+      while ( have_posts() ) :
+        the_post();
+        the_content();
+      endwhile;
+    ?>
+		
 	</div>
 		
 	

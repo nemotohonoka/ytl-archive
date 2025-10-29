@@ -442,20 +442,20 @@ add_action('admin_menu', function() {
 // ====================================================
 // 6. ユーザー一覧表示制御
 // ====================================================
-add_action('pre_get_users', function($query){
-  if(!is_admin()) return;
+// add_action('pre_get_users', function($query){
+//   if(!is_admin()) return;
 
-  $current_user = wp_get_current_user();
+//   $current_user = wp_get_current_user();
 
-  // 会員管理者は subscriber のみ表示
-  if(in_array('member_admin', $current_user->roles)){
-      $query->set('role', 'subscriber');
-  } 
-  // 管理者は subscriber を非表示、他のユーザーは表示
-  elseif(in_array('administrator', $current_user->roles)){
-      $query->set('role__not_in', ['subscriber']);
-  }
-});
+//   // 会員管理者は subscriber のみ表示
+//   if(in_array('member_admin', $current_user->roles)){
+//       $query->set('role', 'subscriber');
+//   } 
+//   // 管理者は subscriber を非表示、他のユーザーは表示
+//   elseif(in_array('administrator', $current_user->roles)){
+//       $query->set('role__not_in', ['subscriber']);
+//   }
+// });
 
 // // ====================================================
 // // 7. 承認／非承認処理
@@ -570,55 +570,91 @@ add_action('pre_get_users', function($query){
 // }, 10, 3);
 
 
-// 開発環境向け：新規登録時に管理者へ通知メールを飛ばす
-add_action('user_register', function($user_id){
-  // 通知先（開発用に任意のメールアドレスを指定）
-  $notify_email = 'h.nemoto@p-oh.jp'; // ← ここを変更
+// // 1. DBに保存しない：登録前に不要フィールドを削除
+// add_filter('wpmem_post_register_data', function($fields, $user_id = null){
+//   // 保存したくないフィールド
+//   $remove_fields = ['first_name','last_name','company','department','billing_phone','purpose'];
+//   foreach($remove_fields as $key){
+//       unset($fields[$key]);
+//   }
+//   return $fields;
+// }, 10, 2);
 
-  // ユーザー情報
-  $user = get_userdata($user_id);
-  if (!$user) return;
 
-  // nonce と承認/却下リンク（管理者がログインしている必要あり）
-  $approve_nonce = wp_create_nonce('wpmem_approve_' . $user_id);
-  $deny_nonce    = wp_create_nonce('wpmem_deny_' . $user_id);
+// // 2. メール送信：登録後に必ず実行
+// add_action('user_register', function($user_id){
+//   $notify_email = 'h.nemoto@p-oh.jp'; // 管理者メール
 
-  $approve_url = admin_url( 'admin-post.php?action=wpmem_approve&user=' . $user_id . '&_wpnonce=' . $approve_nonce );
-  $deny_url    = admin_url( 'admin-post.php?action=wpmem_deny&user='  . $user_id . '&_wpnonce=' . $deny_nonce );
+//   $user = get_userdata($user_id);
+//   if (!$user) return;
 
-  // メール件名・本文（プレーンテキスト & HTMLどちらでも可）
-  $subject = sprintf('【テスト通知】新規会員申請: %s', $user->user_login);
+//   // $_POSTから追加情報を取得（DBには保存されない）
+//   $extra_fields = [
+//       'first_name'   => isset($_POST['first_name']) ? sanitize_text_field($_POST['first_name']) : '',
+//       'last_name'    => isset($_POST['last_name']) ? sanitize_text_field($_POST['last_name']) : '',
+//       'company'      => isset($_POST['company']) ? sanitize_text_field($_POST['company']) : '',
+//       'department'   => isset($_POST['department']) ? sanitize_text_field($_POST['department']) : '',
+//       'billing_phone'=> isset($_POST['billing_phone']) ? sanitize_text_field($_POST['billing_phone']) : '',
+//       'purpose'      => isset($_POST['purpose']) ? sanitize_text_field($_POST['purpose']) : '',
+//   ];
 
-  $message_plain = "";
-  $message_plain .= "新しい会員申請がありました。\n\n";
-  $message_plain .= "ユーザー名: " . $user->user_login . "\n";
-  $message_plain .= "メール: " . $user->user_email . "\n";
-  $message_plain .= "ユーザーID: " . $user_id . "\n\n";
-  $message_plain .= "管理者承認リンク（管理画面にログインした状態で開いてください）\n";
-  $message_plain .= "承認: " . $approve_url . "\n";
-  $message_plain .= "非承認: " . $deny_url . "\n\n";
-  $message_plain .= "----\n開発環境用自動通知";
+//   // ユーザー編集ページリンク
+//   $user_edit_url = admin_url('user-edit.php?user_id=' . $user_id);
 
-  // HTML形式の本文（任意）
-  $message_html = '<p>新しい会員申請がありました。</p>';
-  $message_html .= '<ul>';
-  $message_html .= '<li>ユーザー名: ' . esc_html($user->user_login) . '</li>';
-  $message_html .= '<li>メール: ' . esc_html($user->user_email) . '</li>';
-  $message_html .= '<li>ユーザーID: ' . intval($user_id) . '</li>';
-  $message_html .= '</ul>';
-  $message_html .= '<p>管理者承認リンク（管理画面にログインした状態で開いてください）:<br>';
-  $message_html .= '<a href="' . esc_url($approve_url) . '">承認する</a> | <a href="' . esc_url($deny_url) . '">非承認にする</a></p>';
+//   // メール件名・本文
+//   $subject = sprintf('【新規会員申請】%s', $user->user_login);
 
-  // ヘッダ（HTMLメールを送りたい場合）
-  $headers = ["Content-Type: text/html; charset=UTF-8"];
+//   $message_html = '<p>新しい会員申請がありました。</p><ul>';
+//   $message_html .= '<li>ユーザー名: ' . esc_html($user->user_login) . '</li>';
+//   $message_html .= '<li>メール: ' . esc_html($user->user_email) . '</li>';
+//   foreach($extra_fields as $key => $value){
+//       $message_html .= '<li>' . esc_html(ucfirst(str_replace('_',' ',$key))) . ': ' . esc_html($value) . '</li>';
+//   }
+//   $message_html .= '</ul><p>ユーザー詳細ページ:<br>';
+//   $message_html .= '<a href="' . esc_url($user_edit_url) . '" target="_blank">ユーザー詳細を確認する</a></p>';
 
-  // 送信（HTML優先、ダメならプレーンテキスト）
-  $sent = wp_mail($notify_email, $subject, $message_html, $headers);
-  if(!$sent){
-      // 何かあればプレーン送信で再試行
-      wp_mail($notify_email, $subject, $message_plain);
-  }
-});
+//   $headers = ["Content-Type: text/html; charset=UTF-8"];
+//   wp_mail($notify_email, $subject, $message_html, $headers);
+// });
+
+
+// ----------------------------
+// Ultimate Member: 任意のフィールドをDBに保存せずメール通知
+// ----------------------------
+
+add_action('um_registration_complete', function($user_id) {
+  // POSTデータから各フィールドを取得
+  $user_name        = isset($_POST['user_name']) ? sanitize_text_field($_POST['user_name']) : '';
+  $company     = isset($_POST['company']) ? sanitize_text_field($_POST['company']) : '';
+  $department  = isset($_POST['department']) ? sanitize_text_field($_POST['department']) : '';
+  $phone       = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
+  $purpose     = isset($_POST['purpose']) ? sanitize_text_field($_POST['purpose']) : '';
+
+  // 念のためユーザーメタから削除
+  delete_user_meta($user_id, 'user_name');
+  delete_user_meta($user_id, 'company');
+  delete_user_meta($user_id, 'department');
+  delete_user_meta($user_id, 'phone');
+  delete_user_meta($user_id, 'purpose');
+
+  // ----------------------------
+  // 任意のメールアドレスに通知
+  // ----------------------------
+  $admin_email = 'h.nemoto@p-oh.jp'; // 開発環境用
+  $user_info   = get_userdata($user_id);
+
+  $subject = '新規ユーザー登録通知';
+  $message = "以下のユーザーが登録しました。\n\n";
+  $message .= "ユーザー名: " . $user_info->user_login . "\n";
+  $message .= "氏名: " . $user_name . "\n";
+  $message .= "会社名: " . $company . "\n";
+  $message .= "部署: " . $department . "\n";
+  $message .= "電話番号: " . $phone . "\n";
+  $message .= "ご利用目的: " . $purpose . "\n";
+
+  wp_mail($admin_email, $subject, $message);
+
+}, 10, 1);
 
 
 
