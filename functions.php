@@ -360,58 +360,268 @@ add_action('wp_ajax_nopriv_fetch_video_library', 'fetch_video_library_posts');
 // add_action('wp_enqueue_scripts', 'enqueue_video_library_scripts');
 
 
-// 管理画面メニュー追加
-add_action('admin_menu', 'wpmem_custom_user_menu');
-function wpmem_custom_user_menu() {
-    add_menu_page(
-        '会員ユーザー一覧',
-        '会員ユーザー一覧',
-        'manage_options',
-        'wpmem-user-list',
-        'wpmem_display_user_list',
-        'dashicons-admin-users',
-        6
-    );
-}
+// ====================================================
+// 1. 会員管理者権限作成
+// ====================================================
+add_action('init', function() {
+  if (!get_role('member_admin')) {
+      add_role('member_admin', '会員管理者', [
+          'read'         => true,
+          'list_users'   => true,
+          'edit_users'   => true,
+          'promote_users'=> true,
+          'delete_users' => true, // 削除権限を付与
+      ]);
+  }
+});
 
-// ユーザー一覧表示
-function wpmem_display_user_list() {
-    if (isset($_POST['wpmem_action'], $_POST['user_id'])) {
-        $user_id = intval($_POST['user_id']);
-        if ($_POST['wpmem_action'] === 'approve') {
-            update_user_meta($user_id, 'wpmem_status', 'active'); // 承認
-        } elseif ($_POST['wpmem_action'] === 'reject') {
-            wp_delete_user($user_id); // 拒否（削除）
-        }
-    }
+// ====================================================
+// 2. 新規登録ユーザーは subscriber のみ
+// ====================================================
+add_action('user_register', function($user_id){
+  $user = new WP_User($user_id);
+  $user->set_role('subscriber');
+});
 
-    $users = get_users(array('role' => 'subscriber'));
+// // ====================================================
+// // 2. 新規登録ユーザーは subscriber & pending
+// // ====================================================
+// add_action('user_register', function($user_id){
+//   update_user_meta($user_id, 'wpmem_status', 'pending');
+// });
+// add_action('wpmem_post_register', function($user_id){
+//   update_user_meta($user_id, 'wpmem_status', 'pending');
+// });
 
-    echo '<div class="wrap"><h1>会員ユーザー一覧</h1>';
-    echo '<table class="widefat"><thead><tr><th>ID</th><th>ユーザー名</th><th>メール</th><th>状態</th><th>操作</th></tr></thead><tbody>';
+// ====================================================
+// 3. 会員管理者の管理画面メニューを制限（ユーザー一覧のみ）
+// ====================================================
+add_action('admin_menu', function() {
+  $current_user = wp_get_current_user();
+  if (in_array('member_admin', $current_user->roles)) {
+      remove_menu_page('index.php');           
+      remove_menu_page('edit.php');            
+      remove_menu_page('edit.php?post_type=page'); 
+      remove_menu_page('upload.php');          
+      remove_menu_page('edit-comments.php');  
+      remove_menu_page('themes.php');          
+      remove_menu_page('plugins.php');         
+      remove_menu_page('tools.php');           
+      remove_menu_page('options-general.php'); 
+  }
+});
 
-    foreach ($users as $user) {
-        $status = get_user_meta($user->ID, 'wpmem_status', true) ?: 'pending';
-        echo '<tr>';
-        echo '<td>' . $user->ID . '</td>';
-        echo '<td>' . $user->display_name . '</td>';
-        echo '<td>' . $user->user_email . '</td>';
-        echo '<td>' . $status . '</td>';
-        echo '<td>
-            <form method="post" style="display:inline;">
-                <input type="hidden" name="user_id" value="' . $user->ID . '">
-                <button type="submit" name="wpmem_action" value="approve">承認</button>
-            </form>
-            <form method="post" style="display:inline;">
-                <input type="hidden" name="user_id" value="' . $user->ID . '">
-                <button type="submit" name="wpmem_action" value="reject">拒否</button>
-            </form>
-        </td>';
-        echo '</tr>';
-    }
+// // ====================================================
+// // 4. ユーザー一覧に承認ステータス列を追加
+// // ====================================================
+// add_filter('manage_users_columns', function($columns){
+//   $columns['wpmem_status'] = '承認ステータス';
+//   return $columns;
+// });
 
-    echo '</tbody></table></div>';
-}
+// // ====================================================
+// // 5. 承認ステータス列に値を表示
+// // ====================================================
+// add_action('manage_users_custom_column', function($value, $column_name, $user_id){
+//   if($column_name !== 'wpmem_status') return $value;
+
+//   $status = get_user_meta($user_id, 'wpmem_status', true);
+
+//   switch($status){
+//       case 'pending':
+//           return '<span style="color:orange;">承認待ち</span>';
+//       case 'active':
+//           return '<span style="color:green;">承認済み</span>';
+//       case 'denied':
+//           return '<span style="color:red;">非承認</span>';
+//       default:
+//           return '未設定';
+//   }
+// }, 10, 3);
+
+// ====================================================
+// 6. ユーザー一覧表示制御
+// ====================================================
+add_action('pre_get_users', function($query){
+  if(!is_admin()) return;
+
+  $current_user = wp_get_current_user();
+
+  // 会員管理者は subscriber のみ表示
+  if(in_array('member_admin', $current_user->roles)){
+      $query->set('role', 'subscriber');
+  } 
+  // 管理者は subscriber を非表示、他のユーザーは表示
+  elseif(in_array('administrator', $current_user->roles)){
+      $query->set('role__not_in', ['subscriber']);
+  }
+});
+
+// // ====================================================
+// // 7. 承認／非承認処理
+// // ====================================================
+// // 承認処理
+// add_action('admin_post_wpmem_approve', function(){
+//   $user_id = intval($_GET['user']);
+//   $current_user = wp_get_current_user();
+
+//   // 権限チェック
+//   if(!in_array('member_admin', $current_user->roles)) wp_die('権限がありません');
+//   if(!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'wpmem_approve_'.$user_id)) wp_die('不正な操作です');
+
+//   // WP-Members が読み込まれていなければ後で実行
+//   if(!function_exists('wpmem_approve_user')){
+//       add_action('plugins_loaded', function() use ($user_id){
+//           if(function_exists('wpmem_approve_user')){
+//               wpmem_approve_user($user_id); // 内部承認
+//               update_user_meta($user_id, 'wpmem_status', 'active'); // 一覧表示用
+//           }
+//       });
+//   } else {
+//       wpmem_approve_user($user_id); // 内部承認
+//       update_user_meta($user_id, 'wpmem_status', 'active'); // 一覧表示用
+//   }
+
+//   // 承認メール
+//   $user = get_userdata($user_id);
+//   wp_mail($user->user_email, '会員登録承認のお知らせ', 'あなたの会員登録が承認されました。ログイン可能です。');
+
+//   wp_redirect(admin_url('users.php'));
+//   exit;
+// });
+
+// // 非承認処理
+// add_action('admin_post_wpmem_deny', function(){
+//   $user_id = intval($_GET['user']);
+//   $current_user = wp_get_current_user();
+
+//   // 権限チェック
+//   if(!in_array('member_admin', $current_user->roles)) wp_die('権限がありません');
+//   if(!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'wpmem_deny_'.$user_id)) wp_die('不正な操作です');
+
+//   // WP-Members が読み込まれていなければ後で実行
+//   if(!function_exists('wpmem_deny_user')){
+//       add_action('plugins_loaded', function() use ($user_id){
+//           if(function_exists('wpmem_deny_user')){
+//               wpmem_deny_user($user_id); // 内部非承認
+//               update_user_meta($user_id, 'wpmem_status', 'denied'); // 一覧表示用
+//           }
+//       });
+//   } else {
+//       wpmem_deny_user($user_id); // 内部非承認
+//       update_user_meta($user_id, 'wpmem_status', 'denied'); // 一覧表示用
+//   }
+
+//   // 非承認メール
+//   $user = get_userdata($user_id);
+//   wp_mail($user->user_email, '会員登録不承認のお知らせ', '申し訳ありません。あなたの会員登録は不承認となりました。');
+
+//   wp_redirect(admin_url('users.php'));
+//   exit;
+// });
+
+// // ====================================================
+// // 8. 会員管理者が subscriber を削除可能にする
+// // ====================================================
+// add_filter('map_meta_cap', function($caps, $cap, $user_id, $args){
+//   if($cap === 'delete_user'){
+//       $target_user_id = $args[0] ?? 0;
+//       if(!$target_user_id) return $caps;
+
+//       $current_user = get_userdata($user_id);
+//       $target_user  = get_userdata($target_user_id);
+//       if(!$current_user || !$target_user) return $caps;
+
+//       if(in_array('member_admin', $current_user->roles) && in_array('subscriber', $target_user->roles)){
+//           return ['exist']; // subscriber を削除可能
+//       }
+//   }
+//   return $caps;
+// }, 10, 4);
+
+// // ====================================================
+// // 9. ユーザー一覧に承認／非承認ボタンを追加
+// // ====================================================
+// add_filter('manage_users_columns', function($columns){
+//   $columns['wpmem_action'] = '操作';
+//   return $columns;
+// });
+
+// add_action('manage_users_custom_column', function($value, $column_name, $user_id){
+//   if($column_name !== 'wpmem_action') return $value;
+
+//   $current_user = wp_get_current_user();
+//   if(!in_array('member_admin', $current_user->roles)) return $value;
+
+//   $status = get_user_meta($user_id, 'wpmem_status', true);
+
+//   if($status === 'pending'){
+//       $approve_url = wp_nonce_url(admin_url('admin-post.php?action=wpmem_approve&user=' . $user_id), 'wpmem_approve_'.$user_id);
+//       $deny_url    = wp_nonce_url(admin_url('admin-post.php?action=wpmem_deny&user=' . $user_id), 'wpmem_deny_'.$user_id);
+
+//       return '<a href="'.$approve_url.'" class="button button-primary">承認</a> '.
+//              '<a href="'.$deny_url.'" class="button button-secondary">非承認</a>';
+//   } elseif($status === 'active'){
+//       return '承認済み';
+//   } elseif($status === 'denied'){
+//       return '非承認';
+//   }
+//   return '';
+// }, 10, 3);
+
+
+// 開発環境向け：新規登録時に管理者へ通知メールを飛ばす
+add_action('user_register', function($user_id){
+  // 通知先（開発用に任意のメールアドレスを指定）
+  $notify_email = 'h.nemoto@p-oh.jp'; // ← ここを変更
+
+  // ユーザー情報
+  $user = get_userdata($user_id);
+  if (!$user) return;
+
+  // nonce と承認/却下リンク（管理者がログインしている必要あり）
+  $approve_nonce = wp_create_nonce('wpmem_approve_' . $user_id);
+  $deny_nonce    = wp_create_nonce('wpmem_deny_' . $user_id);
+
+  $approve_url = admin_url( 'admin-post.php?action=wpmem_approve&user=' . $user_id . '&_wpnonce=' . $approve_nonce );
+  $deny_url    = admin_url( 'admin-post.php?action=wpmem_deny&user='  . $user_id . '&_wpnonce=' . $deny_nonce );
+
+  // メール件名・本文（プレーンテキスト & HTMLどちらでも可）
+  $subject = sprintf('【テスト通知】新規会員申請: %s', $user->user_login);
+
+  $message_plain = "";
+  $message_plain .= "新しい会員申請がありました。\n\n";
+  $message_plain .= "ユーザー名: " . $user->user_login . "\n";
+  $message_plain .= "メール: " . $user->user_email . "\n";
+  $message_plain .= "ユーザーID: " . $user_id . "\n\n";
+  $message_plain .= "管理者承認リンク（管理画面にログインした状態で開いてください）\n";
+  $message_plain .= "承認: " . $approve_url . "\n";
+  $message_plain .= "非承認: " . $deny_url . "\n\n";
+  $message_plain .= "----\n開発環境用自動通知";
+
+  // HTML形式の本文（任意）
+  $message_html = '<p>新しい会員申請がありました。</p>';
+  $message_html .= '<ul>';
+  $message_html .= '<li>ユーザー名: ' . esc_html($user->user_login) . '</li>';
+  $message_html .= '<li>メール: ' . esc_html($user->user_email) . '</li>';
+  $message_html .= '<li>ユーザーID: ' . intval($user_id) . '</li>';
+  $message_html .= '</ul>';
+  $message_html .= '<p>管理者承認リンク（管理画面にログインした状態で開いてください）:<br>';
+  $message_html .= '<a href="' . esc_url($approve_url) . '">承認する</a> | <a href="' . esc_url($deny_url) . '">非承認にする</a></p>';
+
+  // ヘッダ（HTMLメールを送りたい場合）
+  $headers = ["Content-Type: text/html; charset=UTF-8"];
+
+  // 送信（HTML優先、ダメならプレーンテキスト）
+  $sent = wp_mail($notify_email, $subject, $message_html, $headers);
+  if(!$sent){
+      // 何かあればプレーン送信で再試行
+      wp_mail($notify_email, $subject, $message_plain);
+  }
+});
+
+
+
 
 
 
