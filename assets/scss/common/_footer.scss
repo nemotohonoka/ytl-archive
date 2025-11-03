@@ -1,6 +1,7 @@
 #global-footer {
   .contact {
     background-image: url('../images/footer_background.jpg');
+    background-size: cover;
     .container {
       padding: 50px 30px;
       .text-area {
@@ -13,48 +14,64 @@
         }
       }
       .contact-button {
-        ul {
-          li {
-            margin: 0 auto;
-            &:first-child {
-              margin-bottom: 30px;
+        a {
+          background: white;
+          border-radius: 5px;
+          padding: 20px;
+          border-radius: 100px;
+          width: 300px;
+          display: block;
+          position: relative;
+          margin: 0 auto;
+
+          &::after {
+            font-family: FontAwesome;
+            content: "\f105";
+            font-size: 20px;
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            color: #011976;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+          }
+
+          .flex-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            svg {
+              margin-bottom: 0;
+              margin-right: 10px;
             }
-            a {
-              background: white;
-              border-radius: 5px;
-              padding: 25px 0;
-              border-radius: 100px;
-              width: 300px;
-              display: block;
-              position: relative;
-              margin: 0 auto;
+            span {
+              font-weight: bold;
+              color: #011976;
+              margin-right: 20px;
+              font-size: 15px;
+            }
+          }
+
+          @media (hover: hover) {
+            &:hover {
+              background: #011976;
+              transition: all 0.3s;
 
               &::after {
-                font-family: FontAwesome;
-                content: "\f105";
-                font-size: 20px;
-                position: absolute;
-                right: 1.5rem;
-                top: 50%;
-                color: #011976;
-                -webkit-transform: translateY(-50%);
-                transform: translateY(-50%);
+                color: white;
+                transition: all 0.3s;
               }
-
-              .flex-box {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                svg {
-                  margin-bottom: 0;
-                  margin-right: 20px;
+              svg {
+                g {
+                  path {
+                    fill: white;
+                    transition: all 0.3s;
+                  }
                 }
-                span {
-                  font-weight: bold;
-                  color: #011976;
-                  margin-right: 20px;
-                  font-size: 17px;
-                }
+              }
+              span {
+                color: white;
+                transition: all 0.3s;
               }
             }
           }
@@ -124,39 +141,6 @@
             text-align: center;
             span {
               display: block;
-            }
-          }
-        }
-
-        .contact-button {
-          ul {
-            display: flex;
-            li {
-              a {
-                @media (hover: hover) {
-                  &:hover {
-                    background: #011976;
-                    transition: all 0.3s;
-
-                    &::after {
-                      color: white;
-                      transition: all 0.3s;
-                    }
-                    svg {
-                      g {
-                        path {
-                          fill: white;
-                          transition: all 0.3s;
-                        }
-                      }
-                    }
-                    span {
-                      color: white;
-                      transition: all 0.3s;
-                    }
-                  }
-                }
-              }
             }
           }
         }
