@@ -287,6 +287,10 @@ body.page-template-pages {
   @include breakpoint(medium-up) {
     #section-title {
       height: 200px;
+      padding-left: 60px;
+      h2 {
+        font-size: 30px;
+      }
     }
 
     #section-contents-list {
