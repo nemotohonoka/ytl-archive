@@ -120,11 +120,38 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
+          <a href="<?php echo home_url(); ?>/medical/cardio/">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon13.svg" alt="循環器">
+            </figure>
+            <p>循環器</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?php echo home_url(); ?>/medical/metabolic/">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon14.svg" alt="代謝・内分泌">
+            </figure>
+            <p>代謝・内分泌</p>
+          </a>
+        </li>
+
+        <li>
           <a href="<?php echo home_url(); ?>/medical/stats/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon12.svg" alt="統計">
             </figure>
             <p>統計</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?php echo home_url(); ?>/medical/other/">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon15.svg" alt="その他">
+            </figure>
+            <p>その他</p>
           </a>
         </li>
       </ul>
