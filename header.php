@@ -200,7 +200,10 @@
                 <li><a href="<?php echo home_url(); ?>/medical/onco/">悪性腫瘍</a></li>
                 <li><a href="<?php echo home_url(); ?>/medical/rare/">希少疾患</a></li>
                 <li><a href="<?php echo home_url(); ?>/medical/hema/">血液疾患</a></li>
-                <li class="last-row"><a href="<?php echo home_url(); ?>/medical/stats/">統計</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/cardio/">循環器</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/metabolic/">代謝・内分泌</a></li>
+                <li><a href="<?php echo home_url(); ?>/medical/stats/">統計</a></li>
+                <li class="last-row"><a href="<?php echo home_url(); ?>/medical/other/">その他</a></li>
               </ul>
             </div>
           </li>
