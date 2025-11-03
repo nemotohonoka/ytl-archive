@@ -236,5 +236,11 @@
         </ul>
       </nav>
     </div>
+
+    <div class="information-button">
+			<button class="fixed_btn">
+				<a href="<?php echo home_url(); ?>/contact/">お問い合わせ</a>
+			</button>
+		</div>
     
   </div>

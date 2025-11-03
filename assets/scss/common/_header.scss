@@ -246,7 +246,58 @@
     display: none;
   }
 
+  .information-button {
+    display: block;
+    .fixed_btn{
+      border: 0;
+      position: fixed;
+      bottom: 10px; 
+      right: 10px;
+      z-index: 9;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      border: 1.5px solid #011976;
+      border-radius: 100px;
+      padding: 0;
+      width: 110px;
+      height: 110px;
+      a {
+        display: block;
+        padding: 50px 10px 17px;
+        position: relative;
+        color: #011976;
+        font-weight: bold;
+        font-size: 13px;
+            
+        &::before {
+          position: absolute;
+          content: "";
+          background-image: url(../images/contact.svg);
+          background-size: contain;
+          background-repeat: no-repeat;
+          width: 33px;
+          height: 33px;
+          left: 39px;
+          top: 12px;
+        }
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: #e1f4ff;
+          transition: all 0.3s;
+        }
+      }
+    }
+  }
+
   @include breakpoint(medium-up) {
+    .information-button {
+      .fixed_btn {
+        bottom: 30px; 
+      right: 30px;
+      }
+    }
     .header--inner {
       .right-box {
         nav.sp-nav {
