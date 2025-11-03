@@ -136,11 +136,15 @@ body.page-template-member_auth {
               font-size: 13px;
             }
           }
+          .last {
+            margin-bottom: 0;
+          }
         }
       }
 
       .register-link {
         margin: 0 auto;
+        margin-bottom: 50px;
         display: block;
         padding: 15px 0;
         width: 200px;
@@ -233,6 +237,7 @@ body.page-template-member_auth {
               flex-direction: column;
               justify-content: center;
               padding: 20px;
+              margin-bottom: 0;
             }
           }
         }

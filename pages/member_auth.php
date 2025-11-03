@@ -38,6 +38,18 @@ Template Name:ログイン・会員登録
           <span>詳細な資材の閲覧には、会員登録（審査制）が必要です。</span>
         </p>
 
+        <?php if (is_user_logged_in()) : ?>
+          <!-- ログイン済みならクリックでメッセージ -->
+          <button type="button" class="register-link" onclick="alert('ログイン済みです');">
+            会員登録はこちら
+          </button>
+        <?php else : ?>
+          <!-- 未ログインなら会員登録ページへ -->
+          <a class="register-link" href="<?php echo home_url(); ?>/signup/">
+            会員登録はこちら
+          </a>
+        <?php endif; ?>
+
         <div class="flex-box">
           <div class="contents">
             <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL"> -->
@@ -57,24 +69,12 @@ Template Name:ログイン・会員登録
 
           <div class="contents">
             <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/login_contents01.jpg" alt="YTL"> -->
-            <div class="title-box">
+            <div class="title-box last">
               <p class="title">スキル研修</p>
               <p class="lead">ご要望に合わせた資材作成から研修プランの立案・運営までサポートし、質の高い人材育成をサポートいたします。</p>
             </div>
           </div>
         </div>
-
-        <?php if (is_user_logged_in()) : ?>
-          <!-- ログイン済みならクリックでメッセージ -->
-          <button type="button" class="register-link" onclick="alert('ログイン済みです');">
-            会員登録はこちら
-          </button>
-        <?php else : ?>
-          <!-- 未ログインなら会員登録ページへ -->
-          <a class="register-link" href="<?php echo home_url(); ?>/signup/">
-            会員登録はこちら
-          </a>
-        <?php endif; ?>
       </div>
     </div>
 
