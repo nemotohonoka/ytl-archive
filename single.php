@@ -5,9 +5,7 @@
     <h2>お知らせ</h2>
   </section>
 
-<div class="container">
-		
-		
+	<div class="container">
 		<?php if(have_posts()): ?>
 		<ul class="breadcrumb">
 			<li><a href="<?php echo home_url(); ?>/news/">ニュース一覧</a></li>
@@ -21,9 +19,6 @@
 		?>
 		
 		<div class="flexbox">
-			
-			
-			
 			<article>
 				<div class="top">
 					<div class="information">
@@ -37,16 +32,14 @@
 				</div>
 	
 				<ul class="button_area">
-  					<?php if (get_previous_post()):?>
-  						<li class="prev"><?php previous_post_link('%link', '前の記事'); ?></li>
-  					<?php endif; ?>
-  
-  
-  					<?php if (get_next_post()):?>
-  						<li class="next"><?php next_post_link('%link', '次の記事'); ?></li>
-  					<?php endif; ?>
-  
-  				</ul>
+					<?php if (get_previous_post()):?>
+						<li class="prev"><?php previous_post_link('%link', '前の記事'); ?></li>
+					<?php endif; ?>
+
+					<?php if (get_next_post()):?>
+						<li class="next"><?php next_post_link('%link', '次の記事'); ?></li>
+					<?php endif; ?>
+				</ul>
 			</article>
 		  <?php endwhile;endif; ?>
 
@@ -59,20 +52,10 @@
 						)
 					);
 				?>
-				<?php if($the_query->have_posts()): ?>
-				<!-- <section class="latest">
-					<h3>最近のニュース</h3>
-					<ul class="article_list">
-						<?php while($the_query->have_posts()):$the_query->the_post(); ?>
-						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-						<?php endwhile; ?>
-					</ul>
-				</section> -->
-				<?php endif; ?>
 				<?php wp_reset_postdata(); ?>
 				
 				<section class="archive">
-					<h3>ARCHIVE</h3>
+					<h3>アーカイブ</h3>
 					<ul>
 						<?php wp_get_archives(); ?>
 					</ul>

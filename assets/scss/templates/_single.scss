@@ -46,8 +46,8 @@ body.single {
           margin-bottom: 6px;
           min-width: 100px;
           text-align: center;
-          background: black;
-          font-family: "presicav";
+          background: #011976;
+          border-radius: 100px;
         }
       }
     }
@@ -86,23 +86,13 @@ body.single {
         font-size: 14px;
         margin: 0 10px;
       }
-      .index {
-        font-family: "presicav";
-        a {
-          color: white;
-          background-color: #EA452F;
-          padding: 8px 30px;
-          display: block;
-          &:hover {
-            color: $white;
-            background: #B43625;
-          }
-        }
-      }
       .next, .prev {
         a {
-          color: #EA452F;
-          font-size: 20px;
+          color: #011976;
+          font-size: 15px;
+          border: 1px solid;
+          padding: 10px 13px;
+          border-radius: 100px;
         }
       }
     }
@@ -175,7 +165,7 @@ body.single {
       section {
         h3 {
           font-weight: bold;
-          color: $primary-color;
+          color: #011976;
           font-size: 18px;
           margin: 0 -15px 10px;
           padding: 5px 15px;
@@ -184,15 +174,15 @@ body.single {
           list-style: none;
           padding: 0;
           li {
-            border-bottom: 1px dotted $primary-color;
+            border-bottom: 1px dotted #011976;
             font-size: 14px;
             a {
               display: block;
               padding: 5px;
               word-break: break-all;
-              color: #392400;
+              color: black;
               &:hover {
-                color: #A39885;
+                color: #0092E6;
               }
             }
           }
@@ -220,6 +210,12 @@ body.single {
         padding: 4px;
       }
       
+    }
+
+    @include breakpoint(medium-up) {
+      .container {
+        margin-bottom: 80px;
+      }
     }
 
 }
