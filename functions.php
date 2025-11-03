@@ -49,8 +49,7 @@ function get_description() {
     $description = get_the_excerpt();
   }
   elseif(is_front_page()) {
-    $description = "ためとこは、薬剤師の生涯学習を支援するための単位管理アプリです。最短5分から学習できるコンテンツのほか、研修認定薬剤師の取得済み単位シールや、単位
-    証明書の登録による、便利な単位管理システムも備えています。";
+    $description = "人材育成を通じ、医療への貢献を目指します。私たちYTLは、患者様や医療従事者に寄り添った活動ができる「学び」のサポートをいたします。";
   }
   elseif(is_page()) {
     $description = get_the_excerpt();
