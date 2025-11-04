@@ -112,6 +112,8 @@
           <?php the_content(); ?>
         </div>
         <?php if ( is_user_logged_in() ) : ?>
+
+          <h4 class="sample-title">サンプル動画</h4>
     
         <!-- Vimeo動画 -->
         <?php if ( $video_url = get_field('video_url') ) : ?>
@@ -132,9 +134,16 @@
           <?php endif; ?>
         <?php endif; ?>
     
+        <h4 class="sample-title">仕様</h4>
         <!-- 補足テキスト -->
         <?php if ( $extra_text = get_field('extra_text') ) : ?>
           <div class="extra-text"><?php echo wp_kses_post($extra_text); ?></div>
+        <?php endif; ?>
+
+        <h4 class="sample-title">制作年</h4>
+        <!-- 補足テキスト -->
+        <?php if ( $production = get_field('production') ) : ?>
+          <div class="extra-text"><?php echo wp_kses_post($production); ?></div>
         <?php endif; ?>
     
         <!-- お問い合わせボタン（共通固定） -->
