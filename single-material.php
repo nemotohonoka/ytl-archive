@@ -65,18 +65,107 @@
           <?php the_content(); ?>
         </div>
         <?php if ( is_user_logged_in() ) : ?>
+
+        <h4 class="sample-title">サンプル資料</h4>
     
-        <!-- パワポ ショートコード -->
+        <!-- PDF URL -->
         <div class="material-content">
-          <?php
-            $iframe = get_field('material_code'); // フィールド名
-            echo $iframe; // そのまま出力
-          ?>
+        <?php
+          // ACF のフィールド名が pdf_file の想定。ID / Array / URL に対応
+          $file = get_field('pdf_file');
+          if ( is_numeric($file) ) {
+            $pdf_url = wp_get_attachment_url( intval($file) );
+          } elseif ( is_array($file) && ! empty($file['url']) ) {
+            $pdf_url = $file['url'];
+          } else {
+            $pdf_url = $file;
+          }
+
+          if ( $pdf_url ) : ?>
+            <!-- PDF.js CDN とワーカーを読み込む（軽くて確実） -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+            <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';</script>
+
+            <div class="mini-pdf-viewer" data-pdf="<?php echo esc_attr( $pdf_url ); ?>">
+              <canvas class="mini-pdf-canvas" role="img" aria-label="PDF page"></canvas>
+              <div class="mini-pdf-controls">
+                <button class="mini-prev" type="button">◀</button>
+                <span class="mini-page">1 / 1</span>
+                <button class="mini-next" type="button">▶</button>
+              </div>
+            </div>
+
+            <script>
+            (function(){
+              const wrapper = document.querySelector('.mini-pdf-viewer[data-pdf="<?php echo esc_js($pdf_url); ?>"]');
+              if (!wrapper) return;
+              const url = wrapper.dataset.pdf;
+              const canvas = wrapper.querySelector('.mini-pdf-canvas');
+              const ctx = canvas.getContext('2d');
+              const info = wrapper.querySelector('.mini-page');
+              const btnPrev = wrapper.querySelector('.mini-prev');
+              const btnNext = wrapper.querySelector('.mini-next');
+
+              let pdfDoc = null, pageNum = 1, scale = 1.25;
+
+              // 右クリック抑止（canvas上）
+              canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+              pdfjsLib.getDocument(url).promise.then(pdf => {
+                pdfDoc = pdf;
+                render(pageNum);
+              }).catch(err => {
+                console.error(err);
+                wrapper.innerHTML = '<p>PDFを読み込めませんでした。</p>';
+              });
+
+              function render(num){
+                pdfDoc.getPage(num).then(page=>{
+                  // 親幅に合わせて scale を自動調整
+                  const viewport = page.getViewport({ scale: scale });
+                  const parentW = wrapper.clientWidth;
+                  const desiredScale = parentW / viewport.width * scale;
+                  const v = page.getViewport({ scale: desiredScale });
+
+                  canvas.width = v.width;
+                  canvas.height = v.height;
+
+                  page.render({ canvasContext: ctx, viewport: v }).promise.then(()=>{
+                    info.textContent = num + ' / ' + pdfDoc.numPages;
+                    btnPrev.disabled = (num <= 1);
+                    btnNext.disabled = (num >= pdfDoc.numPages);
+                  });
+                });
+              }
+
+              btnPrev.addEventListener('click', ()=> { if (pageNum>1){ pageNum--; render(pageNum); }});
+              btnNext.addEventListener('click', ()=> { if (pageNum<pdfDoc.numPages){ pageNum++; render(pageNum); }});
+
+              // キーボード左右対応
+              wrapper.setAttribute('tabindex','0');
+              wrapper.addEventListener('keydown', (e)=>{ if(e.key==='ArrowLeft') btnPrev.click(); if(e.key==='ArrowRight') btnNext.click(); });
+
+              // 簡易レスポンシブ（ウィンドウリサイズで再描画）
+              let resizeTimer;
+              window.addEventListener('resize', ()=> {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(()=> { if(pdfDoc) render(pageNum); }, 150);
+              });
+            })();
+            </script>
+          <?php endif; ?>
         </div>
-    
+
+        <h4 class="sample-title">仕様</h4>
         <!-- 補足テキスト -->
         <?php if ( $extra_text = get_field('extra_text') ) : ?>
           <div class="extra-text"><?php echo wp_kses_post($extra_text); ?></div>
+        <?php endif; ?>
+
+        <h4 class="sample-title">制作年</h4>
+        <!-- 補足テキスト -->
+        <?php if ( $production = get_field('production') ) : ?>
+          <div class="extra-text"><?php echo wp_kses_post($production); ?></div>
         <?php endif; ?>
     
         <!-- お問い合わせボタン（共通固定） -->
