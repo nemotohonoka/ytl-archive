@@ -413,7 +413,10 @@ add_action('um_registration_complete', function($user_id) {
   // ----------------------------
   // 任意のメールアドレスに通知
   // ----------------------------
-  $admin_email = 'h.nemoto@p-oh.jp'; // 開発環境用
+  $admin_email = array(
+    'h.nemoto@p-oh.jp',       // あなた
+    'airi.nakata@ytl.jp'      // 先方
+  ); // 開発環境用
   $user_info   = get_userdata($user_id);
 
   $subject = '新規ユーザー登録通知';
@@ -428,6 +431,25 @@ add_action('um_registration_complete', function($user_id) {
   wp_mail($admin_email, $subject, $message);
 
 }, 10, 1);
+
+// 管理画面のユーザー一覧で英語表記を日本語に変換
+add_filter('gettext', function($translated_text, $text, $domain) {
+  $translations = array(
+      'Pending administrator review' => '管理者承認待ち',
+      'Approve' => '承認',
+      'Reject' => '拒否',
+      'Send activation email' => '有効化メールを送信',
+      'Deactivate' => '無効化',
+      'Put as pending' => '保留にする',
+      'Membership rejected' => '登録が拒否されました',
+  );
+
+  if (isset($translations[$text])) {
+      return $translations[$text];
+  }
+
+  return $translated_text;
+}, 10, 3);
 
 
 
