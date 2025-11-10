@@ -42,7 +42,7 @@
                   <li><a href="<?php echo home_url(); ?>/about/"><span>会社概要</span></a></li>
                   <li><a href="<?php echo home_url(); ?>/contact/"><span>お問い合わせ</span></a></li>
                   <li><a href="<?php echo home_url(); ?>/member/"><span>ログイン・会員登録</span></a></li>
-                  <li><a href="https://www.ytl.jp/tametoko_tokusyoho/" target="_blank"><span>利用規約</span></a></li>
+                  <li><a href="<?php echo home_url(); ?>/terms/"><span>利用規約</span></a></li>
                   <li><a href="https://igakuacademy.ac.jp/privacy/" target="_blank"><span>プライバシーポリシー</span></a></li>
                 </ul>
               </div>
