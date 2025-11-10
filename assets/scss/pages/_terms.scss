@@ -1,0 +1,113 @@
+// ご利用規約
+// ----------
+
+body.page-template-terms {
+
+  .section-message {
+    margin-bottom: 50px;
+  }
+
+  #terms-box {
+    margin-bottom: 50px;
+    line-height: 26px;
+
+    .title {
+      h3 {
+        font-size: 17px;
+        display: flex;
+        align-items: center;
+        color: #011976;
+        border-bottom: 1px solid #011976;
+        padding-bottom: 10px;
+      }
+    }
+
+    ul {
+      margin-bottom: 30px;
+
+      li {
+        margin-bottom: 20px;
+      }
+
+      .dotted {
+        position: relative;
+        margin-left: 20px;
+
+        &::before {
+          position: absolute;
+          display: inline-block;
+          content: "";
+          margin-top: 6px;
+          margin-right: 7px;
+          top: 2px;
+          left: -18px;
+          width: 10px;
+          height: 9px;
+          vertical-align: top;
+          border-radius: 5px;
+          background-color: #011976;
+        }
+      }
+    }
+
+    .number {
+      counter-reset: num;      /* カウンター初期化 */
+      list-style: none;        /* デフォルトの箇条書きマークを消す */
+      padding-left: 0;         /* 左余白をリセット */
+      margin-left: 0;
+
+      .no {
+        counter-increment: num;          /* liごとにカウントアップ */
+        position: relative;              /* 擬似要素の基準にする */
+        padding-left: 20px;
+
+        &::before {
+          content: counter(num) ". ";      /* 番号表示 */
+          position: absolute;
+          left: 0;                         /* 左端に番号を置く */
+          top: 0;
+          font-weight: bold;
+          color: #011976;
+          width: 2em; 
+        }
+      }
+    }
+
+    .text {
+      margin-bottom: 40px;
+    }
+
+    .detail {
+      h4 {
+        font-size: 17px;
+        margin-bottom: 10px;
+      }
+    }
+
+    a {
+      color: #3A7F65;
+      border-bottom: 1px solid;
+      padding-bottom: 3px;
+
+      &:hover {
+        color: #81bfa7;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  @include breakpoint(medium-up) {
+    .container {
+      margin: 80px auto;
+      max-width: 900px;
+
+      section {
+        max-width: 800px;
+      }
+    }
+  }
+
+  
+}
+
+
