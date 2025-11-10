@@ -1,0 +1,24 @@
+// 新規会員登録フォーム
+// ----------
+
+body.page-template-signup {
+
+  label[for="user_name-184"]::after,
+  label[for="user_password-184"]::after,
+  label[for="user_email-184"]::after,
+  label[for="company-184"]::after,
+  label[for="department-184"]::after,
+  label[for="purpose-184"]::after {
+    content: "必須";          /* 表示文字 */
+    display: inline-block;
+    background-color: #FF2626;    /* 背景色 */
+    color: #fff;              /* 文字色 */
+    font-size: 13px;
+    font-weight: bold;
+    padding: 1px 6px;
+    margin-left: 10px;
+    vertical-align: middle;   /* テキストと揃える */
+  } 
+}
+
+
