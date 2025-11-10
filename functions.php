@@ -490,11 +490,6 @@ function login_with_email_only($user, $username, $password) {
 add_filter('authenticate', 'login_with_email_only', 20, 3);
 
 
-
-
-
-
-
 // ログイン失敗時にカスタムログインページへ戻す
 function custom_login_failed_redirect($username) {
     $referrer = $_SERVER['HTTP_REFERER'];
@@ -504,6 +499,35 @@ function custom_login_failed_redirect($username) {
     }
 }
 add_action('wp_login_failed', 'custom_login_failed_redirect');
+
+
+// Ultimate Member 登録・パスワード変更時のカスタムバリデーション
+function um_validate_password_complexity( $args ) {
+  if ( isset( $args['user_password'] ) && !empty( $args['user_password'] ) ) {
+      $password = $args['user_password'];
+
+      // 8文字以上
+      if ( strlen($password) < 8 ) {
+          UM()->form()->add_error('user_password', 'パスワードは8文字以上にしてください。');
+      }
+
+      // 大文字1文字以上
+      if ( !preg_match('/[A-Z]/', $password) ) {
+          UM()->form()->add_error('user_password', 'パスワードには少なくとも1つ大文字を含めてください。');
+      }
+
+      // 数字1文字以上
+      if ( !preg_match('/[0-9]/', $password) ) {
+          UM()->form()->add_error('user_password', 'パスワードには少なくとも1つ数字を含めてください。');
+      }
+
+      // 英字1文字以上（小文字でも可）
+      if ( !preg_match('/[a-z]/', $password) ) {
+          UM()->form()->add_error('user_password', 'パスワードには少なくとも1つ英字を含めてください。');
+      }
+  }
+}
+add_action('um_submit_form_errors_hook', 'um_validate_password_complexity', 10, 1);
 
 
 
