@@ -27,7 +27,7 @@ Template Name:ログイン・会員登録
         // ログインフォーム
         wp_login_form([
           'redirect'       => $redirect_to,
-          'label_username' => 'ユーザー名',
+          'label_username' => 'メールアドレス',
           'label_password' => 'パスワード',
           'label_remember' => 'ログイン状態を保存する',
           'label_log_in'   => 'ログイン',
@@ -36,7 +36,7 @@ Template Name:ログイン・会員登録
 
         <!-- ログイン失敗エラー -->
         <?php if ( isset($_GET['login']) && $_GET['login'] == 'failed' ) : ?>
-          <p class="login-error">ログインに失敗しました。ユーザー名とパスワードをご確認ください。</p>
+          <p class="login-error">ログインに失敗しました。メールアドレスとパスワードをご確認ください。</p>
         <?php endif; ?>
 
         <!-- パスワードを忘れた方 -->
