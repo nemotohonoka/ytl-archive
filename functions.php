@@ -452,6 +452,49 @@ add_filter('gettext', function($translated_text, $text, $domain) {
 }, 10, 3);
 
 
+// ユーザー登録時にメールアドレスからユーザー名を自動生成
+function auto_generate_username($user_id) {
+  $user_info = get_userdata($user_id);
+  if (!$user_info->user_login) {
+      $email = $user_info->user_email;
+      $username = sanitize_user(current(explode('@', $email)), true);
+      wp_update_user([
+          'ID' => $user_id,
+          'user_login' => $username,
+      ]);
+  }
+}
+add_action('user_register', 'auto_generate_username');
+
+
+// ログイン時にメールアドレスでも認証できるようにする
+function login_with_email_only($user, $username, $password) {
+  if (is_a($user, 'WP_User')) {
+      return $user;
+  }
+
+  if (empty($username) || empty($password)) {
+      return $user;
+  }
+
+  // 入力がメールアドレスならユーザー名に変換
+  if (is_email($username)) {
+      $user_obj = get_user_by('email', $username);
+      if ($user_obj) {
+          $username = $user_obj->user_login;
+      }
+  }
+
+  return wp_authenticate_username_password(null, $username, $password);
+}
+add_filter('authenticate', 'login_with_email_only', 20, 3);
+
+
+
+
+
+
+
 // ログイン失敗時にカスタムログインページへ戻す
 function custom_login_failed_redirect($username) {
     $referrer = $_SERVER['HTTP_REFERER'];
