@@ -94,6 +94,16 @@ body.page-template-member_auth {
       }
     }
 
+    .login-error {
+      margin: 30px auto;
+      text-align: center;
+      color: #FF2626;
+    }
+
+    .lost-password {
+      text-align: center;
+    }
+
     .register-box {
       border: 1px solid #ddd;
       border-radius: 10px;
@@ -217,6 +227,9 @@ body.page-template-member_auth {
           max-width: 300px;
           margin: 0 auto;
         }
+      }
+      .login-error {
+        margin: 40px auto;
       }
 
       .register-box {

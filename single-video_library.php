@@ -155,7 +155,7 @@
           <div class="login-message">
             <p>資材の閲覧には会員登録・ログインが必要です</p>
             <div class="login-button">
-              <a href="<?php echo wp_login_url(get_permalink()); ?>" class="btn">ログインはこちら</a>
+              <a href="<?php echo site_url('/member/?redirect_to=' . urlencode(get_permalink())); ?>" class="btn">ログインはこちら</a>
             </div>
           </div>
         <?php endif; ?>

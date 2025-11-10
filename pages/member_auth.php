@@ -21,14 +21,28 @@ Template Name:ログイン・会員登録
       <div class="login-box">
         <h4>ログイン<span>会員登録されている方</span></h4>
         <?php
+        // リダイレクト先を取得（パラメータがなければトップページ）
+        $redirect_to = isset($_GET['redirect_to']) ? $_GET['redirect_to'] : home_url();
+
+        // ログインフォーム
         wp_login_form([
-          'redirect'       => home_url(), // ログイン後にリダイレクトする先
+          'redirect'       => $redirect_to,
           'label_username' => 'ユーザー名',
           'label_password' => 'パスワード',
           'label_remember' => 'ログイン状態を保存する',
           'label_log_in'   => 'ログイン',
         ]);
         ?>
+
+        <!-- ログイン失敗エラー -->
+        <?php if ( isset($_GET['login']) && $_GET['login'] == 'failed' ) : ?>
+          <p class="login-error">ログインに失敗しました。ユーザー名とパスワードをご確認ください。</p>
+        <?php endif; ?>
+
+        <!-- パスワードを忘れた方 -->
+        <p class="lost-password">
+          <a href="<?php echo home_url(); ?>/password-reset/">パスワードを忘れた方はこちら</a>
+        </p>
       </div>
 
       <div class="register-box">

@@ -452,6 +452,20 @@ add_filter('gettext', function($translated_text, $text, $domain) {
 }, 10, 3);
 
 
+// ログイン失敗時にカスタムログインページへ戻す
+function custom_login_failed_redirect($username) {
+    $referrer = $_SERVER['HTTP_REFERER'];
+    if ($referrer && !strstr($referrer, 'wp-login.php') && !strstr($referrer, 'wp-admin')) {
+        wp_redirect(add_query_arg('login', 'failed', $referrer));
+        exit;
+    }
+}
+add_action('wp_login_failed', 'custom_login_failed_redirect');
+
+
+
+
+
 
 
 
