@@ -34,8 +34,9 @@ Template Name:ログイン・会員登録
       <div class="register-box">
         <h4>新規会員登録<span>会員登録されていない方</span></h4>
         <p class="text">
-          本サイトでは、製薬企業等のご担当者様に向けて、限定コンテンツをご提供しています。
-          <span>詳細な資材の閲覧には、会員登録（審査制）が必要です。</span>
+          本サイトは、国内の製薬企業および医療機関に勤務する医療関係者向けの限定コンテンツを提供しております。
+          <span class="indent">詳細な資材の閲覧には<span class="marker">審査制の会員登録</span>が必要です。</span>
+          <span class="sub">※ 国外の医療関係者や一般の方への提供は対象外です。ご了承ください。</span>
         </p>
 
         <?php if (is_user_logged_in()) : ?>
