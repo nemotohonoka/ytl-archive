@@ -139,6 +139,46 @@ function register_common_tag_taxonomy() {
   ]);
 }
 
+/*------------------------------------
+ * カスタム投稿（video_library・material）
+ * のパーマリンクを prefix + ID に変更
+------------------------------------*/
+add_filter('post_type_link', 'custom_post_type_id_permalink', 10, 2);
+function custom_post_type_id_permalink($post_link, $post) {
+
+    if ('video_library' === $post->post_type) {
+        return home_url('/video_library/' . $post->ID . '/');
+    }
+
+    if ('material' === $post->post_type) {
+        return home_url('/material/' . $post->ID . '/');
+    }
+
+    return $post_link;
+}
+
+/*------------------------------------
+ * リライトルール
+------------------------------------*/
+add_action('init', 'custom_post_type_id_rewrite');
+function custom_post_type_id_rewrite() {
+
+    // video_library
+    add_rewrite_rule(
+        'video_library/([0-9]+)/?$',
+        'index.php?post_type=video_library&p=$matches[1]',
+        'top'
+    );
+
+    // material
+    add_rewrite_rule(
+        'material/([0-9]+)/?$',
+        'index.php?post_type=material&p=$matches[1]',
+        'top'
+    );
+}
+
+
 
 
 
