@@ -112,7 +112,7 @@ document.querySelectorAll('.swiper-slide').forEach(slide => {
 jQuery(function($){
 
   // 初期設定
-  var postTypes = ['video-library','material'];
+  var postTypes = ['video_library','material'];
 
   postTypes.forEach(function(postType){
       var ajaxurl = PostTypeAjax[postType];

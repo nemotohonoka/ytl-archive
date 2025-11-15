@@ -105,7 +105,7 @@ get_header();
 
   <?php
     // このページ用の Post Type
-    $post_type = 'video-library';
+    $post_type = 'video_library';
 
     // 親タブのラベル
     $parents = [
@@ -164,7 +164,7 @@ get_header();
 
       <div class="container">
         <!-- 投稿表示 -->
-        <div id="<?php echo esc_attr($post_type); ?>-results"></div>
+        <div id="video_library-results"></div>
       </div>
 
   </div>
