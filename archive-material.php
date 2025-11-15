@@ -104,70 +104,71 @@ get_header();
   </section>
 
   <?php
-$parents = [
-    'parent01' => '疾患別',
-    'parent02' => '医療制度',
-    'parent03' => 'スキル研修',
-    'parent04' => 'Web講演会',
-    'parent05' => '情報提供資材'
-];
-?>
+    // このページ用の Post Type
+    $post_type = 'material';
 
-<div class="video-library-container">
+    // 親タブのラベル
+    $parents = [
+        'parent01' => '疾患別',
+        'parent02' => '医療制度',
+        'parent03' => 'スキル研修',
+        'parent04' => 'Web講演会',
+        'parent05' => '情報提供資材'
+    ];
+  ?>
 
-    <!-- 親タブ -->
-    <div class="video-library-tabs">
-      <h3>資料を探す</h3>
-      <div class="flex-box">
-        <?php foreach($parents as $slug => $label): ?>
-          <button class="tab-button" data-parent="<?php echo esc_attr($slug); ?>">
-            <?php echo esc_html($label); ?>
-          </button>
-        <?php endforeach; ?>
+  <div class="<?php echo esc_attr($post_type); ?>-container">
+
+      <!-- 親タブ -->
+      <div class="<?php echo esc_attr($post_type); ?>-tabs" id="search-form">
+        <h3>投稿を探す</h3>
+        <div class="flex-box">
+          <?php foreach($parents as $slug => $label): ?>
+            <button class="tab-button" data-parent="<?php echo esc_attr($slug); ?>">
+              <?php echo esc_html($label); ?>
+            </button>
+          <?php endforeach; ?>
+        </div>
       </div>
-        
-    </div>
 
-    <!-- 子カテゴリー -->
-    <div id="child-filters">
-      
-      <?php
-        foreach($parents as $slug => $label){
-            if($slug === 'parent03') continue; // 子なし
+      <!-- 子カテゴリー -->
+      <div id="child-filters">
+        <?php
+          foreach($parents as $slug => $label){
+              $parent_term = get_term_by('slug', $slug, 'common_category');
+              if($parent_term){
+                  $child_terms = get_terms([
+                      'taxonomy' => 'common_category',
+                      'hide_empty' => false,
+                      'parent' => $parent_term->term_id
+                  ]);
 
-            $parent_term = get_term_by('slug', $slug, 'common_category');
-            if($parent_term){
-                $child_terms = get_terms([
-                    'taxonomy' => 'common_category',
-                    'hide_empty' => false,
-                    'parent' => $parent_term->term_id
-                ]);
+                  if(!empty($child_terms)){
+                      usort($child_terms, function($a, $b){
+                          return strcmp($a->slug, $b->slug);
+                      });
 
-                if(!empty($child_terms)){
-                    // スラッグ順にソート（child01, child02, … の順）
-                    usort($child_terms, function($a, $b){
-                        return strcmp($a->slug, $b->slug);
-                    });
+                      echo '<div class="inner">';
+                      echo '<div class="child-buttons" data-parent="'.$slug.'" style="display:none;">';
+                      echo '<button class="child-button" data-term="all">すべて</button>';
+                      foreach($child_terms as $term){
+                          echo '<button class="child-button" data-term="'.$term->slug.'">'.$term->name.'</button>';
+                      }
+                      echo '</div>';
+                      echo '</div>';
+                  }
+              }
+          }
+        ?>
+      </div>
 
-                    echo '<div class="inner">';
-                    echo '<div class="child-buttons" data-parent="'.$slug.'" style="display:none;">';
-                    echo '<button class="child-button" data-term="all">すべて</button>';
-                    foreach($child_terms as $term){
-                        echo '<button class="child-button" data-term="'.$term->slug.'">'.$term->name.'</button>';
-                    }
-                    echo '</div>';
-                    echo '</div>';
-                }
-            }
-        }
-      ?>
-    </div>
+      <div class="container">
+        <!-- 投稿表示 -->
+        <div id="<?php echo esc_attr($post_type); ?>-results"></div>
+      </div>
 
-    <div class="container">
-      <!-- 投稿表示 -->
-      <div id="video-library-results"></div>
-    </div>
-</div>
+  </div>
+
 </main>
 
 <?php get_footer(); ?>

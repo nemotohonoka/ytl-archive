@@ -111,150 +111,86 @@ document.querySelectorAll('.swiper-slide').forEach(slide => {
 
 jQuery(function($){
 
-  // Ajax URLは wp_localize_script で渡している videoLibrary.ajaxurl を使用
-  var ajaxurl = videoLibrary.ajaxurl;
+  // 初期設定
+  var postTypes = ['video-library','material'];
 
-  // 親タブクリック
-  $('.tab-button').on('click', function(){
-      var parent = $(this).data('parent');
+  postTypes.forEach(function(postType){
+      var ajaxurl = PostTypeAjax[postType];
+      var resultId = '#' + postType + '-results';
+      var storageKey = postType + 'Filter';
 
-      // 親タブのアクティブ切替
-      $('.tab-button').removeClass('active');
-      $(this).addClass('active');
+      // ページロード時の LocalStorage確認
+      var filter = JSON.parse(localStorage.getItem(storageKey));
+      if(filter){
+          var parent = filter.parent;
+          var term = filter.term;
 
-      // 子ボタン表示
-      $('.child-buttons').hide();
-      $('.child-buttons[data-parent="'+parent+'"]').show();
+          $('.tab-button[data-parent="'+parent+'"]').addClass('active');
+          $('.child-buttons[data-parent="'+parent+'"]').show();
+          $('.child-button[data-term="'+term+'"]').addClass('active');
 
-      // 子ボタンがなければすぐ投稿取得
-      if($('.child-buttons[data-parent="'+parent+'"]').length === 0){
-          fetch_posts(parent, 'all');
+          fetchPosts(postType, ajaxurl, parent, term);
+          localStorage.removeItem(storageKey);
       }
+
+      // 親タブクリック
+      $(document).on('click', '.tab-button', function(){
+          var parent = $(this).data('parent');
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          $('.child-buttons').hide();
+          $('.child-buttons[data-parent="'+parent+'"]').show();
+
+          if($('.child-buttons[data-parent="'+parent+'"]').length === 0){
+              fetchPosts(postType, ajaxurl, parent, 'all');
+          }
+      });
+
+      // 子ボタンクリック
+      $(document).on('click', '.child-button', function(){
+          var parent = $(this).closest('.child-buttons').data('parent');
+          var term = $(this).data('term');
+
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          fetchPosts(postType, ajaxurl, parent, term);
+      });
+
+      // 「もっと見る」ボタン用
+      $(document).on('click', '.library-more', function(){
+          var parent = $(this).data('parent');
+          var child = $(this).data('child') || 'all';
+          localStorage.setItem(storageKey, JSON.stringify({parent: parent, term: child}));
+
+          window.location.href = '/' + postType + '/'; // 遷移先一覧ページ
+      });
   });
 
-  // 子ボタンクリック
-  $(document).on('click', '.child-button', function(){
-      var parent = $(this).closest('.child-buttons').data('parent');
-      var term   = $(this).data('term');
-
-      // 子ボタンのアクティブ切替
-      $(this).siblings().removeClass('active');
-      $(this).addClass('active');
-
-      fetch_posts(parent, term);
-  });
-
-  // 投稿取得
-  function fetch_posts(parent, term){
+  function fetchPosts(postType, ajaxurl, parent, term){
       $.ajax({
           url: ajaxurl,
           type: 'POST',
           data: {
-              action: 'fetch_video_library',
+              action: 'fetch_' + postType,
+              post_type: postType,
               parent: parent,
               term: term
           },
           success: function(res){
-              $('#video-library-results').html(res);
+              $('#'+postType+'-results').html(res);
           }
       });
   }
 
 });
 
-jQuery(function($){
 
-  // Ajax URL
-  var ajaxurl = videoLibrary.ajaxurl;
 
-  // ---------------------------
-  // ページロード時に LocalStorage を確認
-  // ---------------------------
-  var filter = JSON.parse(localStorage.getItem('videoLibraryFilter'));
-  if(filter) {
-      var parent = filter.parent;
-      var term   = filter.term;
 
-      // 親タブアクティブ
-      $('.tab-button').removeClass('active');
-      $('.tab-button[data-parent="'+parent+'"]').addClass('active');
 
-      // 子ボタン表示＆アクティブ
-      $('.child-buttons').hide();
-      $('.child-buttons[data-parent="'+parent+'"]').show();
-      $('.child-button').removeClass('active');
-      $('.child-button[data-term="'+term+'"]').addClass('active');
 
-      // Ajax で投稿取得
-      fetch_posts(parent, term);
-
-      // 一度使ったら削除
-      localStorage.removeItem('videoLibraryFilter');
-  }
-
-  // ---------------------------
-  // 親タブクリック
-  // ---------------------------
-  $('.tab-button').on('click', function(){
-      var parent = $(this).data('parent');
-
-      $('.tab-button').removeClass('active');
-      $(this).addClass('active');
-
-      $('.child-buttons').hide();
-      $('.child-buttons[data-parent="'+parent+'"]').show();
-
-      if($('.child-buttons[data-parent="'+parent+'"]').length === 0){
-          fetch_posts(parent, 'all');
-      }
-  });
-
-  // ---------------------------
-  // 子ボタンクリック
-  // ---------------------------
-  $(document).on('click', '.child-button', function(){
-      var parent = $(this).closest('.child-buttons').data('parent');
-      var term   = $(this).data('term');
-
-      $(this).siblings().removeClass('active');
-      $(this).addClass('active');
-
-      fetch_posts(parent, term);
-  });
-
-  // ---------------------------
-  // 投稿取得 Ajax
-  // ---------------------------
-  function fetch_posts(parent, term){
-      $.ajax({
-          url: ajaxurl,
-          type: 'POST',
-          data: {
-              action: 'fetch_video_library',
-              parent: parent,
-              term: term
-          },
-          success: function(res){
-              $('#video-library-results').html(res);
-          }
-      });
-  }
-
-  // ---------------------------
-  // 別ページ「もっと見る」ボタン用
-  // ---------------------------
-  $('.library-more').on('click', function(){
-      var parent = $(this).data('parent'); // 例: parent01
-      var child  = $(this).data('child') || 'all'; // 子がなければ all
-
-      // LocalStorage に保存
-      localStorage.setItem('videoLibraryFilter', JSON.stringify({ parent: parent, term: child }));
-
-      // 動画ライブラリページへ遷移
-      window.location.href = '/ytl-archive/video-library#search-form'; // 遷移先URLに置き換えてください
-  });
-
-});
 
 document.addEventListener('DOMContentLoaded', function() {
   // 初期表示する親カテゴリー
