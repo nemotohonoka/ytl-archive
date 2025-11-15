@@ -274,8 +274,20 @@ function fetch_post_type_posts() {
           echo '<div class="text-box">';
           echo '<h4>'.get_the_title().'</h4>';
           echo '<p>'.get_the_excerpt().'</p>';
-          if ($category_names_str) {
-              echo '<p class="post-categories ' . esc_attr($parent_class) . '">' . $category_names_str . '</p>';
+          if ($categories && !is_wp_error($categories)) {
+            foreach ($categories as $cat) {
+        
+                // 親カテゴリーがいる場合は親のスラッグをクラスに
+                if ($cat->parent) {
+                    $parent = get_term($cat->parent, 'common_category');
+                    $parent_class = 'parent-cat-' . $parent->slug;
+                } else {
+                    $parent_class = 'parent-cat-' . $cat->slug;
+                }
+        
+                // 個別に出力
+                echo '<p class="post-categories ' . esc_attr($parent_class) . '">' . esc_html($cat->name) . '</p>';
+            }
           }
           echo '</div>';
           echo '</a>';

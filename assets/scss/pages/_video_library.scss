@@ -208,6 +208,10 @@ body.page-template-archive-video_library,
                 font-size: 11px;
                 border-radius: 100px;
                 color: white;
+
+                &:not(:last-child) {
+                  margin-right: 5px;
+                }
               }
               .parent-cat-parent01 {
                 background: #1958AB;
