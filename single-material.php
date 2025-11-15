@@ -9,49 +9,96 @@
     <div class="container">
       <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-        <div class="title-box">
+      <div class="title-box">
           <!-- タイトル -->
-        <h3><?php the_title(); ?></h3>
-    
-        <?php
-          // --- 子カテゴリーを取得して表示 ---
-          $terms = get_the_terms(get_the_ID(), 'common_category');
+          <h3><?php the_title(); ?></h3>
 
-          if ($terms && !is_wp_error($terms)) {
-            $child_terms = [];
-            foreach ($terms as $term) {
-              if ($term->parent != 0) { // 子カテゴリーのみ
-                // 親カテゴリー情報を取得
-                $parent_term = get_term($term->parent, 'common_category');
-                $parent_class = $parent_term ? 'p-' . esc_attr($parent_term->slug) : '';
-                
-                $child_terms[] = '<a class="' . $parent_class . '" href="' . get_term_link($term) . '">' . esc_html($term->name) . '</a>';
+          <div class="flex-label">
+            <div class="post-type-label">
+              <?php 
+                $post_type = get_post_type();
+                $post_type_obj = get_post_type_object($post_type);
+
+                // 投稿タイプごとのリンク先を定義
+                $custom_post_type_links = [
+                    'video_library'  => '/video-library/',   // library 一覧ページ（任意のリンク）
+                    'material' => '/info-material/',  // material 一覧ページ（任意のリンク）
+                ];
+
+                // リンク先を取得（存在しない場合はトップへ）
+                $link = $custom_post_type_links[$post_type] ?? '/';
+
+                // 出力
+                echo '<a href="' . esc_url($link) . '">';
+                echo esc_html($post_type_obj->labels->singular_name);
+                echo '</a>';
+              ?>
+            </div>
+  
+            <div class="parent-label">
+              <?php
+                // タームごとのリンク先を設定（例: スラッグをキーにする）
+                $custom_links = [
+                  'p-parent01' => '/medical/',
+                  'p-parent02' => '/healthcare/',
+                  'p-parent03' => '/skill/',
+                  'p-parent04' => '/webinar/',
+                  'p-parent05' => '/info-material/',
+                ];
+
+                $terms = get_the_terms(get_the_ID(), 'common_category');
+
+                if ($terms && !is_wp_error($terms)) {
+                  $child_terms = [];
+                  $parent_terms = [];
+
+                  foreach ($terms as $term) {
+                      // タームのクラスに合わせてリンクを取得（なければ通常のタームリンク）
+                      $parent_class = $term->parent != 0 ? 'p-' . esc_attr(get_term($term->parent)->slug) : 'p-' . esc_attr($term->slug);
+                      $link = isset($custom_links[$parent_class]) ? $custom_links[$parent_class] : get_term_link($term);
+
+                      if ($term->parent != 0) { 
+                          // 子カテゴリー
+                          $child_terms[] = '<a class="' . $parent_class . '" href="' . esc_url($link) . '">' . esc_html($term->name) . '</a>';
+                      } else {
+                          // 親カテゴリー
+                          $parent_terms[] = '<a class="' . $parent_class . '" href="' . esc_url($link) . '">' . esc_html($term->name) . '</a>';
+                      }
+                  }
+
+                  if (!empty($child_terms)) {
+                      echo '<div class="child-categories">';
+                      echo implode($child_terms);
+                      echo '</div>';
+                  } elseif (!empty($parent_terms)) {
+                      echo '<div class="parent-categories">';
+                      echo implode(', ', $parent_terms);
+                      echo '</div>';
+                  }
+                }
+              ?>
+            </div>
+          </div>
+
+          <div class="child-label">
+            <?php
+              // --- タグを取得して表示 ---
+              $tags = get_the_terms(get_the_ID(), 'common_tag');
+
+              if ($tags && !is_wp_error($tags)) {
+                $tag_list = [];
+                foreach ($tags as $tag) {
+                  $tag_list[] = '<a href="' . get_term_link($tag) . '">' . esc_html($tag->name) . '</a>';
+                }
+
+                if (!empty($tag_list)) {
+                  echo '<div class="post-tags">';
+                  echo implode($tag_list); // リンク付きでカンマ区切り
+                  echo '</div>';
+                }
               }
-            }
-
-            if (!empty($child_terms)) {
-              echo '<div class="child-categories">';
-              echo implode(', ', $child_terms);
-              echo '</div>';
-            }
-          }
-
-          // --- タグを取得して表示 ---
-          $tags = get_the_terms(get_the_ID(), 'common_tag');
-
-          if ($tags && !is_wp_error($tags)) {
-            $tag_list = [];
-            foreach ($tags as $tag) {
-              $tag_list[] = '<a href="' . get_term_link($tag) . '">' . esc_html($tag->name) . '</a>';
-            }
-
-            if (!empty($tag_list)) {
-              echo '<div class="post-tags">';
-              echo implode($tag_list); // リンク付きでカンマ区切り
-              echo '</div>';
-            }
-          }
-        ?>
+            ?>
+          </div>
 
         </div>
     

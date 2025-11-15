@@ -46,6 +46,10 @@ body.single-video_library {
                 border-radius: 100px;
                 font-size: 13px;
                 color: white;
+
+                &:not(:last-child) {
+                  margin-right: 5px;
+                }
               }
               .p-parent01 {
                 background: #1958AB;
