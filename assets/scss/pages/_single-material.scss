@@ -65,6 +65,9 @@ body.single-material {
 
       .post-thumbnail {
         margin-bottom: 30px;
+        img {
+          border: 1px solid #ddd;
+        }
       }
 
       .post-content {
