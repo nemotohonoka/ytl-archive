@@ -133,17 +133,25 @@
             </div>
           <?php endif; ?>
         <?php endif; ?>
-    
-        <h4 class="sample-title">仕様</h4>
-        <!-- 補足テキスト -->
-        <?php if ( $extra_text = get_field('extra_text') ) : ?>
-          <div class="extra-text"><?php echo wp_kses_post($extra_text); ?></div>
+
+        <?php if ( $supervision = get_field('supervision') ) : ?>
+          <h4 class="sample-title">監修</h4>
+          <div class="extra-text"><?php echo wp_kses_post($supervision); ?></div>
         <?php endif; ?>
 
-        <h4 class="sample-title">制作年</h4>
-        <!-- 補足テキスト -->
+        <?php if ( $volume = get_field('volume') ) : ?>
+            <h4 class="sample-title">ボリューム</h4>
+            <div class="extra-text"><?php echo wp_kses_post($volume); ?></div>
+        <?php endif; ?>
+
+        <?php if ( $extra_text = get_field('extra_text') ) : ?>
+            <h4 class="sample-title">仕様</h4>
+            <div class="extra-text"><?php echo wp_kses_post($extra_text); ?></div>
+        <?php endif; ?>
+
         <?php if ( $production = get_field('production') ) : ?>
-          <div class="extra-text"><?php echo wp_kses_post($production); ?></div>
+            <h4 class="sample-title">制作年</h4>
+            <div class="extra-text"><?php echo wp_kses_post($production); ?></div>
         <?php endif; ?>
     
         <!-- お問い合わせボタン（共通固定） -->
