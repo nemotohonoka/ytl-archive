@@ -319,13 +319,11 @@ body.page-template-archive-video_library,
     .video_library-container {
       #video_library-results {
         .post-items {
-          .post-items {
           gap: 30px;
 
           .post-contents {
             width: calc((100% - 60px) / 3);
           }
-        }
       }
     }
   }
