@@ -380,36 +380,6 @@ add_action('admin_menu', function() {
 
 
 
-// // YTL管理者が操作可能なユーザーを制限
-// add_action('pre_user_query', function($query) {
-//   if (!current_user_can('ytl_admin')) return; // YTL管理者限定
-//   if (!is_admin()) return;
-
-//   // 投稿者と購読者のみ
-//   $query->set('role__in', ['editor', 'subscriber']);
-// });
-
-// // YTL管理者が管理者を編集/削除できないように制御
-// add_filter('map_meta_cap', function($caps, $cap, $user_id, $args) {
-//   if (in_array($cap, ['edit_user', 'delete_user', 'promote_user'])) {
-//       $target_user_id = $args[0];
-//       $target_user = get_userdata($target_user_id);
-
-//       if (in_array('administrator', $target_user->roles)) {
-//           return ['do_not_allow']; // 管理者は操作不可
-//       }
-
-//       // 投稿者・購読者は操作可能、それ以外は拒否
-//       if (!array_intersect($target_user->roles, ['editor', 'subscriber'])) {
-//           return ['do_not_allow'];
-//       }
-//   }
-//   return $caps;
-// }, 10, 4);
-
-
-
-
 // ----------------------------
 // Ultimate Member: 任意のフィールドをDBに保存せずメール通知
 // ----------------------------
