@@ -325,24 +325,6 @@ add_action('wp_enqueue_scripts', 'enqueue_post_type_scripts');
 
 
 
-
-
-
-// ====================================================
-// 会員管理者権限作成
-// ====================================================
-add_action('init', function() {
-  if (!get_role('user_admin')) {
-      add_role('user_admin', '会員管理者', [
-          'read'         => true,
-          'list_users'   => true,
-          'edit_users'   => true,
-          'promote_users'=> true,
-          'delete_users' => true, // 削除権限を付与
-      ]);
-  }
-});
-
 // ====================================================
 // 管理者に新規申請者（購読者）を非表示
 // ====================================================
@@ -356,6 +338,72 @@ add_action('pre_get_users', function($query) {
       $query->set('role__not_in', ['subscriber']);
   }
 });
+
+add_action('admin_head', function() {
+  if (!current_user_can('administrator')) {
+      echo '<style>
+          .update-nag, .notice, .update-message { display: none !important; }
+      </style>';
+  }
+});
+
+add_action('admin_menu', function() {
+  $user = wp_get_current_user();
+  if (!in_array('ytl_admin', $user->roles)) return;
+  
+  remove_menu_page('plugins.php'); // プラグインメニュー全体
+  remove_menu_page('tools.php');             // ツール
+  remove_menu_page('options-general.php'); 
+  remove_menu_page('ultimatemember'); // Ultimate Member
+  remove_menu_page('siteguard');     // サイトガード
+  remove_menu_page('wpcf7');     // コンタクトフォーム
+  remove_menu_page('Wordfence');     // Wordfence
+}, 999);
+
+function hide_acf_menu_for_roles() {
+  // 現在のユーザー情報を取得
+  $current_user = wp_get_current_user();
+
+  // ここで非表示にしたい権限のスラッグを指定
+  $restricted_roles = array('ytl_admin');
+
+  foreach ($restricted_roles as $role) {
+      if (in_array($role, $current_user->roles)) {
+          // ACFメニューを非表示に
+          remove_menu_page('edit.php?post_type=acf-field-group');
+      }
+  }
+}
+add_action('admin_menu', 'hide_acf_menu_for_roles', 999);
+
+
+
+// // YTL管理者が操作可能なユーザーを制限
+// add_action('pre_user_query', function($query) {
+//   if (!current_user_can('ytl_admin')) return; // YTL管理者限定
+//   if (!is_admin()) return;
+
+//   // 投稿者と購読者のみ
+//   $query->set('role__in', ['editor', 'subscriber']);
+// });
+
+// // YTL管理者が管理者を編集/削除できないように制御
+// add_filter('map_meta_cap', function($caps, $cap, $user_id, $args) {
+//   if (in_array($cap, ['edit_user', 'delete_user', 'promote_user'])) {
+//       $target_user_id = $args[0];
+//       $target_user = get_userdata($target_user_id);
+
+//       if (in_array('administrator', $target_user->roles)) {
+//           return ['do_not_allow']; // 管理者は操作不可
+//       }
+
+//       // 投稿者・購読者は操作可能、それ以外は拒否
+//       if (!array_intersect($target_user->roles, ['editor', 'subscriber'])) {
+//           return ['do_not_allow'];
+//       }
+//   }
+//   return $caps;
+// }, 10, 4);
 
 
 
