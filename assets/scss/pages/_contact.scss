@@ -129,6 +129,11 @@ body.page-template-contact {
             }
           }
         }
+
+        .policy {
+          text-align: center;
+          display: block;
+        }
       }
   
       #contact-form {
@@ -157,6 +162,34 @@ body.page-template-contact {
     
 
     
+  }
+}
+
+body.page-template-complete {
+  #contact-complete-message {
+    h3 {
+      text-align: center;
+      color: #011976;
+      margin-bottom: 30px;
+    }
+
+    .text {
+      background: #f7f7f7;
+      padding: 30px;
+    }
+    
+  }
+
+  @include breakpoint(medium-up) {
+    #contact-complete-message {
+      margin-bottom: 80px;
+      
+      .text {
+        max-width: 750px;
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
   }
 }
 
