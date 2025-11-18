@@ -347,34 +347,36 @@ add_action('admin_head', function() {
   }
 });
 
+// ACF メニュー非表示（安全策）
 add_action('admin_menu', function() {
   $user = wp_get_current_user();
-  if (!in_array('ytl_admin', $user->roles)) return;
-  
-  remove_menu_page('plugins.php'); // プラグインメニュー全体
-  remove_menu_page('tools.php');             // ツール
-  remove_menu_page('options-general.php'); 
-  remove_menu_page('ultimatemember'); // Ultimate Member
-  remove_menu_page('siteguard');     // サイトガード
-  remove_menu_page('wpcf7');     // コンタクトフォーム
-  remove_menu_page('Wordfence');     // Wordfence
+  if (array_intersect(['ytl_admin','editor'], $user->roles)) {
+      remove_menu_page('edit.php?post_type=acf-field-group');
+  }
 }, 999);
 
-function hide_acf_menu_for_roles() {
-  // 現在のユーザー情報を取得
-  $current_user = wp_get_current_user();
 
-  // ここで非表示にしたい権限のスラッグを指定
-  $restricted_roles = array('ytl_admin');
+add_action('admin_menu', function() {
+  $user = wp_get_current_user();
+  $restricted_roles = ['ytl_admin','editor'];
+  if (!array_intersect($restricted_roles, $user->roles)) return;
 
-  foreach ($restricted_roles as $role) {
-      if (in_array($role, $current_user->roles)) {
-          // ACFメニューを非表示に
-          remove_menu_page('edit.php?post_type=acf-field-group');
-      }
+  // 標準メニュー非表示
+  remove_menu_page('plugins.php');       // プラグイン
+  remove_menu_page('tools.php');         // ツール
+  remove_menu_page('options-general.php'); // 設定
+
+  // プラグイン個別メニュー（スラッグ要確認）
+  remove_menu_page('ultimatemember');   // Ultimate Member
+  remove_menu_page('siteguard');   // SiteGuard
+  remove_menu_page('wpcf7');       // Contact Form 7
+  remove_menu_page('wordfence');   // Wordfence
+
+  // ユーザー一覧は editor のみ非表示
+  if (in_array('editor', $user->roles)) {
+      remove_menu_page('users.php');
   }
-}
-add_action('admin_menu', 'hide_acf_menu_for_roles', 999);
+}, 999);
 
 
 
