@@ -46,7 +46,6 @@ window.addEventListener('load', function () {
   new Swiper('.my-medical-swiper', {
     slidesPerView: 1.3,
     spaceBetween: 30,
-    loop: true,
     centeredSlides: true,
 
     // ナビゲーションはスライド内に配置
@@ -60,9 +59,11 @@ window.addEventListener('load', function () {
         slidesPerView: 2.3,
       },
       1024: {
-        slidesPerView: 3.2,
+        slidesPerView: 3.5,
         spaceBetween: 50,
-        // centeredSlides: false,
+        centeredSlides: false,
+        slidesOffsetBefore: 100,
+        slidesOffsetAfter: 100,
       },
     }
   });
@@ -75,7 +76,7 @@ window.addEventListener('load', function () {
   new Swiper('.video-slider', {
     slidesPerView: 1,
     spaceBetween: 20,
-    loop: true,
+    centeredSlides: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -88,12 +89,13 @@ window.addEventListener('load', function () {
       640: { 
         slidesPerView: 2.2, 
         spaceBetween: 40, 
-        centeredSlides: true 
       },
       1024: { 
-        slidesPerView: 3.2,
+        slidesPerView: 3.5,
         spaceBetween: 50,
-        centeredSlides: true 
+        centeredSlides: false,
+        slidesOffsetBefore: 100,
+        slidesOffsetAfter: 100,
       },
     }
   });
