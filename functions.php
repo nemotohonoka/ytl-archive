@@ -434,18 +434,24 @@ add_action('um_registration_complete', function($user_id) {
   // ----------------------------
   $admin_email = array(
     'h.nemoto@p-oh.jp',       // あなた
-    'airi.nakata@ytl.jp'      // 先方
-  ); // 開発環境用
+    'ytl.contentslibrary@ytl.jp'      // 先方
+  );
   $user_info   = get_userdata($user_id);
 
-  $subject = '新規ユーザー登録通知';
-  $message = "以下のユーザーが登録しました。\n\n";
-  $message .= "ユーザー名: " . $user_info->user_login . "\n";
-  $message .= "氏名: " . $user_name . "\n";
-  $message .= "会社名: " . $company . "\n";
-  $message .= "部署: " . $department . "\n";
-  $message .= "電話番号: " . $phone . "\n";
-  $message .= "ご利用目的: " . $purpose . "\n";
+  $subject = '【通知】新規会員登録の申請がありました';
+
+  // メッセージ本文
+  $message  = "以下のユーザーが会員登録を申請しました。管理画面から審査を行ってください。\n\n";
+  $message .= "━━━━━━━━━━━━━━━━━━━━━━\n";
+  $message .= "■ ユーザー名： " . $user_info->user_login . "\n";
+  $message .= "■ 氏名： " . $user_name . "\n";
+  $message .= "■ 会社名： " . $company . "\n";
+  $message .= "■ 部署： " . $department . "\n";
+  $message .= "■ 電話番号： " . $phone . "\n";
+  $message .= "■ ご利用目的： " . $purpose . "\n";
+  $message .= "━━━━━━━━━━━━━━━━━━━━━━\n";
+  $message .= "\n管理画面はこちらから：\n";
+  $message .= home_url('/wp-admin/users.php');
 
   wp_mail($admin_email, $subject, $message);
 
