@@ -179,12 +179,14 @@ body.page-template-pages {
               .tag-label {
                 .post-tags {
                   .tag {
-                    padding: 6px 8px;
+                    padding: 2px 8px;
                     border-radius: 100px;
                     font-size: 11px;
                     color: #011976;
                     background: white;
                     border: 1px solid;
+                    display: inline-block;
+                    margin-bottom: 5px;
                     &:not(:last-child) {
                       margin-right: 7px;
                     }

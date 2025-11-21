@@ -32,10 +32,9 @@ Template Name:キーワード・タグ検索
 
       if ($tags && !is_wp_error($tags)) {
         foreach ($tags as $tag) {
-          // taxonomy-common_tag.php に遷移
-          echo '<a href="' . esc_url(get_term_link($tag)) . '" class="tag-item">';
-          echo esc_html($tag->name);
-          echo '</a> ';
+            echo '<a href="' . esc_url(get_term_link($tag)) . '" class="tag-item">';
+            echo '<p>' . esc_html($tag->name) . '</p>';
+            echo '</a>';
         }
       }
       ?>
