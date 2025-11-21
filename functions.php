@@ -347,18 +347,24 @@ add_action('admin_head', function() {
   }
 });
 
+add_action('admin_menu', function() {
+  $user = wp_get_current_user();
+  if (in_array('user_admin', $user->roles)) {
+      remove_menu_page('tools.php');
+  }
+}, 9999);
+
 // ACF メニュー非表示（安全策）
 add_action('admin_menu', function() {
   $user = wp_get_current_user();
-  if (array_intersect(['ytl_admin','editor'], $user->roles)) {
+  if (array_intersect(['ytl_admin','user_admin','editor'], $user->roles)) {
       remove_menu_page('edit.php?post_type=acf-field-group');
   }
 }, 999);
 
-
 add_action('admin_menu', function() {
   $user = wp_get_current_user();
-  $restricted_roles = ['ytl_admin','editor'];
+  $restricted_roles = ['ytl_admin','user_admin','editor'];
   if (!array_intersect($restricted_roles, $user->roles)) return;
 
   // 標準メニュー非表示
@@ -371,6 +377,7 @@ add_action('admin_menu', function() {
   remove_menu_page('siteguard');   // SiteGuard
   remove_menu_page('wpcf7');       // Contact Form 7
   remove_menu_page('wordfence');   // Wordfence
+  remove_menu_page('wp-mail-smtp');   // wp-mail-smtp
 
   // ユーザー一覧は editor のみ非表示
   if (in_array('editor', $user->roles)) {
