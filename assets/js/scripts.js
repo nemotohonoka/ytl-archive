@@ -220,3 +220,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
+document.getElementById('login_submit').addEventListener('click', function(e) {
+  var username = document.getElementById('login_username').value.trim();
+  var password = document.getElementById('login_password').value.trim();
+  if (!username || !password) {
+      e.preventDefault(); // フォーム送信を止める
+      alert('メールアドレスとパスワードを入力してください。');
+  }
+});
+
