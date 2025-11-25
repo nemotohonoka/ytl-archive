@@ -19,31 +19,51 @@ Template Name:ログイン・会員登録
 
     <div class="auth-page">
       <div class="login-box">
-        <h4>ログイン<span>会員登録されている方</span></h4>
-        <?php
-        // リダイレクト先を取得（パラメータがなければトップページ）
-        $redirect_to = isset($_GET['redirect_to']) ? $_GET['redirect_to'] : home_url();
+        <h4>
+            <?php echo is_user_logged_in() ? 'ログイン済みです' : 'ログイン'; ?>
+            <span>会員登録されている方</span>
+        </h4>
 
-        // ログインフォーム
-        wp_login_form([
-          'redirect'       => $redirect_to,
-          'label_username' => 'メールアドレス',
-          'label_password' => 'パスワード',
-          'label_remember' => 'ログイン状態を保存する',
-          'label_log_in'   => 'ログイン',
-        ]);
-        ?>
+        <?php if ( is_user_logged_in() ) : ?>
+            <!-- ログイン中：ログアウトボタンのみ表示 -->
+            <p>
+                <a href="<?php echo wp_logout_url( get_permalink() ); ?>" class="button logout-button">ログアウト</a>
+            </p>
 
-        <!-- ログイン失敗エラー -->
-        <?php if ( isset($_GET['login']) && $_GET['login'] == 'failed' ) : ?>
-          <p class="login-error">ログインに失敗しました。メールアドレスとパスワードをご確認ください。</p>
+        <?php else : ?>
+
+            <?php
+            // リダイレクト先を取得（パラメータがあればそちら、なければこのページ）
+            $redirect_to = isset($_GET['redirect_to']) ? $_GET['redirect_to'] : get_permalink();
+
+            // ログインフォーム
+            $args = [
+                'redirect'       => $redirect_to,
+                'label_username' => 'メールアドレス',
+                'label_password' => 'パスワード',
+                'label_remember' => 'ログイン状態を保存する',
+                'label_log_in'   => 'ログイン',
+                'id_username'    => 'login_username',
+                'id_password'    => 'login_password',
+                'id_submit'      => 'login_submit',
+            ];
+
+            wp_login_form($args);
+            ?>
+
+            <!-- ログイン失敗エラー -->
+            <?php if ( isset($_GET['login']) && $_GET['login'] == 'failed' ) : ?>
+              <p class="login-error">ログインに失敗しました。メールアドレスとパスワードをご確認ください。</p>
+            <?php endif; ?>
+
+            <!-- パスワードを忘れた方 -->
+            <p class="lost-password">
+              <a href="<?php echo home_url(); ?>/password-reset/">パスワードを忘れた方はこちら</a>
+            </p>
+
         <?php endif; ?>
-
-        <!-- パスワードを忘れた方 -->
-        <p class="lost-password">
-          <a href="<?php echo home_url(); ?>/password-reset/">パスワードを忘れた方はこちら</a>
-        </p>
       </div>
+
 
       <div class="register-box">
         <h4>新規会員登録<span>会員登録されていない方</span></h4>

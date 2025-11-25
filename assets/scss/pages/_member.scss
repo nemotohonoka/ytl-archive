@@ -24,6 +24,7 @@ body.page-template-member_auth {
   }
 
   .auth-page {
+    
     .login-box {
       border: 1px solid #ddd;
       border-radius: 10px;
@@ -89,6 +90,27 @@ body.page-template-member_auth {
               color: white;
               transition: all 0.3s;
             }
+          }
+        }
+      }
+
+      .logout-button {
+        display: block;
+        text-align: center;
+        padding: 15px 0;
+        width: 200px;
+        border-radius: 100px;
+        border: 1px solid #011976;
+        background: white;
+        color: #011976;
+        font-weight: bold;
+        margin: 0 auto;
+
+        @media (hover: hover) {
+          &:hover {
+            background: #011976;
+            color: white;
+            transition: all 0.3s;
           }
         }
       }
