@@ -161,13 +161,22 @@ jQuery(function($){
       });
 
       // 「もっと見る」ボタン用
-      $(document).on('click', '.library-more', function(){
+        $(document).on('click', '.library-more', function(){
           var parent = $(this).data('parent');
           var child = $(this).data('child') || 'all';
+          var postType = $(this).data('post-type'); // 動画ライブラリ or スライド資料
+      
+          // localStorage に保存
           localStorage.setItem(storageKey, JSON.stringify({parent: parent, term: child}));
-
-          window.location.href = '/' + postType + '/'; // 遷移先一覧ページ
-      });
+      
+          // 遷移先のIDを決める
+          var targetId = postType === 'video-library' ? 'video_library-results' : 'material-results';
+      
+          // 遷移URL生成
+          if(postType) {
+              window.location.href = '/' + postType + '/#' + targetId;
+          }
+      });    
   });
 
   function fetchPosts(postType, ajaxurl, parent, term){
