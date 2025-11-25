@@ -145,12 +145,7 @@ Template Name: 消化器
     </div>
 
     <div class="default-button">
-      <button 
-        class="button-more library-more" 
-        data-parent="parent01" 
-        data-child="child01-parent01" 
-        data-post-type="material"
-      >
+      <button class="button-more library-more" data-parent="parent01" data-child="child01-parent01" data-post-type="material">
         <span>もっと見る</span>
       </button>
     </div>
@@ -282,12 +277,7 @@ Template Name: 消化器
     </div>
 
     <div class="default-button">
-      <button 
-        class="button-more library-more" 
-        data-parent="parent01" 
-        data-child="child01-parent01" 
-        data-post-type="video-library"
-      >
+      <button class="button-more library-more" data-parent="parent01" data-child="child01-parent01" data-post-type="video-library">
         <span>もっと見る</span>
       </button>
     </div>
