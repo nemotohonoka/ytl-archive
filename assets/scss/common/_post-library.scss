@@ -238,6 +238,7 @@ body.page-template-pages {
         }
         .active {
           background: #011976;
+          border: 1px solid #011976;
           color: white;
           border-radius: 3px;
           .nav-box {
@@ -251,7 +252,7 @@ body.page-template-pages {
           }
         }
         .passive {
-          border: 1px solid;
+          border: 1px solid #011976;
           border-radius: 3px;
           a {
             display: block;
@@ -263,6 +264,27 @@ body.page-template-pages {
                 g {
                   path {
                     fill: #011976;
+                  }
+                }
+              }
+            }
+            @media (hover: hover) {
+              &:hover {
+                background: #011976;
+                color: white;
+                transition: all 0.5;
+                p {
+                  color: white;
+                  transition: all 0.5;
+                }
+                .nav-box {
+                  svg {
+                    g {
+                      path {
+                        fill: white;
+                        transition: all 0.5;
+                      }
+                    }
                   }
                 }
               }
