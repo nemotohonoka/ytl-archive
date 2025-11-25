@@ -21,11 +21,20 @@ Template Name: 疾患別コンテンツ 一覧
     <section id="section-contents-list">
       <ul>
         <li>
-          <a href="<?php echo home_url(); ?>/medical/gastro/">
+          <a href="<?php echo home_url(); ?>/medical/onco/">
             <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="消化器">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon09.svg" alt="悪性腫瘍">
             </figure>
-            <p>消化器</p>
+            <p>悪性腫瘍</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?php echo home_url(); ?>/medical/hema/">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon11.svg" alt="血液疾患">
+            </figure>
+            <p>血液疾患</p>
           </a>
         </li>
 
@@ -35,6 +44,15 @@ Template Name: 疾患別コンテンツ 一覧
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon02.svg" alt="免疫・膠原病・感染症">
             </figure>
             <p>免疫・膠原病・感染症</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="<?php echo home_url(); ?>/medical/gastro/">
+            <figure>
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon01.svg" alt="消化器">
+            </figure>
+            <p>消化器</p>
           </a>
         </li>
 
@@ -93,29 +111,11 @@ Template Name: 疾患別コンテンツ 一覧
         </li>
 
         <li>
-          <a href="<?php echo home_url(); ?>/medical/onco/">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon09.svg" alt="悪性腫瘍">
-            </figure>
-            <p>悪性腫瘍</p>
-          </a>
-        </li>
-
-        <li>
           <a href="<?php echo home_url(); ?>/medical/rare/">
             <figure>
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon10.svg" alt="希少疾患">
             </figure>
             <p>希少疾患</p>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?php echo home_url(); ?>/medical/hema/">
-            <figure>
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/medical/medical_icon11.svg" alt="血液疾患">
-            </figure>
-            <p>血液疾患</p>
           </a>
         </li>
 
