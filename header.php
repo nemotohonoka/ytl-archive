@@ -153,7 +153,7 @@
                 </div>
 
                 <div class="search-link">
-                  <a href="<?php echo home_url(); ?>/corporation/">
+                  <a href="<?php echo home_url(); ?>/material/">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30.253" height="33.159" viewBox="0 0 30.253 33.159" aria-hidden="true" focusable="false">
                       <g transform="translate(-1201 -22)">
                         <path d="M14,2A12,12,0,0,0,5.515,22.485,12,12,0,1,0,22.485,5.515,11.921,11.921,0,0,0,14,2m0-2A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(1201 22)" fill="currentColor"/>

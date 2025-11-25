@@ -161,6 +161,7 @@
                     color: white;
                     display: block;
                     padding: 15px 0;
+                    font-size: 17px;
                     span {
                       font-size: 11px;
                       position: relative;
@@ -175,6 +176,22 @@
                         width: 7px;
                         height: 1px; 
                         background-color: white;
+                      }
+                    }
+                    @media (hover: hover) {
+                      &:hover {
+                        color: #5AC3FF;
+                        transition: all 0.5s;
+                        span {
+                          padding-left: 35px;
+                          transition: all 0.5s;
+
+                          &::before {
+                            left: 15px;
+                            background-color: #5AC3FF;
+                            transition: all 0.5s;
+                          }
+                        }
                       }
                     }
                   }
@@ -194,16 +211,16 @@
               margin-bottom: 30px;
               .search-link {
                 &:first-child {
-                  margin-right: 10px;
+                  margin-right: 15px;
                 }
                 a {
                   color: white;
                   svg {
-                    width: 13px;
-                    height: 13px;
+                    width: 15px;
+                    height: 15px;
                   }
                   span {
-                    font-size: 13px;
+                    font-size: 15px;
                   }
                 }
               }
@@ -224,6 +241,13 @@
                   span {
                     font-weight: bold;
                     font-size: 15px;
+                  }
+
+                  @media (hover: hover) {
+                    &:hover {
+                      background: #ddd;
+                      transition: all 0.5s;
+                    }
                   }
                 }
               }
@@ -331,11 +355,17 @@
                       a {
                         color: white;
                         svg {
-                          width: 13px;
-                          height: 13px;
+                          width: 17px;
+                          height: 17px;
                         }
                         span {
-                          font-size: 13px;
+                          font-size: 17px;
+                        }
+                        @media (hover: hover) {
+                          &:hover {
+                            color: #5AC3FF;
+                            transition: all 0.3s;
+                          }
                         }
                       }
                     }
