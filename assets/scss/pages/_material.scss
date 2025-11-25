@@ -34,6 +34,8 @@ body.post-type-archive-material,
       padding-bottom: 10px;
       .swiper-slide {
         padding: 0 30px;
+        cursor: pointer;
+
         .background {
           box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
           border-radius: 10px;
@@ -133,10 +135,21 @@ body.post-type-archive-material,
           padding: 15px 0;
           border-radius: 3px;
           margin-bottom: 15px;
+          cursor: pointer;
+          @media (hover: hover) {
+            &:hover {
+              border: 1px solid #011976;
+              background: rgba(0, 146, 230, 0.1);
+              transition: all 0.3s;
+            }
+          }
         }
         .active {
           color: white;
           background: #011976;
+          &:hover {
+            background: #011976;
+          }
         }
       }
     }
@@ -150,7 +163,6 @@ body.post-type-archive-material,
           padding: 30px;
           display: flex;
           flex-wrap: wrap;
-          // justify-content: space-between;
           gap: 10px;
 
           .child-button {
@@ -160,10 +172,22 @@ body.post-type-archive-material,
             color: #011976;
             border-radius: 3px;
             padding: 10px 0;
+            cursor: pointer;
+
+            @media (hover: hover) {
+              &:hover {
+                border: 1px solid #011976;
+                background: rgba(0, 146, 230, 0.1);
+                transition: all 0.3s;
+              }
+            }
           }
           .active {
             color: white;
             background: #011976;
+            &:hover {
+              background: #011976;
+            }
           }
 
         }
