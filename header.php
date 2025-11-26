@@ -133,8 +133,8 @@
                     <li><a href="<?php echo home_url(); ?>/medical/">疾患別コンテンツ<span>Medical</span></a></li>
                     <li><a href="<?php echo home_url(); ?>/healthcare/">医療制度コンテンツ<span>Healthcare</span></a></li>
                     <li><a href="<?php echo home_url(); ?>/skill/">スキル研修<span>Skills Training</span></a></li>
-                    <li><a href="<?php echo home_url(); ?>/webinar/">Web講演会<span>Webinar</span></a></li>
-                    <li><a href="<?php echo home_url(); ?>/info-material/">情報提供資材<span>Material</span></a></li>
+                    <!-- <li><a href="<?php echo home_url(); ?>/webinar/">Web講演会<span>Webinar</span></a></li> -->
+                    <!-- <li><a href="<?php echo home_url(); ?>/info-material/">情報提供資材<span>Material</span></a></li> -->
                   </ul>
                 </div>
               </div>
@@ -223,11 +223,11 @@
             <a href="<?php echo home_url(); ?>/skill/"　class="parent-menu">スキル研修</a>
           </li>
 
-          <li>
+          <!-- <li>
             <a href="<?php echo home_url(); ?>/webinar/"　class="parent-menu">Web講演会</a></li>
-          </li>
+          </li> -->
 
-          <li class="menu-item">
+          <!-- <li class="menu-item">
             <a href="<?php echo home_url(); ?>/info-material/" class="parent-menu">情報提供資材</a>
             <div class="submenu">
               <ul>
@@ -235,7 +235,7 @@
                 <li><a href="<?php echo home_url(); ?>/healthcare/patient/">患者向け</a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
         </ul>
       </nav>
     </div>

@@ -53,8 +53,8 @@
                   <li><a href="<?php echo home_url(); ?>/medical/"><span>疾患別コンテンツ</span></a></li>
                   <li><a href="<?php echo home_url(); ?>/healthcare/"><span>医療制度コンテンツ</span></a></li>
                   <li><a href="<?php echo home_url(); ?>/skill/"><span>スキル研修</span></a></li>
-                  <li><a href="<?php echo home_url(); ?>/webinar/"><span>Web講演会</span></a></li>
-                  <li><a href="<?php echo home_url(); ?>/info-material/"><span>情報提供資料</span></a></li>
+                  <!-- <li><a href="<?php echo home_url(); ?>/webinar/"><span>Web講演会</span></a></li> -->
+                  <!-- <li><a href="<?php echo home_url(); ?>/info-material/"><span>情報提供資料</span></a></li> -->
                 </ul>
               </div>
 
