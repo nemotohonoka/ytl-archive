@@ -20,7 +20,12 @@
   						<div class="label <?php echo $cat->category_nicename; ?>"><?php echo $cat->cat_name; ?></div>
   						<time><?php the_time("Y.m.d"); ?></time>
   						<h3><?php the_title(); ?></h3>
-  						<?php the_excerpt(); ?>
+							<div class="excerpt">
+								<?php 
+								$excerpt = get_the_excerpt();
+								echo wp_trim_words($excerpt, 50, '…'); // 20単語で省略
+								?>
+							</div>
   						<span class="readmore">続きを読む</span>
   					</div>
   				</a>

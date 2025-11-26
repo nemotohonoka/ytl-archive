@@ -42,7 +42,7 @@ ul.article_list {
 					font-size: 17px;
 					margin: 15px 0 10px;
 				}
-				p {
+				.excerpt {
 					color: #666666;
 					margin-bottom: 10px;
 				}
@@ -113,6 +113,14 @@ ul.article_list {
 		gap: 20px;
 		li {
 			width: calc(calc(100% - 20px) / 2);
+		}
+	}
+}
+
+@include breakpoint(large-up) {
+	ul.article_list {
+		li {
+			width: calc(calc(100% - 40px) / 3);
 		}
 	}
 }
