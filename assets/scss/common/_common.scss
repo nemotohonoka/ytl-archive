@@ -10,6 +10,9 @@ p {
 
 main {
   padding-top: 60px;
+	@include breakpoint(large-up) {
+		padding-top: 120px;
+	}
 }
 
 .container {
