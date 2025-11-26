@@ -8,13 +8,11 @@ body.page-template-signup {
   label[for="user_email-184"]::after,
   label[for="company-184"]::after,
   label[for="department-184"]::after,
-  label[for="purpose-184"]::after,
   label[for="user_name-251"]::after,
   label[for="user_password-251"]::after,
   label[for="user_email-251"]::after,
   label[for="company-251"]::after,
-  label[for="department-251"]::after,
-  label[for="purpose-251"]::after {
+  label[for="department-251"]::after{
     content: "必須";          /* 表示文字 */
     display: inline-block;
     background-color: #FF2626;    /* 背景色 */
