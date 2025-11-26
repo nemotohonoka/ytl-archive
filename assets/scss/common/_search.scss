@@ -183,14 +183,16 @@ body.tax-common_tag,
   }
 
   @include breakpoint(medium-up) {
-    .flex-box {
-      display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      gap: 30px; 
-      .background {
-        margin-bottom: 0 !important;
-        width: calc(calc(100% - 30px) / 2);
+    .tag-archive {
+      .flex-box {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 30px; 
+        .background {
+          margin-bottom: 0 !important;
+          width: calc(calc(100% - 30px) / 2);
+        }
       }
     }
   }
@@ -200,9 +202,11 @@ body.tax-common_tag,
       margin-top: 80px;
       margin-bottom: 50px;
     }
-    .flex-box {
-      .background {
-        width: calc(calc(100% - 60px) / 3);
+    .tag-archive {
+      .flex-box {
+        .background {
+          width: calc(calc(100% - 60px) / 3);
+        }
       }
     }
   }
