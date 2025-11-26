@@ -21,8 +21,8 @@
 
                 // 投稿タイプごとのリンク先を定義
                 $custom_post_type_links = [
-                    'video_library'  => '/video-library/',   // library 一覧ページ（任意のリンク）
-                    'material' => '/info-material/',  // material 一覧ページ（任意のリンク）
+                    'video_library'  => '/video-library/', 
+                    'material' => '/material/', 
                 ];
 
                 // リンク先を取得（存在しない場合はトップへ）
