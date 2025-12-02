@@ -197,33 +197,41 @@ jQuery(function($){
 
 });
 
+jQuery(document).ready(function($){
+  var helpText = '<div class="custom-help-text">パスワードは8文字以上で、英字（大文字・小文字）と数字を含めてください。</div>';
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   // 初期表示する親カテゴリー
-//   const initialParent = 'parent01';
+  $('#um_field_184_user_password').after(helpText);
+});
 
-//   // 親タブの見た目を active に
-//   const parentTab = document.querySelector(`.tab-button[data-parent="${initialParent}"]`);
-//   if (parentTab) parentTab.classList.add('active');
+jQuery(document).ready(function($){
+  var helpText = '<div class="custom-help-text">個人のメールアドレス（@gmail.com 等）でのご登録は、審査が通らない場合がございますのでご留意ください。</div>';
 
-//   // 初回は parent01 の子ボタンを表示
-//   const childWrapper = document.querySelector(`.child-buttons[data-parent="${initialParent}"]`);
-//   if (childWrapper) childWrapper.style.display = 'flex';
+  $('#um_field_184_user_email').after(helpText);
+});
 
-//   // 親タブクリック時の切り替え
-//   document.querySelectorAll('.tab-button').forEach(button => {
-//       button.addEventListener('click', function() {
-//           const parent = this.getAttribute('data-parent');
-//           document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-//           this.classList.add('active');
+jQuery(document).ready(function($){
+  var helpText = '<div class="custom-help-text">パスワードは8文字以上で、英字（大文字・小文字）と数字を含めてください。</div>';
 
-//           document.querySelectorAll('.child-buttons').forEach(cb => cb.style.display = 'none');
-//           const childDiv = document.querySelector(`.child-buttons[data-parent="${parent}"]`);
-//           if (childDiv) childDiv.style.display = 'flex';
-//       });
-//   });
-// });
+  $('#um_field_251_user_password').after(helpText);
+});
 
+jQuery(document).ready(function($){
+  var helpText = '<div class="custom-help-text">個人のメールアドレス（@gmail.com 等）でのご登録は、審査が通らない場合がございますのでご留意ください。</div>';
+
+  $('#um_field_251_user_email').after(helpText);
+});
+
+jQuery(document).ready(function($){
+  var helpText = '<div class="custom-help-text">YTL（株式会社医学アカデミー）からサービスに関する最新情報などをご登録いただいたメールアドレス宛にお届けしております。</div>';
+
+  $('#um_field_251_terms_12').after(helpText);
+});
+
+jQuery(document).ready(function($){
+  var helpText = '<div class="custom-help-text">YTL（株式会社医学アカデミー）からサービスに関する最新情報などをご登録いただいたメールアドレス宛にお届けしております。</div>';
+
+  $('#um_field_184_delivery').after(helpText);
+});
 
 document.getElementById('login_submit').addEventListener('click', function(e) {
   var username = document.getElementById('login_username').value.trim();
