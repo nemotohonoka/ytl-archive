@@ -192,77 +192,14 @@ body.home {
           }
         }
       }
-
-      .posts {
-        margin-bottom: 30px;
-
-        .my-medical-swiper {
-          visibility: hidden;
+      .contents-image {
+        figure {
+          margin: 0;
         }
-        .my-medical-swiper.swiper-initialized {
-          visibility: visible;
-        }
-        .swiper-wrapper {
-          padding-bottom: 20px;
-          .swiper-slide {
-            .background {
-              margin-top: 10px;
-              box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-              border-radius: 10px;
-              background: #fff; /* 白背景推奨 */
-
-              img {
-                width: 100%;
-              }
-    
-              .text-box {
-                padding: 0 20px 20px;
-                
-                .slide-title {
-                  color: black;
-                  font-weight: bold;
-                  font-size: 17px;
-                  line-height: 1.5em;
-                  margin: 20px 0 10px;
-                }
-                .slide-excerpt {
-                  font-size: 15px;
-                  color: black;
-                  line-height: 1.5em;
-                  margin-bottom: 10px;
-                }
-
-                .post-type-label {
-                  display: inline;
-                  color: #011976;
-                  font-weight: bold;
-                  margin-right: 10px;
-                  padding: 7px 6px 7px 10px;
-                  font-size: 11px;
-                  border-radius: 100px;
-                  background: #EBEBEB;
-                }
-
-                .slide-taxonomy {
-                  display: inline;
-                  padding: 7px 10px;
-                  font-size: 11px;
-                  border-radius: 100px;
-                  color: white;
-                }
-                .parent01-color {
-                  background: #1958AB;
-                }
-                .parent02-color {
-                  background: #FA8A85;
-                }
-                .parent03-color {
-                  background: #74B691;
-                }
-              }
-            }
-          }
-        }
+      }
+      .default-button {
+        background: #0092E6;
+        padding: 20px 0;
       }
     }
     
@@ -393,25 +330,27 @@ body.home {
     }
 
     #contents {
+
+      .flex-box {
+        display: flex;
+        gap: 20px;
+      }
       .contents-box {
-        &:not(:last-child) {
-          margin-bottom: 130px;
-        }
+        width: calc(calc(100% - 40px) / 3);
+
         .section-title {
           margin-bottom: 40px;
         }
-        .posts {
-          .swiper-wrapper {
-            padding-bottom: 20px;
-            .swiper-slide {
-              .background {
-                .text-box {
-                  padding: 0 30px 25px;
-                }
-              }
+
+        .default-button {
+          .button-more {
+            padding: 5px;
+            width: 150px;
+            &::after {
+              right: -18px;
             }
           }
-        }
+        } 
       }
     }
 
@@ -473,6 +412,21 @@ body.home {
         p {
           font-size: 17px;
         }
+      }
+    }
+
+    #contents {
+      .contents-box {
+
+        .default-button {
+          .button-more {
+            padding: 15px;
+            width: 230px;
+            &::after {
+              right: -40px;
+            }
+          }
+        } 
       }
     }
   }
