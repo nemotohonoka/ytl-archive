@@ -111,9 +111,9 @@ get_header();
     $parents = [
         'parent01' => '疾患別',
         'parent02' => '医療制度',
-        'parent03' => 'スキル研修',
-        'parent04' => 'Web講演会',
-        'parent05' => '情報提供資材'
+        'parent03' => 'スキル研修'
+        // 'parent04' => 'Web講演会',
+        // 'parent05' => '情報提供資材'
     ];
   ?>
 
