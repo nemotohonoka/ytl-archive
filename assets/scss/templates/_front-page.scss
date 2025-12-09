@@ -19,13 +19,15 @@ body.home {
         .txt {
           display: flex;
           overflow: hidden;
+          
           p {
             color: #2741A5;
             font-size: 40px;
             font-weight: bold;
             letter-spacing: .06em;
-            margin: 0;
+            margin: -0.3px;
             line-height: 50px;
+            background: white;
         
             /* ここからアニメーション関係 */
             transform: translateY(2em);
@@ -35,109 +37,109 @@ body.home {
         /* 1文字目 */
         .top p:nth-child(1) {
           animation-delay: 0.2s;
-          background: white;
+          // background: white;
           padding-left: 6px;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 2文字目 */
         .top p:nth-child(2) {
           animation-delay: 0.4s;
-          background: white;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          // background: white;
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 3文字目 */
         .top p:nth-child(3) {
           animation-delay: 0.6s;
-          background: white;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          // background: white;
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 4文字目 */
         .top p:nth-child(4) {
           animation-delay: 0.8s;
-          background: white;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          // background: white;
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 5文字目 */
         .top p:nth-child(5) {
           animation-delay: 1s;
-          background: white;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          // background: white;
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 6文字目 */
         .top p:nth-child(6) {
           animation-delay: 1.2s;
-          background: white;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          // background: white;
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 7文字目 */
         .bottom p:nth-child(1) {
           animation-delay: 1.6s;
-          background: white;
+          // background: white;
           padding-left: 6px;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 8文字目 */
         .bottom p:nth-child(2) {
           animation-delay: 1.8s;
-          background: white;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          // background: white;
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 9文字目 */
         .bottom p:nth-child(3) {
           animation-delay: 2.0s;
-          background: white;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          // background: white;
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 10文字目 */
         .bottom p:nth-child(4) {
           animation-delay: 2.2s;
-          background: white;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          // background: white;
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 11文字目 */
         .bottom p:nth-child(5) {
           animation-delay: 2.4s;
-          background: white;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          // background: white;
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
         /* 12文字目 */
         .bottom p:nth-child(6) {
           animation-delay: 2.6s;
-          background: white;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          // background: white;
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
-        /* 12文字目 */
+        /* 13文字目 */
         .bottom p:nth-child(7) {
           animation-delay: 2.8s;
-          background: white;
+          // background: white;
           width: 28px;
-          // @include breakpoint(large-up) {
-          //   background: none;
-          // }
+          @include breakpoint(large-up) {
+            background: none;
+          }
         }
       }
 
