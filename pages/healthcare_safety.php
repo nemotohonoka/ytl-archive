@@ -19,7 +19,7 @@ Template Name: 医療安全
     </div>
   </div>
 
-  <section id="section-post" class="post-slide">
+  <!-- <section id="section-post" class="post-slide">
     <div class="title-label">
       <h3>スライド資料</h3>
     </div>
@@ -148,7 +148,7 @@ Template Name: 医療安全
         <span>もっと見る</span>
       </button>
     </div>
-  </section>
+  </section> -->
 
   <section id="section-post" class="post-movie">
     <div class="title-label">
