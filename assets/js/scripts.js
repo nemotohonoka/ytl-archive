@@ -224,7 +224,7 @@ jQuery(document).ready(function($){
 jQuery(document).ready(function($){
   var helpText = '<div class="custom-help-text">YTL（株式会社医学アカデミー）からサービスに関する最新情報などをご登録いただいたメールアドレス宛にお届けしております。</div>';
 
-  $('#um_field_251_terms_12').after(helpText);
+  $('#um_field_251_newsletter').after(helpText);
 });
 
 jQuery(document).ready(function($){
