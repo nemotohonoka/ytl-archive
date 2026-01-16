@@ -25,7 +25,7 @@ get_header();
             <div class="contents-box">
                 <div class="thumbnail">
                     <?php if (has_post_thumbnail()) : ?>
-                        <?php the_post_thumbnail('medium'); ?>
+                        <?php the_post_thumbnail('large'); ?>
                     <?php endif; ?>
                 </div>
   

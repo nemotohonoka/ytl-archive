@@ -50,7 +50,7 @@ Template Name: 医療従事者向け
                   <div class="background">
                     <a href="<?php the_permalink(); ?>">
                       <?php if (has_post_thumbnail()): ?>
-                        <?php the_post_thumbnail('medium'); ?>
+                        <?php the_post_thumbnail('large'); ?>
                       <?php endif; ?>
   
                       <div class="text-box">
@@ -181,7 +181,7 @@ Template Name: 医療従事者向け
                   <div class="background">
                     <a href="<?php the_permalink(); ?>">
                       <?php if (has_post_thumbnail()): ?>
-                        <?php the_post_thumbnail('medium'); ?>
+                        <?php the_post_thumbnail('large'); ?>
                       <?php endif; ?>
   
                       <div class="text-box">

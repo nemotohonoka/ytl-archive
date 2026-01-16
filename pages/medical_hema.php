@@ -51,7 +51,7 @@ Template Name: 血液疾患
                   <div class="background">
                     <a href="<?php the_permalink(); ?>">
                       <?php if (has_post_thumbnail()): ?>
-                        <?php the_post_thumbnail('medium'); ?>
+                        <?php the_post_thumbnail('large'); ?>
                       <?php endif; ?>
   
                       <div class="text-box">
@@ -183,7 +183,7 @@ Template Name: 血液疾患
                   <div class="background">
                     <a href="<?php the_permalink(); ?>">
                       <?php if (has_post_thumbnail()): ?>
-                        <?php the_post_thumbnail('medium'); ?>
+                        <?php the_post_thumbnail('large'); ?>
                       <?php endif; ?>
   
                       <div class="text-box">

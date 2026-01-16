@@ -33,7 +33,7 @@ get_header();
                 
                 <div class="thumbnail">
                   <?php if (has_post_thumbnail()) : ?>
-                    <?php the_post_thumbnail('medium'); ?>
+                    <?php the_post_thumbnail('large'); ?>
                   <?php endif; ?>
                 </div>
     
