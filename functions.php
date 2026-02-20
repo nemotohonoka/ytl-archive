@@ -270,7 +270,7 @@ function fetch_post_type_posts() {
 
           echo '<div class="post-contents">';
           echo '<a href="'.esc_url($permalink).'" class="post-item">';
-          if (has_post_thumbnail()) the_post_thumbnail('medium');
+          if (has_post_thumbnail()) the_post_thumbnail('large');
           echo '<div class="text-box">';
           echo '<h4>'.get_the_title().'</h4>';
           echo '<p>'.get_the_excerpt().'</p>';
@@ -410,8 +410,8 @@ add_action('um_registration_complete', function($user_id) {
   // 任意のメールアドレスに通知
   // ----------------------------
   $admin_email = array(
-    'h.nemoto@p-oh.jp'       // あなた
-    // 'ytl.contentslibrary@ytl.jp'      // 先方
+    'h.nemoto@p-oh.jp',
+    'ytl.contentslibrary@ytl.jp'
   );
   $user_info   = get_userdata($user_id);
 
@@ -423,13 +423,13 @@ add_action('um_registration_complete', function($user_id) {
   // メッセージ本文
   $message  = "以下のユーザーが会員登録を申請しました。管理画面から審査を行ってください。\n\n";
   $message .= "━━━━━━━━━━━━━━━━━━━━━━\n";
-  $message .= "■ ユーザー名： " . $user_info->user_login . "\n";
-  $message .= "■ 氏名： " . $user_name . "\n";
-  $message .= "■ 会社名： " . $company . "\n";
-  $message .= "■ 部署： " . $department . "\n";
-  $message .= "■ 電話番号： " . $phone . "\n";
-  $message .= "■ ご利用目的： " . $purpose . "\n";
-  $message .= "■ メルマガ同意： " . $newsletter_status . "\n";
+ $message .= "■ ユーザー名： " . $user_info->user_login . " | |\n";
+ $message .= "■ 氏名： " . $user_name . " | |\n";
+ $message .= "■ 会社名： " . $company . " | |\n";
+ $message .= "■ 部署： " . $department . " | |\n";
+ $message .= "■ 電話番号： " . $phone . " | |\n";
+ $message .= "■ ご利用目的： " . $purpose . " | |\n";
+ $message .= "■ メルマガ同意： " . $newsletter_status . " | |\n";
   $message .= "━━━━━━━━━━━━━━━━━━━━━━\n";
   $message .= "\n管理画面はこちらから：\n";
   $message .= home_url('/wp-admin/users.php');
