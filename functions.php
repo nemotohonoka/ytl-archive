@@ -371,6 +371,7 @@ add_action('admin_menu', function() {
   remove_menu_page('plugins.php');       // プラグイン
   remove_menu_page('tools.php');         // ツール
   remove_menu_page('options-general.php'); // 設定
+  remove_menu_page('edit-comments.php'); // コメント
 
   // プラグイン個別メニュー（スラッグ要確認）
   remove_menu_page('ultimatemember');   // Ultimate Member
@@ -385,6 +386,21 @@ add_action('admin_menu', function() {
   }
 }, 999);
 
+// 管理者以外はダッシュボードを完全に空にする
+function customize_dashboard_for_non_admin() {
+
+  if (!current_user_can('administrator')) {
+
+       // WP Mail SMTP
+       remove_meta_box('wp_mail_smtp_reports_widget_lite', 'dashboard', 'normal');
+
+       // Wordfence
+       remove_meta_box('wordfence_activity_report_widget', 'dashboard', 'normal');
+
+  }
+
+}
+add_action('wp_dashboard_setup', 'customize_dashboard_for_non_admin');
 
 
 // ----------------------------
@@ -410,7 +426,6 @@ add_action('um_registration_complete', function($user_id) {
   // 任意のメールアドレスに通知
   // ----------------------------
   $admin_email = array(
-    'h.nemoto@p-oh.jp',
     'ytl.contentslibrary@ytl.jp'
   );
   $user_info   = get_userdata($user_id);
