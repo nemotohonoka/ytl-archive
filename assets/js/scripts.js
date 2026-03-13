@@ -222,6 +222,12 @@ jQuery(document).ready(function($){
 });
 
 jQuery(document).ready(function($){
+  var helpText = '<div class="custom-help-text">ハイフン「-」有りの半角数字で入力してください。<br>例：03-1234-5678</div>';
+
+  $('#um_field_251_phone').after(helpText);
+});
+
+jQuery(document).ready(function($){
   var helpText = '<div class="custom-help-text">YTL（株式会社医学アカデミー）からサービスに関する最新情報などをご登録いただいたメールアドレス宛にお届けしております。</div>';
 
   $('#um_field_251_newsletter').after(helpText);
