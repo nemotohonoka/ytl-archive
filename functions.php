@@ -426,8 +426,7 @@ add_action('um_registration_complete', function($user_id) {
   // 任意のメールアドレスに通知
   // ----------------------------
   $admin_email = array(
-    'ytl.contentslibrary@ytl.jp',
-    'h.nemoto@p-oh.jp'
+    'ytl.contentslibrary@ytl.jp'
   );
   $user_info   = get_userdata($user_id);
 
@@ -567,6 +566,17 @@ function um_validate_password_complexity( $args ) {
   }
 }
 add_action('um_submit_form_errors_hook', 'um_validate_password_complexity', 10, 1);
+
+// // 登録完了ページのテキスト変更
+// add_filter('gettext', function($translated_text, $text, $domain) {
+
+//   if (strpos($translated_text, '承認を知らせるメール') !== false) {
+//       return 'このたびは会員申請いただき、誠にありがとうございます。ご登録いただいたメールアドレス宛に、申請に関するご案内メールをお送りいたします。';
+//   }
+
+//   return $translated_text;
+
+// }, 20, 3);
 
 
 
