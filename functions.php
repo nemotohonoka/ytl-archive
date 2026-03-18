@@ -522,29 +522,46 @@ function custom_login_failed_redirect($username) {
 add_action('wp_login_failed', 'custom_login_failed_redirect');
 
 
-// Ultimate Member 登録・パスワード変更時のカスタムバリデーション
+// Ultimate Member 登録・パスワード変更時のカスタムバリデーション（購読者のみ）
 function um_validate_password_complexity( $args ) {
   if ( isset( $args['user_password'] ) && !empty( $args['user_password'] ) ) {
-      $password = $args['user_password'];
-
-      // 8文字以上
-      if ( strlen($password) < 8 ) {
-          UM()->form()->add_error('user_password', 'パスワードは8文字以上にしてください。');
+      // ユーザーロールを取得
+      $user_role = '';
+      
+      // 新規登録時: $args['role'] から取得
+      if ( isset( $args['role'] ) ) {
+          $user_role = $args['role'];
+      } 
+      // パスワード変更時: 現在のユーザーのロールを取得
+      elseif ( is_user_logged_in() ) {
+          $current_user = wp_get_current_user();
+          $roles = $current_user->roles;
+          $user_role = !empty($roles) ? $roles[0] : '';
       }
+      
+      // 購読者（subscriber）の場合のみパスワード複雑性をチェック
+      if ( $user_role === 'subscriber' ) {
+          $password = $args['user_password'];
 
-      // 大文字1文字以上
-      if ( !preg_match('/[A-Z]/', $password) ) {
-          UM()->form()->add_error('user_password', 'パスワードには少なくとも1つ大文字を含めてください。');
-      }
+          // 8文字以上
+          if ( strlen($password) < 8 ) {
+              UM()->form()->add_error('user_password', 'パスワードは8文字以上にしてください。');
+          }
 
-      // 数字1文字以上
-      if ( !preg_match('/[0-9]/', $password) ) {
-          UM()->form()->add_error('user_password', 'パスワードには少なくとも1つ数字を含めてください。');
-      }
+          // 大文字1文字以上
+          if ( !preg_match('/[A-Z]/', $password) ) {
+              UM()->form()->add_error('user_password', 'パスワードには少なくとも1つ大文字を含めてください。');
+          }
 
-      // 英字1文字以上（小文字でも可）
-      if ( !preg_match('/[a-z]/', $password) ) {
-          UM()->form()->add_error('user_password', 'パスワードには少なくとも1つ英字を含めてください。');
+          // 数字1文字以上
+          if ( !preg_match('/[0-9]/', $password) ) {
+              UM()->form()->add_error('user_password', 'パスワードには少なくとも1つ数字を含めてください。');
+          }
+
+          // 英字1文字以上（小文字でも可）
+          if ( !preg_match('/[a-z]/', $password) ) {
+              UM()->form()->add_error('user_password', 'パスワードには少なくとも1つ英字を含めてください。');
+          }
       }
   }
 }
