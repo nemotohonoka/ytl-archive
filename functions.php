@@ -426,7 +426,8 @@ add_action('um_registration_complete', function($user_id) {
   // 任意のメールアドレスに通知
   // ----------------------------
   $admin_email = array(
-    'ytl.contentslibrary@ytl.jp'
+    'ytl.contentslibrary@ytl.jp',
+    'h.nemoto@p-oh.jp'
   );
   $user_info   = get_userdata($user_id);
 
