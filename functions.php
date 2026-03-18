@@ -412,7 +412,7 @@ add_action('um_registration_complete', function($user_id) {
   $user_name        = isset($_POST['user_name']) ? sanitize_text_field($_POST['user_name']) : '';
   $company     = isset($_POST['company']) ? sanitize_text_field($_POST['company']) : '';
   $department  = isset($_POST['department']) ? sanitize_text_field($_POST['department']) : '';
-  $phone       = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
+  $phone       = isset($_POST['phone-251']) ? sanitize_text_field($_POST['phone-251']) : '';
   $purpose     = isset($_POST['purpose']) ? sanitize_text_field($_POST['purpose']) : '';
 
   // 念のためユーザーメタから削除
